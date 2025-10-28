@@ -7,9 +7,9 @@ from shapely.geometry import Point, Polygon
 from shapely.strtree import STRtree
 from tqdm import tqdm
 
-SRC = "public/venice_1808_landregister_geometries.geojson"
-OUT = Path("public/navmesh_grid.json")
-CELL = 1.0       # grid spacing (m)
+SRC = "../public/venice_1808_landregister_geometries.geojson"
+OUT = Path("../public/navmesh_grid.json")
+CELL = 2.0       # grid spacing (m)
 MAX_POLY = 50_000  # skip absurdly large polygons
 
 # 1. Load polygons
