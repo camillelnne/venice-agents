@@ -4,6 +4,13 @@ import L, { LatLngLiteral } from "leaflet";
 import { useEffect, useState, useMemo, useRef } from "react";
 import "leaflet/dist/leaflet.css";
 
+const VENICE_BOUNDS = L.latLngBounds(
+  [45.406, 12.285], // SW
+  [45.472, 12.395]  // NE
+);
+
+
+
 type Node = { x: number; y: number };
 type GridNav = { crs: "EPSG:3857"; cell: number; nodes: Node[] };
 
@@ -15,6 +22,8 @@ type GridHelpers = {
   neighbors4: (n: Node) => Node[];
   nearest: (xy: [number, number]) => Node;
 };
+
+
 
 
 function useFetch<T>(url: string) {
@@ -29,13 +38,29 @@ export default function GridMap() {
   const nav = useFetch<GridNav>("/navmesh_grid.json");
 
   return (
-    <MapContainer center={[45.438, 12.335]} zoom={16} style={{ height: "100vh", width: "100vw" }}>
+    <MapContainer
+        center={[45.438, 12.335]}
+        zoom={16}
+        style={{ height: "100vh", width: "100vw" }}
+        preferCanvas                // faster for vectors/markers
+        wheelDebounceTime={50}      // coalesce wheel events
+        wheelPxPerZoomLevel={100}   // fewer zoom level changes per wheel tick
+        zoomAnimationThreshold={8}  // skip heavy animation at high zooms
+        zoomSnap={1}                // no fractional zoom levels (prevents “swimmy” tiles)
+        maxBounds={VENICE_BOUNDS}
+        maxBoundsViscosity={1.0}     // 0..1; 1 = “hard” elastic boundary
+        worldCopyJump={false}        // don’t jump to wrapped worlds
+      >
+
       <TileLayer
         url="https://geo-timemachine.epfl.ch/geoserver/www/tilesets/venice/sommarioni/{z}/{x}/{y}.png"
         attribution='&copy; <a href="https://timeatlas.eu/">Time Atlas@EPFL</a>'
         maxZoom={19}
-        className="grayscale-map"
+        minZoom={15} // tailored to Venice size
+        noWrap // stop
+        bounds={VENICE_BOUNDS}
       />
+
       {nav && <AgentOnGrid nav={nav} />}
     </MapContainer>
   );
