@@ -1,15 +1,13 @@
-import json, math
+import json
 from pathlib import Path
 import geopandas as gpd
 import numpy as np
 import networkx as nx
-from shapely.geometry import Point, Polygon
-from shapely.strtree import STRtree
-from tqdm import tqdm
+from shapely.geometry import Point
 
 SRC = "../public/venice_1808_landregister_geometries.geojson"
 OUT = Path("../public/navmesh_grid.json")
-CELL = 2.0       # grid spacing (m)
+CELL = 1.5  # grid spacing (m)
 
 # 1. Load polygons
 raw = gpd.read_file(SRC)
