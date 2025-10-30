@@ -57,6 +57,35 @@ async function findPath(
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
+
+    // --- CHAT AGENT LOGIC ---
+    // If the request is for the chat agent, proxy it to the Python service
+    if (body.question && body.history) {
+      const pythonApiUrl = process.env.PYTHON_API_URL || "http://127.0.0.1:8000";
+      
+      const agentResponse = await fetch(`${pythonApiUrl}/chat`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          question: body.question,
+          history: body.history,
+        }),
+      });
+
+      if (!agentResponse.ok) {
+        const errorText = await agentResponse.text();
+        console.error("Error from Python agent:", errorText);
+        return NextResponse.json(
+          { error: "Failed to get response from agent" },
+          { status: agentResponse.status }
+        );
+      }
+
+      const agentData = await agentResponse.json();
+      return NextResponse.json(agentData);
+    }
+
+    // --- PATHFINDING LOGIC ---
     const { start, goal } = body;
 
     if (!start || !goal) {
@@ -65,9 +94,6 @@ export async function POST(req: NextRequest) {
         { status: 400 }
       );
     }
-
-    // For now, we directly call the pathfinding tool.
-    // In the future, a LangGraph agent would decide to call this tool.
     const path = await findPath(start, goal);
 
     if (!path) {

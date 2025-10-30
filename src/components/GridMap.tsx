@@ -11,11 +11,6 @@ const VENICE_BOUNDS = L.latLngBounds(
 );
 
 
-
-type Node = { x: number; y: number };
-
-
-
 function useFetch<T>(url: string) {
   const [data, setData] = useState<T | null>(null);
   useEffect(() => {
@@ -52,6 +47,7 @@ export default function GridMap() {
       />
 
       {nav && <AgentOnGrid nav={nav} />}
+      <Chatbox />
     </MapContainer>
   );
 }
@@ -134,4 +130,111 @@ function AgentOnGrid({ nav }: { nav: GridNav }) {
   }, [start, goal, map]);
 
   return null;
+}
+
+// --- CHATBOX COMPONENT ---
+type Message = {
+  sender: "user" | "ai";
+  text: string;
+};
+
+function Chatbox() {
+  const [messages, setMessages] = useState<Message[]>([]);
+  const [history, setHistory] = useState<string[]>([]);
+  const [input, setInput] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const messagesEndRef = useRef<HTMLDivElement | null>(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(scrollToBottom, [messages]);
+
+  const handleSend = async () => {
+    if (!input.trim()) return;
+
+    const userMessage: Message = { sender: "user", text: input };
+    setMessages((prev) => [...prev, userMessage]);
+    setInput("");
+    setIsLoading(true);
+
+    try {
+      const response = await fetch("/api/agent", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ question: input, history }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to get response from agent");
+      }
+
+      const data = await response.json();
+      const aiMessage: Message = { sender: "ai", text: data.answer };
+      
+      setMessages((prev) => [...prev, aiMessage]);
+      setHistory(data.history);
+
+    } catch (error) {
+      console.error(error);
+      const errorMessage: Message = { sender: "ai", text: "Sorry, I couldn't connect to the agent." };
+      setMessages((prev) => [...prev, errorMessage]);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  return (
+    <div style={{
+      position: 'absolute',
+      bottom: '20px',
+      right: '20px',
+      width: '350px',
+      height: '400px',
+      backgroundColor: 'white',
+      zIndex: 1000,
+      borderRadius: '8px',
+      boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
+      display: 'flex',
+      flexDirection: 'column',
+      fontFamily: 'sans-serif'
+    }}>
+      <div style={{ padding: '10px', borderBottom: '1px solid #eee', fontWeight: 'bold', color:'#333' }}>
+        Venice Agent
+      </div>
+      <div style={{ flex: 1, overflowY: 'auto', padding: '10px' }}>
+        {messages.map((msg, index) => (
+          <div key={index} style={{
+            marginBottom: '10px',
+            textAlign: msg.sender === 'user' ? 'right' : 'left'
+          }}>
+            <div style={{
+              display: 'inline-block',
+              padding: '8px 12px',
+              borderRadius: '18px',
+              backgroundColor: msg.sender === 'user' ? '#007bff' : '#f1f1f1',
+              color: msg.sender === 'user' ? 'white' : 'black',
+              maxWidth: '80%'
+            }}>
+              {msg.text}
+            </div>
+          </div>
+        ))}
+        {isLoading && <div style={{textAlign: 'left', color: '#888'}}>AI is thinking...</div>}
+        <div ref={messagesEndRef} />
+      </div>
+      <div style={{ padding: '10px', borderTop: '1px solid #eee' }}>
+        <input
+          type="text"
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          onKeyDown={(e) => e.key === 'Enter' && !isLoading && handleSend()}
+          placeholder="Ask the agent..."
+          disabled={isLoading}
+          style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc', boxSizing: 'border-box', color:'#333' }}
+        />
+      </div>
+    </div>
+  );
 }
