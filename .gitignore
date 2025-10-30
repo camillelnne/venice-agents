@@ -45,3 +45,6 @@ next-env.d.ts
 *.swp
 *.swo
 *~
+
+# Cache
+__pycache__

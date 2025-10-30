@@ -18,7 +18,7 @@ class State(TypedDict):
     answer: str
     history: List[str]
 
-# Use the new initialization method for ChatOpenAI
+
 llm = init_chat_model("openai:gpt-4o-mini", temperature=0)
 
 def classify(state: State):
