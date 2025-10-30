@@ -11,12 +11,24 @@ Key pieces
 ## Getting Started
 
 1. Install dependencies
+   
+   1.1 NPM
 
    ```bash
    npm install
    ```
+   1.2 FastAPI
 
-2. Run the dev server
+   ```bash
+   pip install "fastapi[standard]"
+   ```
+2. Run the Python backend (FastAPI)
+
+   ```bash
+   fastapi dev python_api/agent.py
+      ```
+
+3. In another terminal, run the dev server
 
    ```bash
    npm run dev

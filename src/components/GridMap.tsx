@@ -1,9 +1,19 @@
 "use client";
 import { MapContainer, TileLayer, useMap, useMapEvent } from "react-leaflet";
-import L, { LatLngLiteral } from "leaflet";
+import L, { LatLngLiteral, DomEvent } from "leaflet";
 import { useEffect, useState, useMemo, useRef } from "react";
 import "leaflet/dist/leaflet.css";
-import {GridNav, createGridHelpers} from "@/lib/grid";
+import {GridNav} from "@/lib/grid";
+
+// --- to see marker icons ---
+import icon from 'leaflet/dist/images/marker-icon.png';
+import iconShadow from 'leaflet/dist/images/marker-shadow.png';
+import iconRetina from 'leaflet/dist/images/marker-icon-2x.png';
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: iconRetina.src,
+  iconUrl: icon.src,
+  shadowUrl: iconShadow.src,
+});
 
 const VENICE_BOUNDS = L.latLngBounds(
   [45.406, 12.285], // SW
@@ -21,6 +31,10 @@ function useFetch<T>(url: string) {
 
 export default function GridMap() {
   const nav = useFetch<GridNav>("/navmesh_grid.json");
+
+  const [start, setStart] = useState<LatLngLiteral | null>(null);
+  const [path, setPath] = useState<LatLngLiteral[] | null>(null);
+  const [isChatboxVisible, setIsChatboxVisible] = useState(false);
 
   return (
     <MapContainer
@@ -46,193 +60,193 @@ export default function GridMap() {
         bounds={VENICE_BOUNDS}
       />
 
-      {nav && <AgentOnGrid nav={nav} />}
-      <Chatbox />
+      {nav && <AgentOnGrid nav={nav} start={start} setStart={setStart} path={path} setIsChatboxVisible={setIsChatboxVisible} />}
+      
+      
+      {isChatboxVisible && <Chatbox start={start} setPath={setPath} setStart={setStart} setIsChatboxVisible={setIsChatboxVisible} />}
     </MapContainer>
   );
 }
-
 /**
- * Component to place an agent on the grid and navigate from start to goal.
- * Left click to set start, right click to set goal.
- * @param nav Grid navigation mesh
- * @returns Null
+ * Handles map interactions, such as path and agent drawing.
  */
-function AgentOnGrid({ nav }: { nav: GridNav }) {
+function AgentOnGrid({ start, setStart, path, setIsChatboxVisible }: { 
+  nav: GridNav, 
+  start: LatLngLiteral | null, 
+  setStart: (ll: LatLngLiteral | null) => void, 
+  path: LatLngLiteral[] | null,
+  setIsChatboxVisible: (visible: boolean) => void
+}) {
   const map = useMap();
-  const [start, setStart] = useState<LatLngLiteral | null>(null);
-  const [goal, setGoal] = useState<LatLngLiteral | null>(null);
   const routeRef = useRef<L.Polyline | null>(null);
   const agentRef = useRef<L.CircleMarker | null>(null);
+  const startMarkerRef = useRef<L.Marker | null>(null);
   const animationIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
-  // ---- Click handlers ----
-  useMapEvent("click", (e) => setStart(e.latlng));
-
-  useMapEvent("contextmenu", (e) => {
-    e.originalEvent.preventDefault(); // Prevent context menu
-    setGoal(e.latlng);
+  // On click, set start point and show the chatbox
+  useMapEvent("click", (e) => {
+    setStart(e.latlng);
+    setIsChatboxVisible(true);
   });
 
+  // Effect to show/update the start marker
   useEffect(() => {
-    if (!start || !goal) return;
-
-    // Clear previous animation
-    if (animationIntervalRef.current) {
-      clearInterval(animationIntervalRef.current);
+    startMarkerRef.current?.remove();
+    if (start) {
+      startMarkerRef.current = L.marker(start).addTo(map)
+        .bindPopup('Start Point').openPopup();
     }
+  }, [start, map]);
 
-    const fetchPath = async () => {
-      const response = await fetch("/api/agent", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ start, goal }),
-      });
+  // Effect for drawing and animating the path
+  useEffect(() => {
+    if (animationIntervalRef.current) clearInterval(animationIntervalRef.current);
 
-      if (!response.ok) {
-        console.error("Failed to fetch path");
-        return;
-      }
-
-      const data = await response.json();
-      const pathLatLng: LatLngLiteral[] = data.path;
-
-      if (!pathLatLng || pathLatLng.length === 0) return;
-
-      // ---- Draw route ----
+    if (!path || path.length === 0) {
       routeRef.current?.remove();
-      routeRef.current = L.polyline(pathLatLng, { weight: 4, color: "#00bcd4" }).addTo(map);
-
       agentRef.current?.remove();
-      agentRef.current = L.circleMarker(pathLatLng[0], { radius: 5, color: "red" }).addTo(map);
+      return;
+    }
+    
+    startMarkerRef.current?.closePopup(); // Close popup when path is drawn
 
-      // ---- Animate agent ----
-      let i = 0;
-      const speed = 150; // steps per second
-      animationIntervalRef.current = setInterval(() => {
-        i = Math.min(i + 1, pathLatLng.length - 1);
-        agentRef.current!.setLatLng(pathLatLng[i]);
-        if (i >= pathLatLng.length - 1) {
-          if (animationIntervalRef.current) {
-            clearInterval(animationIntervalRef.current);
-          }
-        }
-      }, 1000 / speed);
-    };
+    routeRef.current?.remove();
+    routeRef.current = L.polyline(path, { weight: 4, color: "#00bcd4" }).addTo(map);
 
-    fetchPath();
+    agentRef.current?.remove();
+    agentRef.current = L.circleMarker(path[0], { radius: 5, color: "red" }).addTo(map);
+
+    let i = 0;
+    const speed = 150;
+    animationIntervalRef.current = setInterval(() => {
+      i = Math.min(i + 1, path.length - 1);
+      agentRef.current!.setLatLng(path[i]);
+      if (i >= path.length - 1) {
+        if (animationIntervalRef.current) clearInterval(animationIntervalRef.current);
+      }
+    }, 1000 / speed);
 
     return () => {
-      if (animationIntervalRef.current) {
-        clearInterval(animationIntervalRef.current);
-      }
+      if (animationIntervalRef.current) clearInterval(animationIntervalRef.current);
     };
-  }, [start, goal, map]);
+  }, [path, map]);
 
   return null;
 }
 
 // --- CHATBOX COMPONENT ---
-type Message = {
-  sender: "user" | "ai";
-  text: string;
-};
+type Message = { sender: "user" | "ai"; text: string };
 
-function Chatbox() {
+function Chatbox({ start, setPath, setStart, setIsChatboxVisible }: { 
+  start: LatLngLiteral | null, 
+  setPath: (path: LatLngLiteral[] | null) => void,
+  setStart: (start: LatLngLiteral | null) => void,
+  setIsChatboxVisible: (visible: boolean) => void
+}) {
   const [messages, setMessages] = useState<Message[]>([]);
-  const [history, setHistory] = useState<string[]>([]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
+  const chatboxRef = useRef<HTMLDivElement | null>(null);
 
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
+  // Stop click events from propagating to the map
+  useEffect(() => {
+    if (chatboxRef.current) {
+      DomEvent.disableClickPropagation(chatboxRef.current);
+    }
+  }, []);
 
-  useEffect(scrollToBottom, [messages]);
+  useEffect(() => { messagesEndRef.current?.scrollIntoView({ behavior: "smooth" }) }, [messages]);
 
   const handleSend = async () => {
-    if (!input.trim()) return;
+    if (!input.trim()) return; // Prevents user from sending empty message
+    if (!start) {
+      setMessages(prev => [...prev, { sender: 'ai', text: "Please click on the map to set a starting point first." }]);
+      return;
+    }
 
     const userMessage: Message = { sender: "user", text: input };
     setMessages((prev) => [...prev, userMessage]);
+    const goalDescription = input;
     setInput("");
     setIsLoading(true);
+    setPath(null); // Clear previous path
 
     try {
       const response = await fetch("/api/agent", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ question: input, history }),
+        body: JSON.stringify({ start, goalDescription }),
       });
 
+      const data = await response.json();
+      console.log("API response:", data);
       if (!response.ok) {
-        throw new Error("Failed to get response from agent");
+        const aiMessage: Message = { sender: "ai", text: "Sorry there is no possible path from your starting point to the destination." };
+        setMessages((prev) => [...prev, aiMessage]);
+        return;
+        //throw new Error(data.error || "Failed to get a response.");
       }
 
-      const data = await response.json();
-      const aiMessage: Message = { sender: "ai", text: data.answer };
-      
-      setMessages((prev) => [...prev, aiMessage]);
-      setHistory(data.history);
+      // The response should contain the final path
+      if (data.path) {
+        setPath(data.path);
+        const aiMessage: Message = { sender: "ai", text: "Okay, I've found a path for you." };
+        setMessages((prev) => [...prev, aiMessage]);
+      } else {
+        throw new Error("Received an unexpected response from the server.");
+      }
 
-    } catch (error) {
+    } catch (error: any) {
       console.error(error);
-      const errorMessage: Message = { sender: "ai", text: "Sorry, I couldn't connect to the agent." };
+      const errorMessage: Message = { sender: "ai", text: error.message || "Sorry, something went wrong." };
       setMessages((prev) => [...prev, errorMessage]);
     } finally {
       setIsLoading(false);
     }
   };
+  const handleClose = () => {
+    setIsChatboxVisible(false);
+    setStart(null);
+    setPath(null);
+  };
 
   return (
-    <div style={{
-      position: 'absolute',
-      bottom: '20px',
-      right: '20px',
-      width: '350px',
-      height: '400px',
-      backgroundColor: 'white',
-      zIndex: 1000,
-      borderRadius: '8px',
-      boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
-      display: 'flex',
-      flexDirection: 'column',
-      fontFamily: 'sans-serif'
-    }}>
-      <div style={{ padding: '10px', borderBottom: '1px solid #eee', fontWeight: 'bold', color:'#333' }}>
-        Venice Agent
+    <div ref={chatboxRef} style={{ position: 'absolute', bottom: '20px', right: '20px', width: '350px', height: '400px', backgroundColor: 'white', zIndex: 1000, borderRadius: '8px', boxShadow: '0 4px 12px rgba(0,0,0,0.15)', display: 'flex', flexDirection: 'column', fontFamily: 'sans-serif' }}>
+      <style>{`.chat-input::placeholder { color: #999; }`}</style>
+      
+      {/* Header with Title and Close Button */}
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px', borderBottom: '1px solid #eee' }}>
+        <span style={{ fontWeight: 'bold', color: '#333' }}>Venice Agent</span>
+        <button onClick={handleClose} style={{ border: 'none', background: 'none', fontSize: '18px', cursor: 'pointer', color: '#888' }}>
+          &times;
+        </button>
       </div>
+      
+      {/* Message Display Area */}
       <div style={{ flex: 1, overflowY: 'auto', padding: '10px' }}>
         {messages.map((msg, index) => (
-          <div key={index} style={{
-            marginBottom: '10px',
-            textAlign: msg.sender === 'user' ? 'right' : 'left'
-          }}>
-            <div style={{
-              display: 'inline-block',
-              padding: '8px 12px',
-              borderRadius: '18px',
-              backgroundColor: msg.sender === 'user' ? '#007bff' : '#f1f1f1',
-              color: msg.sender === 'user' ? 'white' : 'black',
-              maxWidth: '80%'
-            }}>
+          <div key={index} style={{ marginBottom: '10px', textAlign: msg.sender === 'user' ? 'right' : 'left' }}>
+            <div style={{ display: 'inline-block', padding: '8px 12px', borderRadius: '18px', backgroundColor: msg.sender === 'user' ? '#007bff' : '#f1f1f1', color: msg.sender === 'user' ? 'white' : 'black', maxWidth: '80%' }}>
               {msg.text}
             </div>
           </div>
         ))}
-        {isLoading && <div style={{textAlign: 'left', color: '#888'}}>AI is thinking...</div>}
+        {isLoading && <div style={{ textAlign: 'left', color: '#888' }}>AI is thinking...</div>}
         <div ref={messagesEndRef} />
       </div>
+      
+      {/* Input Area */}
       <div style={{ padding: '10px', borderTop: '1px solid #eee' }}>
         <input
           type="text"
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={(e) => e.key === 'Enter' && !isLoading && handleSend()}
-          placeholder="Ask the agent..."
+          placeholder="Go to Rialto Bridge..."
           disabled={isLoading}
-          style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc', boxSizing: 'border-box', color:'#333' }}
+          className="chat-input"
+          style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc', boxSizing: 'border-box', color: '#333' }}
         />
       </div>
     </div>

@@ -22,7 +22,7 @@ async function getNavHelpers() {
   return H;
 }
 
-// --- Pathfinding Tool ---
+// --- Pathfinding Function ---
 async function findPath(
   start: LatLngLiteral,
   goal: LatLngLiteral
@@ -57,50 +57,47 @@ async function findPath(
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
+    const { start, goal, goalDescription } = body;
 
-    // --- CHAT AGENT LOGIC ---
-    // If the request is for the chat agent, proxy it to the Python service
-    if (body.question && body.history) {
+    let finalGoal: LatLngLiteral | null = goal;
+
+    // If a natural language goal is provided, ask the Python agent for coordinates
+    if (goalDescription) {
       const pythonApiUrl = process.env.PYTHON_API_URL || "http://127.0.0.1:8000";
       
-      const agentResponse = await fetch(`${pythonApiUrl}/chat`, {
+      const coordResponse = await fetch(`${pythonApiUrl}/get-coordinates`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          question: body.question,
-          history: body.history,
-        }),
+        body: JSON.stringify({ destination: goalDescription }),
       });
 
-      if (!agentResponse.ok) {
-        const errorText = await agentResponse.text();
-        console.error("Error from Python agent:", errorText);
-        return NextResponse.json(
-          { error: "Failed to get response from agent" },
-          { status: agentResponse.status }
-        );
+      if (!coordResponse.ok) {
+        throw new Error("Coordinate service failed");
       }
 
-      const agentData = await agentResponse.json();
-      return NextResponse.json(agentData);
+      const data = await coordResponse.json();
+      if (data.error || !data.goal) {
+        return NextResponse.json({ error: data.error || "Could not find coordinates for destination" }, { status: 404 });
+      }
+      finalGoal = data.goal;
     }
 
-    // --- PATHFINDING LOGIC ---
-    const { start, goal } = body;
-
-    if (!start || !goal) {
+    // --- Pathfinding Logic ---
+    if (!start || !finalGoal) {
       return NextResponse.json(
-        { error: "Start and goal are required" },
+        { error: "A start point and a valid goal are required." },
         { status: 400 }
       );
     }
-    const path = await findPath(start, goal);
+
+    const path = await findPath(start, finalGoal);
 
     if (!path) {
       return NextResponse.json({ error: "Path not found" }, { status: 404 });
     }
 
     return NextResponse.json({ path });
+
   } catch (error) {
     console.error(error);
     return NextResponse.json(
