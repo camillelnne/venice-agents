@@ -1,12 +1,9 @@
 from dotenv import load_dotenv
 import os
-from typing import List
-from typing_extensions import TypedDict
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from langchain.chat_models import init_chat_model
-from langchain_core.output_parsers import JsonOutputParser
 
 load_dotenv(dotenv_path="../.env.local")
 api_key = os.getenv("OPENAI_API_KEY")
