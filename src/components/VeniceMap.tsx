@@ -19,7 +19,7 @@ const VENICE_BOUNDS = L.latLngBounds(
   [45.472, 12.395]  // NE
 );
 
-export default function GridMap() {
+export default function VeniceMap() {
 
   const [start, setStart] = useState<LatLngLiteral | null>(null);
   const [path, setPath] = useState<LatLngLiteral[] | null>(null);
