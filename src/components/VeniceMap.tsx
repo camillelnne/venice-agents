@@ -1,9 +1,8 @@
 "use client";
 import { MapContainer, TileLayer, useMap, useMapEvent } from "react-leaflet";
 import L, { LatLngLiteral, DomEvent } from "leaflet";
-import { useEffect, useState, useMemo, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import "leaflet/dist/leaflet.css";
-import {GridNav} from "@/lib/grid";
 
 // --- to see marker icons ---
 import icon from 'leaflet/dist/images/marker-icon.png';
@@ -20,17 +19,7 @@ const VENICE_BOUNDS = L.latLngBounds(
   [45.472, 12.395]  // NE
 );
 
-
-function useFetch<T>(url: string) {
-  const [data, setData] = useState<T | null>(null);
-  useEffect(() => {
-    fetch(url).then((r) => r.json()).then(setData);
-  }, [url]);
-  return data;
-}
-
 export default function GridMap() {
-  const nav = useFetch<GridNav>("/navmesh_grid.json");
 
   const [start, setStart] = useState<LatLngLiteral | null>(null);
   const [path, setPath] = useState<LatLngLiteral[] | null>(null);
@@ -60,7 +49,7 @@ export default function GridMap() {
         bounds={VENICE_BOUNDS}
       />
 
-      {nav && <AgentOnGrid nav={nav} start={start} setStart={setStart} path={path} setIsChatboxVisible={setIsChatboxVisible} />}
+      <AgentOnGrid start={start} setStart={setStart} path={path} setIsChatboxVisible={setIsChatboxVisible} />
       
       
       {isChatboxVisible && <Chatbox start={start} setPath={setPath} setStart={setStart} setIsChatboxVisible={setIsChatboxVisible} />}
@@ -71,7 +60,6 @@ export default function GridMap() {
  * Handles map interactions, such as path and agent drawing.
  */
 function AgentOnGrid({ start, setStart, path, setIsChatboxVisible }: { 
-  nav: GridNav, 
   start: LatLngLiteral | null, 
   setStart: (ll: LatLngLiteral | null) => void, 
   path: LatLngLiteral[] | null,
@@ -197,9 +185,9 @@ function Chatbox({ start, setPath, setStart, setIsChatboxVisible }: {
         throw new Error("Received an unexpected response from the server.");
       }
 
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error(error);
-      const errorMessage: Message = { sender: "ai", text: error.message || "Sorry, something went wrong." };
+      const errorMessage: Message = { sender: "ai", text: (error as Error).message || "Sorry, something went wrong." };
       setMessages((prev) => [...prev, errorMessage]);
     } finally {
       setIsLoading(false);

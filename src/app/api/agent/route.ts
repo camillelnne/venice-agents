@@ -1,56 +1,31 @@
 import { NextRequest, NextResponse } from "next/server";
 import {
-  createGridHelpers,
-  findPathBFS,
-  GridNav,
-  GridHelpers,
-} from "@/lib/grid";
+  buildNetworkFromGeoJSON,
+  findPath,
+  StreetNetwork,
+} from "@/lib/network";
 import path from "path";
 import fs from "fs/promises";
 import { LatLngLiteral } from "leaflet";
 
 // --- Navigation Data Loading ---
-let nav: GridNav;
-let H: GridHelpers;
+let network: StreetNetwork | null = null;
 
-async function getNavHelpers() {
-  if (H) return H;
-  const filePath = path.join(process.cwd(), "public", "navmesh_grid.json");
+async function getStreetNetwork(): Promise<StreetNetwork> {
+  if (network) return network;
+  
+  const filePath = path.join(
+    process.cwd(),
+    "public",
+    "1808_street_traghetto_route.geojson"
+  );
   const fileContent = await fs.readFile(filePath, "utf-8");
-  nav = JSON.parse(fileContent);
-  H = createGridHelpers(nav);
-  return H;
-}
-
-// --- Pathfinding Function ---
-async function findPath(
-  start: LatLngLiteral,
-  goal: LatLngLiteral
-): Promise<LatLngLiteral[] | null> {
-  const H = await getNavHelpers();
-
-  const sXY = H.toXY(start.lat, start.lng);
-  const gXY = H.toXY(goal.lat, goal.lng);
-  const s = H.nearest(sXY);
-  const g = H.nearest(gXY);
-  const sK = H.key(s.x, s.y);
-  const gK = H.key(g.x, g.y);
-
-  const neighborsForKey = (k: string) => {
-    const [x, y] = k.split(",").map(Number);
-    const nbs = H.neighbors4({ x, y });
-    return nbs.map((n) => H.key(n.x, n.y));
-  };
-
-  const pathKeys = findPathBFS(sK, gK, neighborsForKey);
-  if (!pathKeys) return null;
-
-  const pathLatLng: LatLngLiteral[] = pathKeys.map((k) => {
-    const [x, y] = k.split(",").map(Number);
-    return H.toLL(x, y);
-  });
-
-  return pathLatLng;
+  const geojson = JSON.parse(fileContent);
+  
+  network = buildNetworkFromGeoJSON(geojson);
+  console.log(`Loaded street network: ${network.nodes.size} nodes, ${network.edges.length} edges`);
+  
+  return network;
 }
 
 // --- API Handler ---
@@ -90,7 +65,8 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const path = await findPath(start, finalGoal);
+    const streetNetwork = await getStreetNetwork();
+    const path = findPath(streetNetwork, start, finalGoal);
 
     if (!path) {
       return NextResponse.json({ error: "Path not found" }, { status: 404 });
