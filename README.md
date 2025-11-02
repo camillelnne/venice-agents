@@ -10,6 +10,12 @@ Key pieces
 
 ## Getting Started
 
+Create a `.env.local` file in the root directory with your OpenAI API key:
+
+```env
+OPENAI_API_KEY=your_openai_api_key_here
+```
+
 1. Install dependencies
    
    1.1 NPM
