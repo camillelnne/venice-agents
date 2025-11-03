@@ -47,12 +47,18 @@ export async function POST(req: NextRequest) {
       });
 
       if (!coordResponse.ok) {
-        throw new Error("Coordinate service failed");
+        return NextResponse.json(
+          { error: "Could not connect to coordinate service. Please try again." },
+          { status: 503 }
+        );
       }
 
       const data = await coordResponse.json();
       if (data.error || !data.goal) {
-        return NextResponse.json({ error: data.error || "Could not find coordinates for destination" }, { status: 404 });
+        return NextResponse.json(
+          { error: `Could not find "${goalDescription}". Try a landmark like "Rialto Bridge" or "St. Mark's Square".` },
+          { status: 404 }
+        );
       }
       finalGoal = data.goal;
     }
@@ -69,7 +75,10 @@ export async function POST(req: NextRequest) {
     const path = findPath(streetNetwork, start, finalGoal);
 
     if (!path) {
-      return NextResponse.json({ error: "Path not found" }, { status: 404 });
+      return NextResponse.json(
+        { error: "No path found between these locations. They may not be connected by the street network." },
+        { status: 404 }
+      );
     }
 
     return NextResponse.json({ path });
@@ -77,7 +86,7 @@ export async function POST(req: NextRequest) {
   } catch (error) {
     console.error(error);
     return NextResponse.json(
-      { error: "Internal Server Error" },
+      { error: "An unexpected error occurred. Please try again." },
       { status: 500 }
     );
   }
