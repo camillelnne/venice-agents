@@ -93,12 +93,12 @@ export default function VeniceMap() {
       // Refresh agent info to show updated activity
       setRefreshTrigger(prev => prev + 1);
       
-      // Schedule next movement after a delay (15 seconds) - only if time is running
+      // Schedule next movement after a cooldown (60 seconds) - only if time is running
       isMovingRef.current = false;
       if (isRunning) {
         nextMoveTimeoutRef.current = setTimeout(() => {
           moveAgent();
-        }, 15000);
+        }, 60000); // 60 seconds cooldown between movements
       }
     } catch (error) {
       console.error("Failed to update agent location:", error);

@@ -23,7 +23,7 @@ export function TimeProvider({ children }: { children: ReactNode }) {
   const [isRunning, setIsRunning] = useState(true);
   // How many Venice minutes pass per real second.
   // Default reduced so Venice time moves more slowly in the UI.
-  const [timeSpeed, setTimeSpeed] = useState(10); // 1 real second = 10 Venice minutes (~6x slower than before)
+  const [timeSpeed, setTimeSpeed] = useState(5); // 1 real second = 5 Venice minutes (~12x slower than before)
 
   useEffect(() => {
     if (!isRunning) return;
