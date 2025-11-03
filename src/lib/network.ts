@@ -82,34 +82,31 @@ export function buildNetworkFromGeoJSON(
 
     const coords = feature.geometry.coordinates; // [lng, lat][]
     if (coords.length < 2) continue;
+    // Create nodes for each coordinate along the LineString and
+    // connect consecutive coordinates with edges. This lets water
+    // (traghetto) lines and street lines join the graph where they
+    // share coordinates.
+    let prevKey: string | null = null;
+    for (let idx = 0; idx < coords.length; idx++) {
+      const [lng, lat] = coords[idx];
+      const key = coordKey(lng, lat);
 
-    // Get start and end points
-    const [lngStart, latStart] = coords[0];
-    const [lngEnd, latEnd] = coords[coords.length - 1];
+      if (!nodes.has(key)) {
+        nodes.set(key, { id: key, lat, lng });
+      }
 
-    const startKey = coordKey(lngStart, latStart);
-    const endKey = coordKey(lngEnd, latEnd);
+      if (prevKey) {
+        // Add edge between prevKey and key
+        edges.push({ from: prevKey, to: key, coords: [coords[idx - 1], coords[idx]] });
 
-    // Add nodes if they don't exist
-    if (!nodes.has(startKey)) {
-      nodes.set(startKey, { id: startKey, lat: latStart, lng: lngStart });
+        if (!adjacency.has(prevKey)) adjacency.set(prevKey, []);
+        if (!adjacency.has(key)) adjacency.set(key, []);
+        adjacency.get(prevKey)!.push(key);
+        adjacency.get(key)!.push(prevKey);
+      }
+
+      prevKey = key;
     }
-    if (!nodes.has(endKey)) {
-      nodes.set(endKey, { id: endKey, lat: latEnd, lng: lngEnd });
-    }
-
-    // Add edge (bidirectional for streets)
-    edges.push({
-      from: startKey,
-      to: endKey,
-      coords: coords.map(([lng, lat]) => [lng, lat]),
-    });
-
-    // Build adjacency list (bidirectional)
-    if (!adjacency.has(startKey)) adjacency.set(startKey, []);
-    if (!adjacency.has(endKey)) adjacency.set(endKey, []);
-    adjacency.get(startKey)!.push(endKey);
-    adjacency.get(endKey)!.push(startKey);
   }
 
   return { nodes, edges, adjacency };
