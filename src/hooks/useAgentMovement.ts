@@ -12,6 +12,7 @@ export function useAgentMovement(isRunning: boolean) {
 
   const isMovingRef = useRef(false);
   const nextMoveTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const wasRunningRef = useRef(isRunning);
 
   // Fetch agent info on mount and when refreshTrigger changes
   useEffect(() => {
@@ -36,29 +37,68 @@ export function useAgentMovement(isRunning: boolean) {
   }, [refreshTrigger]);
 
   const moveAgent = useCallback(async () => {
-    if (isMovingRef.current || !isRunning) return;
+    if (isMovingRef.current) {
+      console.log("Movement already in progress, skipping");
+      return;
+    }
+    // Check isRunning directly from the ref to avoid dependency issues
+    if (!wasRunningRef.current) {
+      console.log("Time is paused, skipping movement");
+      return;
+    }
 
+    console.log("Starting new movement");
     isMovingRef.current = true;
+    
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => {
+      console.log("Movement request timed out, aborting");
+      controller.abort();
+    }, 30000); // 30 second timeout for pathfinding
+
     try {
-      const response = await fetch("/api/agent/autonomous");
+      const response = await fetch("/api/agent/autonomous", {
+        signal: controller.signal,
+      });
+      clearTimeout(timeoutId);
+      
       if (response.ok) {
         const data = await response.json();
         setAgentPath(data.path);
         setAgentDestination(data.destination);
         console.log("Agent movement:", data.reason);
       } else {
-        console.error("Failed to move agent: HTTP", response.status);
+        const errorData = await response.json().catch(() => ({}));
+        console.error("Failed to move agent: HTTP", response.status, errorData);
         isMovingRef.current = false;
+        
+        // Schedule retry after a delay
+        setTimeout(() => {
+          if (wasRunningRef.current && !isMovingRef.current) {
+            console.log("Retrying movement after error...");
+            moveAgent();
+          }
+        }, 5000);
       }
     } catch (error) {
+      clearTimeout(timeoutId);
       console.error("Failed to move agent:", error);
       isMovingRef.current = false;
+      
+      // Schedule retry after a delay for network errors
+      setTimeout(() => {
+        if (wasRunningRef.current && !isMovingRef.current) {
+          console.log("Retrying movement after network error...");
+          moveAgent();
+        }
+      }, 5000);
     }
-  }, [isRunning]);
+  }, []); // Remove isRunning from deps, use ref instead
 
   const handleAgentArrival = useCallback(async () => {
     if (!agentDestination) return;
 
+    console.log("Agent arrived at destination");
     try {
       // Update backend location
       await agentApiClient.updateLocation(
@@ -69,12 +109,23 @@ export function useAgentMovement(isRunning: boolean) {
       // Refresh agent info to show updated activity
       setRefreshTrigger(prev => prev + 1);
 
-      // Schedule next movement after a cooldown - only if time is running
+      // Mark as no longer moving
       isMovingRef.current = false;
-      if (isRunning) {
+      
+      // Clear any existing timeout
+      if (nextMoveTimeoutRef.current) {
+        clearTimeout(nextMoveTimeoutRef.current);
+        nextMoveTimeoutRef.current = null;
+      }
+
+      // Schedule next movement after cooldown if time is running (check ref)
+      if (wasRunningRef.current) {
+        console.log(`Scheduling next movement in ${AGENT_CONFIG.MOVEMENT_COOLDOWN}ms`);
         nextMoveTimeoutRef.current = setTimeout(() => {
           moveAgent();
         }, AGENT_CONFIG.MOVEMENT_COOLDOWN);
+      } else {
+        console.log("Time is paused, not scheduling next movement");
       }
     } catch (error) {
       if (error instanceof ApiError) {
@@ -84,10 +135,11 @@ export function useAgentMovement(isRunning: boolean) {
       }
       isMovingRef.current = false;
     }
-  }, [agentDestination, isRunning, moveAgent]);
+  }, [agentDestination, moveAgent]);
 
   // Initial movement on mount only
   useEffect(() => {
+    console.log("Initial mount - starting first movement");
     moveAgent();
 
     return () => {
@@ -99,6 +151,41 @@ export function useAgentMovement(isRunning: boolean) {
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []); // Only run once on mount
+
+  // Handle time pause/resume
+  useEffect(() => {
+    const wasRunning = wasRunningRef.current;
+    
+    // Only act if isRunning actually changed
+    if (wasRunning === isRunning) return;
+    
+    // Update ref AFTER checking if changed
+    wasRunningRef.current = isRunning;
+
+    if (!isRunning) {
+      // Time just paused - cancel any pending scheduled movements
+      console.log("Time paused - canceling pending movements");
+      if (nextMoveTimeoutRef.current) {
+        clearTimeout(nextMoveTimeoutRef.current);
+        nextMoveTimeoutRef.current = null;
+      }
+    } else {
+      // Time just resumed
+      console.log("Time resumed - checking if need to schedule movement");
+      console.log(`  isMovingRef.current: ${isMovingRef.current}`);
+      console.log(`  nextMoveTimeoutRef.current: ${nextMoveTimeoutRef.current}`);
+      
+      // Only schedule if agent is not currently moving AND no movement is already scheduled
+      if (!isMovingRef.current && !nextMoveTimeoutRef.current) {
+        console.log(`Scheduling movement after resume in ${AGENT_CONFIG.MOVEMENT_COOLDOWN}ms`);
+        nextMoveTimeoutRef.current = setTimeout(() => {
+          moveAgent();
+        }, AGENT_CONFIG.MOVEMENT_COOLDOWN);
+      } else {
+        console.log("Not scheduling - agent is moving or movement already scheduled");
+      }
+    }
+  }, [isRunning, moveAgent]);
 
   return {
     agentPath,

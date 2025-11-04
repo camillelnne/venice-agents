@@ -22,6 +22,7 @@ export default function AutonomousAgent({ path, agentInfo, onArrival }: Autonomo
   const animationIntervalRef = useRef<NodeJS.Timeout | null>(null);
   const { timeSpeed, isRunning } = useTime();
   const currentIndexRef = useRef(0);
+  const hasArrivedRef = useRef(false); // Track if we've already called onArrival for current path
 
   // Effect for updating popup when agentInfo changes
   useEffect(() => {
@@ -47,6 +48,7 @@ export default function AutonomousAgent({ path, agentInfo, onArrival }: Autonomo
       routeRef.current?.remove();
       agentRef.current?.remove();
       if (animationIntervalRef.current) clearInterval(animationIntervalRef.current);
+      hasArrivedRef.current = false;
       return;
     }
 
@@ -79,10 +81,29 @@ export default function AutonomousAgent({ path, agentInfo, onArrival }: Autonomo
     }
 
     // Clear existing interval
-    if (animationIntervalRef.current) clearInterval(animationIntervalRef.current);
+    if (animationIntervalRef.current) {
+      clearInterval(animationIntervalRef.current);
+      animationIntervalRef.current = null;
+    }
 
     // Only animate if time is running
     if (!isRunning) return;
+
+    // If already at destination AND haven't called arrival yet, trigger arrival immediately
+    if (currentIndexRef.current >= path.length - 1 && !hasArrivedRef.current) {
+      console.log("Agent already at destination on effect re-run, triggering arrival");
+      hasArrivedRef.current = true;
+      if (onArrival) {
+        onArrival();
+      }
+      return;
+    }
+
+    // If we've already arrived, don't restart animation
+    if (hasArrivedRef.current) {
+      console.log("Already arrived at this destination, skipping animation");
+      return;
+    }
 
     // Base speed (points per second) when timeSpeed === 60 (legacy behavior)
     const baseSpeed = AGENT_CONFIG.ANIMATION_BASE_SPEED;
@@ -99,9 +120,14 @@ export default function AutonomousAgent({ path, agentInfo, onArrival }: Autonomo
       map.panTo(path[currentIndexRef.current], { animate: true, duration: 0.5 });
 
       // Check if reached destination
-      if (currentIndexRef.current >= path.length - 1) {
-        if (animationIntervalRef.current) clearInterval(animationIntervalRef.current);
+      if (currentIndexRef.current >= path.length - 1 && !hasArrivedRef.current) {
+        if (animationIntervalRef.current) {
+          clearInterval(animationIntervalRef.current);
+          animationIntervalRef.current = null;
+        }
         // Call onArrival callback when animation completes
+        console.log("Animation complete, calling onArrival");
+        hasArrivedRef.current = true;
         if (onArrival) {
           onArrival();
         }
@@ -109,18 +135,26 @@ export default function AutonomousAgent({ path, agentInfo, onArrival }: Autonomo
     }, intervalMs);
 
     return () => {
-      if (animationIntervalRef.current) clearInterval(animationIntervalRef.current);
+      if (animationIntervalRef.current) {
+        clearInterval(animationIntervalRef.current);
+        animationIntervalRef.current = null;
+      }
     };
   }, [path, map, agentInfo, timeSpeed, onArrival, isRunning]);
 
   // Clear everything when path changes
   useEffect(() => {
+    // Reset arrival flag when we get a new path
+    hasArrivedRef.current = false;
+    currentIndexRef.current = 0;
+    
     return () => {
       routeRef.current?.remove();
       routeRef.current = null;
       agentRef.current?.remove();
       agentRef.current = null;
       currentIndexRef.current = 0;
+      hasArrivedRef.current = false;
     };
   }, [path]);
 
