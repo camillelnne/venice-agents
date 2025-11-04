@@ -23,6 +23,24 @@ export default function AutonomousAgent({ path, agentInfo, onArrival }: Autonomo
   const { timeSpeed, isRunning } = useTime();
   const currentIndexRef = useRef(0);
 
+  // Effect for updating popup when agentInfo changes
+  useEffect(() => {
+    if (agentRef.current && agentInfo) {
+      const popupContent = `
+        <strong>${agentInfo.name}</strong><br/>
+        <em>${agentInfo.role}</em><br/>
+        ${agentInfo.activity}
+      `;
+      
+      const popup = agentRef.current.getPopup();
+      if (popup) {
+        popup.setContent(popupContent);
+      } else {
+        agentRef.current.bindPopup(popupContent).openPopup();
+      }
+    }
+  }, [agentInfo]);
+
   // Effect for drawing and animating the path
   useEffect(() => {
     if (!path || path.length === 0) {
@@ -49,7 +67,7 @@ export default function AutonomousAgent({ path, agentInfo, onArrival }: Autonomo
         fillOpacity: 0.8
       }).addTo(map);
 
-      // Add popup with agent info
+      // Add initial popup with agent info
       if (agentInfo) {
         agentRef.current.bindPopup(`
           <strong>${agentInfo.name}</strong><br/>
