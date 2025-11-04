@@ -2,15 +2,27 @@
  * Constants for Venice agents application
  */
 
-import L from "leaflet";
-
-// Venice coordinate bounds
-export const VENICE_BOUNDS = L.latLngBounds(
-  [45.406, 12.285], // SW
-  [45.472, 12.395]  // NE
-);
+// Venice coordinate bounds (plain object for SSR compatibility)
+export const VENICE_BOUNDS_COORDS = {
+  south: 45.406,
+  west: 12.285,
+  north: 45.472,
+  east: 12.395,
+} as const;
 
 export const VENICE_CENTER: [number, number] = [45.438, 12.335];
+
+// Helper function to create Leaflet LatLngBounds (client-side only)
+export const getVeniceBounds = async () => {
+  if (typeof window === 'undefined') {
+    throw new Error('getVeniceBounds can only be called on the client side');
+  }
+  const L = await import('leaflet');
+  return L.default.latLngBounds(
+    [VENICE_BOUNDS_COORDS.south, VENICE_BOUNDS_COORDS.west],
+    [VENICE_BOUNDS_COORDS.north, VENICE_BOUNDS_COORDS.east]
+  );
+};
 
 // API Configuration
 export const API_CONFIG = {

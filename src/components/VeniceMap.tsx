@@ -4,7 +4,7 @@ import L from "leaflet";
 import { useState } from "react";
 import "leaflet/dist/leaflet.css";
 import { useTime } from "@/lib/TimeContext";
-import { VENICE_BOUNDS, VENICE_CENTER, MAP_CONFIG } from "@/lib/constants";
+import { VENICE_BOUNDS_COORDS, VENICE_CENTER, MAP_CONFIG } from "@/lib/constants";
 import TimeDisplay from "./TimeDisplay";
 import NetworkRenderer from "./NetworkRenderer";
 import AutonomousAgent from "./AutonomousAgent";
@@ -20,6 +20,12 @@ L.Icon.Default.mergeOptions({
   iconUrl: icon.src,
   shadowUrl: iconShadow.src,
 });
+
+// Create Leaflet bounds from coordinates (client-side)
+const VENICE_BOUNDS = L.latLngBounds(
+  [VENICE_BOUNDS_COORDS.south, VENICE_BOUNDS_COORDS.west],
+  [VENICE_BOUNDS_COORDS.north, VENICE_BOUNDS_COORDS.east]
+);
 
 export default function VeniceMap() {
   const [isChatboxVisible, setIsChatboxVisible] = useState(true);
