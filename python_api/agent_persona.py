@@ -1,6 +1,5 @@
 from pydantic import BaseModel
 from typing import Literal
-import random
 
 class AgentPersona(BaseModel):
     """Represents an autonomous agent with personality and goals in 1808 Venice"""
@@ -97,33 +96,3 @@ AGENT_PERSONAS = {
         social_network=["Duke Marcello", "Lady Caterina", "Father Pietro"]
     )
 }
-
-
-def get_random_destination(current_role: str) -> dict:
-    """Get a random destination based on the agent's role"""
-    destinations = {
-        "merchant": [
-            {"lat": 45.4380, "lng": 12.3358, "name": "Rialto Market"},
-            {"lat": 45.4342, "lng": 12.3388, "name": "St. Mark's Square"},
-            {"lat": 45.4332, "lng": 12.3403, "name": "Doge's Palace"}
-        ],
-        "gondolier": [
-            {"lat": 45.4418, "lng": 12.3215, "name": "Santa Lucia"},
-            {"lat": 45.4306, "lng": 12.3373, "name": "Santa Maria della Salute"},
-            {"lat": 45.4380, "lng": 12.3358, "name": "Rialto Bridge"}
-        ],
-        "noble": [
-            {"lat": 45.4332, "lng": 12.3403, "name": "Doge's Palace"},
-            {"lat": 45.4342, "lng": 12.3388, "name": "San Marco Basilica"},
-            {"lat": 45.4406, "lng": 12.3322, "name": "Ca' d'Oro"}
-        ],
-        "artisan": [
-            {"lat": 45.4380, "lng": 12.3358, "name": "Rialto Market"},
-            {"lat": 45.4342, "lng": 12.3388, "name": "St. Mark's Square"}
-        ],
-        "servant": [
-            {"lat": 45.4380, "lng": 12.3358, "name": "Rialto Market"},
-            {"lat": 45.4342, "lng": 12.3388, "name": "St. Mark's Square"}
-        ]
-    }
-    return random.choice(destinations.get(current_role, destinations["merchant"]))

@@ -4,6 +4,7 @@ import L from "leaflet";
 import { useState } from "react";
 import "leaflet/dist/leaflet.css";
 import { useTime } from "@/lib/TimeContext";
+import { VENICE_BOUNDS, VENICE_CENTER, MAP_CONFIG } from "@/lib/constants";
 import TimeDisplay from "./TimeDisplay";
 import NetworkRenderer from "./NetworkRenderer";
 import AutonomousAgent from "./AutonomousAgent";
@@ -20,11 +21,6 @@ L.Icon.Default.mergeOptions({
   shadowUrl: iconShadow.src,
 });
 
-const VENICE_BOUNDS = L.latLngBounds(
-  [45.406, 12.285], // SW
-  [45.472, 12.395]  // NE
-);
-
 export default function VeniceMap() {
   const [isChatboxVisible, setIsChatboxVisible] = useState(true);
   const { isRunning } = useTime();
@@ -33,24 +29,26 @@ export default function VeniceMap() {
 
   return (
     <MapContainer
-      center={[45.438, 12.335]}
-      zoom={16}
+      center={VENICE_CENTER}
+      zoom={MAP_CONFIG.DEFAULT_ZOOM}
       style={{ height: "100vh", width: "100vw" }}
       preferCanvas                // faster for vectors/markers
-      wheelDebounceTime={50}      // coalesce wheel events
-      wheelPxPerZoomLevel={100}   // fewer zoom level changes per wheel tick
-      zoomAnimationThreshold={8}  // skip heavy animation at high zooms
-      zoomSnap={1}                // no fractional zoom levels (prevents "swimmy" tiles)
+      wheelDebounceTime={MAP_CONFIG.WHEEL_DEBOUNCE_TIME}
+      wheelPxPerZoomLevel={MAP_CONFIG.WHEEL_PX_PER_ZOOM_LEVEL}
+      zoomAnimationThreshold={MAP_CONFIG.ZOOM_ANIMATION_THRESHOLD}
+      zoomSnap={MAP_CONFIG.ZOOM_SNAP}
       maxBounds={VENICE_BOUNDS}
-      maxBoundsViscosity={1.0}     // 0..1; 1 = "hard" elastic boundary
+      maxBoundsViscosity={MAP_CONFIG.MAX_BOUNDS_VISCOSITY}
       worldCopyJump={false}        // don't jump to wrapped worlds
+      minZoom={MAP_CONFIG.MIN_ZOOM}
+      maxZoom={MAP_CONFIG.MAX_ZOOM}
     >
       <TileLayer
         url="https://geo-timemachine.epfl.ch/geoserver/www/tilesets/venice/sommarioni/{z}/{x}/{y}.png"
         attribution='&copy; <a href="https://timeatlas.eu/">Time Atlas@EPFL</a>'
-        maxZoom={19}
-        minZoom={15} // tailored to Venice size
-        noWrap // stop
+        maxZoom={MAP_CONFIG.MAX_ZOOM}
+        minZoom={MAP_CONFIG.MIN_ZOOM}
+        noWrap
         bounds={VENICE_BOUNDS}
       />
 

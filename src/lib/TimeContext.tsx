@@ -1,5 +1,6 @@
 "use client";
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { TIME_CONFIG } from './constants';
 
 type TimeContextType = {
   currentTime: Date;
@@ -16,14 +17,13 @@ const TimeContext = createContext<TimeContextType | undefined>(undefined);
 export function TimeProvider({ children }: { children: ReactNode }) {
   // Start at 8:00 AM in 1808 Venice
   const [currentTime, setCurrentTime] = useState(() => {
-    const date = new Date(1808, 0, 15, 8, 0, 0); // January 15, 1808, 8:00 AM
+    const date = new Date(1808, 0, 15, TIME_CONFIG.START_HOUR, TIME_CONFIG.START_MINUTE, 0);
     return date;
   });
   
   const [isRunning, setIsRunning] = useState(true);
   // How many Venice minutes pass per real second.
-  // Default reduced so Venice time moves more slowly in the UI.
-  const [timeSpeed, setTimeSpeed] = useState(5); // 1 real second = 5 Venice minutes (~12x slower than before)
+  const [timeSpeed, setTimeSpeed] = useState<number>(TIME_CONFIG.DEFAULT_SPEED);
 
   useEffect(() => {
     if (!isRunning) return;

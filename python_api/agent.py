@@ -1,27 +1,37 @@
 from dotenv import load_dotenv
 import os
-from fastapi import FastAPI
+import logging
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel
+from pydantic import BaseModel, Field, validator
 from langchain.chat_models import init_chat_model
-from agent_persona import AGENT_PERSONAS, get_random_destination
+from agent_persona import AGENT_PERSONAS
 import random
+
+from state_manager import agent_state_manager
+from constants import (
+    DEFAULT_AGENT_ID, 
+    ROLE_DESTINATIONS, 
+    ACTIVITY_MAP, 
+    VENICE_LANDMARKS,
+    VENICE_BOUNDS
+)
+from validators import validate_venice_coordinates
+
+# Configure logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 load_dotenv(dotenv_path="../.env.local")
 api_key = os.getenv("OPENAI_API_KEY")
 
 class GoalCoordinates(BaseModel):
-    lat: float
-    lng: float
+    lat: float = Field(..., ge=VENICE_BOUNDS["min_lat"], le=VENICE_BOUNDS["max_lat"])
+    lng: float = Field(..., ge=VENICE_BOUNDS["min_lng"], le=VENICE_BOUNDS["max_lng"])
 
 llm = init_chat_model("openai:gpt-4o-mini", temperature=0.7)  # Higher temp for personality
 
 llm_with_parser = llm.with_structured_output(GoalCoordinates)
-
-# Global agent state (in production, use a database)
-current_agent = AGENT_PERSONAS["marco"]  # Start with Marco
-conversation_history = []
-last_destination = None  # Track last destination to avoid repetition
 
 
 # --- FastAPI Service ---
@@ -53,9 +63,16 @@ class AgentStateResponse(BaseModel):
     current_activity: str
     next_destination: dict | None
 
+
 @app.get("/agent/state")
 async def get_agent_state():
-    """Get the current state of the agent"""
+    """Get the current state of the agent."""
+    current_agent = agent_state_manager.get_agent(DEFAULT_AGENT_ID)
+    
+    if not current_agent:
+        logger.error("Default agent not found")
+        raise HTTPException(status_code=500, detail="Agent not initialized")
+    
     return {
         "name": current_agent.name,
         "role": current_agent.role,
@@ -65,37 +82,54 @@ async def get_agent_state():
         "current_activity": current_agent.current_activity,
     }
 
-@app.post("/agent/chat")
-async def chat_with_agent(request: ChatRequest):
-    """Chat with the agent - they respond in character"""
-    global conversation_history
+
+def _build_system_prompt(agent, current_time: str = "", time_of_day: str = "") -> str:
+    """Build the system prompt for the agent."""
+    time_context = ""
+    if current_time:
+        time_context = f"\nCurrent time: {current_time} ({time_of_day})"
     
-    # Build context for the LLM
-    system_prompt = f"""You are {current_agent.name}, a {current_agent.age}-year-old {current_agent.role} in Venice, Italy in the year 1808.
+    return f"""You are {agent.name}, a {agent.age}-year-old {agent.role} in Venice, Italy in the year 1808.
 
-Your personality: {current_agent.personality}
+Your personality: {agent.personality}
 
-Current activity: {current_agent.current_activity}
-Current location: You are near {_describe_location(current_agent.current_location)}
+Current activity: {agent.current_activity}
+Current location: You are near {_describe_location(agent.current_location)}
+{time_context}
 
 Your daily routine:
-{_format_routine(current_agent.routine)}
+{_format_routine(agent.routine)}
 
-Social connections: {', '.join(current_agent.social_network)}
+Social connections: {', '.join(agent.social_network)}
 
 Respond to the user's message in character. Be conversational, share details about your life in 1808 Venice, your work, and the city. Stay authentic to the time period and your role. You can mention historical events, daily life, and Venetian culture of that era. Reference the time of day in your responses when appropriate."""
 
-    conversation_history.append({"role": "user", "content": request.message})
+
+@app.post("/agent/chat")
+async def chat_with_agent(request: ChatRequest):
+    """Chat with the agent - they respond in character."""
+    current_agent = agent_state_manager.get_agent(DEFAULT_AGENT_ID)
+    
+    if not current_agent:
+        logger.error("Default agent not found")
+        raise HTTPException(status_code=500, detail="Agent not initialized")
+    
+    # Build context for the LLM
+    system_prompt = _build_system_prompt(current_agent)
+    
+    agent_state_manager.add_message(DEFAULT_AGENT_ID, "user", request.message)
+    conversation = agent_state_manager.get_conversation(DEFAULT_AGENT_ID)
     
     messages = [
         {"role": "system", "content": system_prompt},
-        *conversation_history[-10:]  # Keep last 10 messages for context
+        *list(conversation)  # Get last N messages (auto-managed by deque)
     ]
     
     try:
+        logger.info(f"Chat request from user: {request.message[:50]}...")
         response = await llm.ainvoke(messages)
         agent_response = response.content
-        conversation_history.append({"role": "assistant", "content": agent_response})
+        agent_state_manager.add_message(DEFAULT_AGENT_ID, "assistant", agent_response)
         
         return {
             "response": agent_response,
@@ -103,40 +137,38 @@ Respond to the user's message in character. Be conversational, share details abo
             "agent_role": current_agent.role
         }
     except Exception as e:
-        print(f"Error in chat: {e}")
-        return {"error": "Could not get response from agent"}
+        logger.error(f"Error in chat: {e}")
+        raise HTTPException(status_code=500, detail="Could not get response from agent")
 
 @app.post("/agent/next-destination")
 async def get_next_destination():
-    """Agent autonomously decides where to go next based on their routine or random exploration"""
-    global current_agent, last_destination
+    """Agent autonomously decides where to go next based on their routine or random exploration."""
+    current_agent = agent_state_manager.get_agent(DEFAULT_AGENT_ID)
+    
+    if not current_agent:
+        logger.error("Default agent not found")
+        raise HTTPException(status_code=500, detail="Agent not initialized")
     
     # Get all possible destinations for this agent's role
-    all_destinations = _get_all_destinations_for_role(current_agent.role)
+    all_destinations = ROLE_DESTINATIONS.get(current_agent.role, ROLE_DESTINATIONS["merchant"])
     
     # Filter out the last destination to avoid repetition
+    last_dest = agent_state_manager.get_last_destination(DEFAULT_AGENT_ID)
     available_destinations = [d for d in all_destinations 
-                            if last_destination is None or d['name'] != last_destination.get('name')]
+                            if last_dest is None or d['name'] != last_dest.get('name')]
     
     if not available_destinations:
         available_destinations = all_destinations  # Reset if we've been everywhere
     
     # Pick a random destination
     destination = random.choice(available_destinations)
-    last_destination = destination
+    agent_state_manager.set_last_destination(DEFAULT_AGENT_ID, destination)
     
     # Update agent's activity based on destination
-    activity_map = {
-        "Rialto Market": "heading to work at the market",
-        "Rialto Bridge": "conducting business at Rialto",
-        "St. Mark's Square": "visiting San Marco",
-        "Doge's Palace": "attending to business at the palace",
-        "Santa Lucia": "near the waterfront",
-        "Santa Maria della Salute": "visiting the basilica",
-        "Ca' d'Oro": "in the Cannaregio district"
-    }
+    activity = ACTIVITY_MAP.get(destination['name'], f"traveling to {destination['name']}")
+    agent_state_manager.update_agent_activity(DEFAULT_AGENT_ID, activity)
     
-    current_agent.current_activity = activity_map.get(destination['name'], f"traveling to {destination['name']}")
+    logger.info(f"Agent next destination: {destination['name']}")
     
     return {
         "start": current_agent.current_location,
@@ -146,46 +178,20 @@ async def get_next_destination():
 
 @app.post("/agent/update-location")
 async def update_agent_location(location: GoalCoordinates):
-    """Update the agent's current location after they've moved"""
-    global current_agent
-    current_agent.current_location = {"lat": location.lat, "lng": location.lng}
+    """Update the agent's current location after they've moved."""
+    if not validate_venice_coordinates(location.lat, location.lng):
+        logger.warning(f"Invalid coordinates: {location.lat}, {location.lng}")
+        raise HTTPException(
+            status_code=400, 
+            detail="Coordinates outside Venice bounds"
+        )
+    
+    agent_state_manager.update_agent_location(DEFAULT_AGENT_ID, location.lat, location.lng)
+    logger.info(f"Agent location updated to: {location.lat}, {location.lng}")
     return {"status": "Location updated"}
 
-def _get_all_destinations_for_role(role: str) -> list:
-    """Get all possible destinations for a given role"""
-    destinations = {
-        "merchant": [
-            {"lat": 45.4380, "lng": 12.3358, "name": "Rialto Market"},
-            {"lat": 45.4342, "lng": 12.3388, "name": "St. Mark's Square"},
-            {"lat": 45.4332, "lng": 12.3403, "name": "Doge's Palace"},
-            {"lat": 45.4306, "lng": 12.3373, "name": "Santa Maria della Salute"},
-            {"lat": 45.4406, "lng": 12.3322, "name": "Ca' d'Oro"}
-        ],
-        "gondolier": [
-            {"lat": 45.4418, "lng": 12.3215, "name": "Santa Lucia"},
-            {"lat": 45.4306, "lng": 12.3373, "name": "Santa Maria della Salute"},
-            {"lat": 45.4380, "lng": 12.3358, "name": "Rialto Bridge"},
-            {"lat": 45.4342, "lng": 12.3388, "name": "St. Mark's Square"}
-        ],
-        "noble": [
-            {"lat": 45.4332, "lng": 12.3403, "name": "Doge's Palace"},
-            {"lat": 45.4342, "lng": 12.3388, "name": "St. Mark's Square"},
-            {"lat": 45.4406, "lng": 12.3322, "name": "Ca' d'Oro"},
-            {"lat": 45.4306, "lng": 12.3373, "name": "Santa Maria della Salute"}
-        ],
-        "artisan": [
-            {"lat": 45.4380, "lng": 12.3358, "name": "Rialto Market"},
-            {"lat": 45.4342, "lng": 12.3388, "name": "St. Mark's Square"}
-        ],
-        "servant": [
-            {"lat": 45.4380, "lng": 12.3358, "name": "Rialto Market"},
-            {"lat": 45.4342, "lng": 12.3388, "name": "St. Mark's Square"}
-        ]
-    }
-    return destinations.get(role, destinations["merchant"])
-
 def _describe_location(location: dict) -> str:
-    """Convert coordinates to a location name"""
+    """Convert coordinates to a location name."""
     landmarks = {
         (45.4342, 12.3388): "St. Mark's Square",
         (45.4380, 12.3358): "Rialto Bridge",
@@ -207,7 +213,7 @@ def _describe_location(location: dict) -> str:
     return closest
 
 def _format_routine(routine: list) -> str:
-    """Format the routine for the prompt"""
+    """Format the routine for the prompt."""
     return "\n".join([f"- {item['time']}: {item['activity']}" for item in routine])
 
 @app.post("/get-coordinates")
@@ -215,16 +221,19 @@ async def get_coordinates_endpoint(request: DestinationRequest):
     """
     Receives a natural language destination and returns its coordinates.
     """
+    logger.info(f"Coordinate request for: {request.destination}")
+    
+    # Build landmark list for LLM
+    landmark_str = "\n".join([
+        f"- {landmark['name']}: {{\"lat\": {landmark['lat']}, \"lng\": {landmark['lng']}}}"
+        for landmark in VENICE_LANDMARKS.values()
+    ])
+    
     prompt = f"""You are a coordinate extraction assistant for Venice, Italy.
 Your task is to identify the geographic coordinates (latitude and longitude) for a given location.
 
 Venice landmarks and their approximate coordinates:
-- St. Mark's Square (Piazza San Marco): {{"lat": 45.4342, "lng": 12.3388}}
-- Rialto Bridge: {{"lat": 45.4380, "lng": 12.3358}}
-- Doge's Palace: {{"lat": 45.4332, "lng": 12.3403}}
-- Santa Lucia Train Station: {{"lat": 45.4418, "lng": 12.3215}}
-- Santa Maria della Salute: {{"lat": 45.4306, "lng": 12.3373}}
-- Ca' d'Oro: {{"lat": 45.4406, "lng": 12.3322}}
+{landmark_str}
 
 User's requested destination: "{request.destination}"
 
@@ -234,8 +243,11 @@ Based on the user's request, provide the coordinates.
         goal_coords = await llm_with_parser.ainvoke(prompt)
         return {"goal": goal_coords}
     except Exception as e:
-        print(f"Error invoking LLM: {e}")
-        return {"error": "Could not determine coordinates for the destination."}
+        logger.error(f"Error invoking LLM: {e}")
+        raise HTTPException(
+            status_code=500,
+            detail="Could not determine coordinates for the destination."
+        )
 
 
 @app.get("/")

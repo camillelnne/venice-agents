@@ -1,7 +1,7 @@
 "use client";
 import { DomEvent } from "leaflet";
 import { useEffect, useState, useRef } from "react";
-import { useTime } from "@/lib/TimeContext";
+import { agentApiClient, ApiError } from "@/lib/api-client";
 import type { AgentInfo } from "@/types/agent";
 
 type Message = {
@@ -15,7 +15,6 @@ type AgentChatboxProps = {
 };
 
 export default function AgentChatbox({ agentInfo, setIsChatboxVisible }: AgentChatboxProps) {
-  const { veniceTime, timeOfDay } = useTime();
   const [messages, setMessages] = useState<Message[]>([
     {
       sender: "agent",
@@ -49,26 +48,7 @@ export default function AgentChatbox({ agentInfo, setIsChatboxVisible }: AgentCh
     setIsLoading(true);
 
     try {
-      const response = await fetch("/api/agent/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          message: input,
-          current_time: veniceTime,
-          time_of_day: timeOfDay
-        }),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        const errorMessage: Message = {
-          sender: "agent",
-          text: data.error || "Mi scusi, I could not understand that."
-        };
-        setMessages((prev) => [...prev, errorMessage]);
-        return;
-      }
+      const data = await agentApiClient.chatWithAgent(input);
 
       const agentMessage: Message = {
         sender: "agent",
@@ -76,11 +56,15 @@ export default function AgentChatbox({ agentInfo, setIsChatboxVisible }: AgentCh
       };
       setMessages((prev) => [...prev, agentMessage]);
 
-    } catch (error: unknown) {
+    } catch (error) {
       console.error(error);
+      let errorText = "Mi scusi, something went wrong. Please try again.";
+      if (error instanceof ApiError) {
+        errorText = error.message;
+      }
       const errorMessage: Message = {
         sender: "agent",
-        text: "Mi scusi, something went wrong. Please try again."
+        text: errorText
       };
       setMessages((prev) => [...prev, errorMessage]);
     } finally {

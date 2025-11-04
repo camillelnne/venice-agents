@@ -3,6 +3,7 @@ import { useMap } from "react-leaflet";
 import L, { LatLngLiteral } from "leaflet";
 import { useEffect, useRef } from "react";
 import { useTime } from "@/lib/TimeContext";
+import { AGENT_CONFIG } from "@/lib/constants";
 import type { AgentInfo } from "@/types/agent";
 
 type AutonomousAgentProps = {
@@ -33,13 +34,16 @@ export default function AutonomousAgent({ path, agentInfo, onArrival }: Autonomo
 
     // Draw route if not already drawn
     if (!routeRef.current) {
-      routeRef.current = L.polyline(path, { weight: 4, color: "#00bcd4" }).addTo(map);
+      routeRef.current = L.polyline(path, { 
+        weight: AGENT_CONFIG.ROUTE_WEIGHT, 
+        color: "#00bcd4" 
+      }).addTo(map);
     }
 
     // Create agent marker if not exists
     if (!agentRef.current) {
       agentRef.current = L.circleMarker(path[0], {
-        radius: 8,
+        radius: AGENT_CONFIG.MARKER_RADIUS,
         color: "#ff4444",
         fillColor: "#ff4444",
         fillOpacity: 0.8
@@ -63,7 +67,7 @@ export default function AutonomousAgent({ path, agentInfo, onArrival }: Autonomo
     if (!isRunning) return;
 
     // Base speed (points per second) when timeSpeed === 60 (legacy behavior)
-    const baseSpeed = 100;
+    const baseSpeed = AGENT_CONFIG.ANIMATION_BASE_SPEED;
     const scaledSpeed = baseSpeed * (timeSpeed / 60);
     const intervalMs = Math.max(16, 1000 / Math.max(0.01, scaledSpeed));
 

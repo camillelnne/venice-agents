@@ -3,6 +3,7 @@ import { useMap } from "react-leaflet";
 import L from "leaflet";
 import { useEffect, useState, useRef } from "react";
 import { buildNetworkFromGeoJSON, type StreetNetwork } from "@/lib/network";
+import { NETWORK_CONFIG } from "@/lib/constants";
 
 /**
  * Renders the entire street network on the map
@@ -59,9 +60,9 @@ export default function NetworkRenderer() {
     network.edges.forEach((edge) => {
       const latLngs = edge.coords.map(([lng, lat]) => L.latLng(lat, lng));
       const polyline = L.polyline(latLngs, {
-        color: "#666666",
-        weight: 2,
-        opacity: 0.4
+        color: NETWORK_CONFIG.EDGE_COLOR,
+        weight: NETWORK_CONFIG.EDGE_WEIGHT,
+        opacity: NETWORK_CONFIG.EDGE_OPACITY
       });
       networkLayerGroupRef.current?.addLayer(polyline);
     });

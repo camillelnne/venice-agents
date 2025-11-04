@@ -1,5 +1,6 @@
 "use client";
 import { useTime } from '@/lib/TimeContext';
+import { TIME_CONFIG } from '@/lib/constants';
 
 export default function TimeDisplay() {
   const { veniceTime, timeOfDay, currentTime, isRunning, setIsRunning, timeSpeed, setTimeSpeed } = useTime();
@@ -99,14 +100,14 @@ export default function TimeDisplay() {
       </button>
       <div style={{ display: 'flex', gap: '8px', marginTop: '10px' }}>
         <button
-          onClick={() => setTimeSpeed(10)}
-          aria-pressed={timeSpeed === 10}
+          onClick={() => setTimeSpeed(TIME_CONFIG.SPEEDS.SLOW)}
+          aria-pressed={timeSpeed === TIME_CONFIG.SPEEDS.SLOW}
           style={{
             flex: 1,
             padding: '8px',
             borderRadius: '6px',
-            border: timeSpeed === 10 ? '2px solid #8b4513' : '1px solid #ddd',
-            backgroundColor: timeSpeed === 10 ? '#f3e6d8' : '#fff',
+            border: timeSpeed === TIME_CONFIG.SPEEDS.SLOW ? '2px solid #8b4513' : '1px solid #ddd',
+            backgroundColor: timeSpeed === TIME_CONFIG.SPEEDS.SLOW ? '#f3e6d8' : '#fff',
             cursor: 'pointer',
             fontSize: '12px'
           }}
@@ -114,14 +115,14 @@ export default function TimeDisplay() {
           Slow
         </button>
         <button
-          onClick={() => setTimeSpeed(60)}
-          aria-pressed={timeSpeed === 60}
+          onClick={() => setTimeSpeed(TIME_CONFIG.SPEEDS.NORMAL)}
+          aria-pressed={timeSpeed === TIME_CONFIG.SPEEDS.NORMAL}
           style={{
             flex: 1,
             padding: '8px',
             borderRadius: '6px',
-            border: timeSpeed === 60 ? '2px solid #8b4513' : '1px solid #ddd',
-            backgroundColor: timeSpeed === 60 ? '#f3e6d8' : '#fff',
+            border: timeSpeed === TIME_CONFIG.SPEEDS.NORMAL ? '2px solid #8b4513' : '1px solid #ddd',
+            backgroundColor: timeSpeed === TIME_CONFIG.SPEEDS.NORMAL ? '#f3e6d8' : '#fff',
             cursor: 'pointer',
             fontSize: '12px'
           }}
@@ -129,14 +130,14 @@ export default function TimeDisplay() {
           Normal
         </button>
         <button
-          onClick={() => setTimeSpeed(240)}
-          aria-pressed={timeSpeed === 240}
+          onClick={() => setTimeSpeed(TIME_CONFIG.SPEEDS.FAST)}
+          aria-pressed={timeSpeed === TIME_CONFIG.SPEEDS.FAST}
           style={{
             flex: 1,
             padding: '8px',
             borderRadius: '6px',
-            border: timeSpeed === 240 ? '2px solid #8b4513' : '1px solid #ddd',
-            backgroundColor: timeSpeed === 240 ? '#f3e6d8' : '#fff',
+            border: timeSpeed === TIME_CONFIG.SPEEDS.FAST ? '2px solid #8b4513' : '1px solid #ddd',
+            backgroundColor: timeSpeed === TIME_CONFIG.SPEEDS.FAST ? '#f3e6d8' : '#fff',
             cursor: 'pointer',
             fontSize: '12px'
           }}

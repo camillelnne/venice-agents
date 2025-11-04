@@ -1,6 +1,8 @@
 import { useState, useRef, useCallback, useEffect } from "react";
 import { LatLngLiteral } from "leaflet";
 import type { AgentInfo } from "@/types/agent";
+import { agentApiClient, ApiError } from "@/lib/api-client";
+import { AGENT_CONFIG } from "@/lib/constants";
 
 export function useAgentMovement(isRunning: boolean) {
   const [agentPath, setAgentPath] = useState<LatLngLiteral[] | null>(null);
@@ -15,17 +17,18 @@ export function useAgentMovement(isRunning: boolean) {
   useEffect(() => {
     const fetchAgentInfo = async () => {
       try {
-        const response = await fetch("http://127.0.0.1:8000/agent/state");
-        if (response.ok) {
-          const data = await response.json();
-          setAgentInfo({
-            name: data.name,
-            role: data.role,
-            activity: data.current_activity
-          });
-        }
+        const data = await agentApiClient.getAgentState();
+        setAgentInfo({
+          name: data.name,
+          role: data.role as AgentInfo["role"],
+          activity: data.current_activity
+        });
       } catch (error) {
-        console.error("Failed to fetch agent info:", error);
+        if (error instanceof ApiError) {
+          console.error(`Failed to fetch agent info: ${error.message}`, error.statusCode);
+        } else {
+          console.error("Failed to fetch agent info:", error);
+        }
       }
     };
 
@@ -44,6 +47,7 @@ export function useAgentMovement(isRunning: boolean) {
         setAgentDestination(data.destination);
         console.log("Agent movement:", data.reason);
       } else {
+        console.error("Failed to move agent: HTTP", response.status);
         isMovingRef.current = false;
       }
     } catch (error) {
@@ -57,27 +61,27 @@ export function useAgentMovement(isRunning: boolean) {
 
     try {
       // Update backend location
-      await fetch("http://127.0.0.1:8000/agent/update-location", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          lat: agentDestination.lat,
-          lng: agentDestination.lng
-        }),
-      });
+      await agentApiClient.updateLocation(
+        agentDestination.lat,
+        agentDestination.lng
+      );
 
       // Refresh agent info to show updated activity
       setRefreshTrigger(prev => prev + 1);
 
-      // Schedule next movement after a cooldown (60 seconds) - only if time is running
+      // Schedule next movement after a cooldown - only if time is running
       isMovingRef.current = false;
       if (isRunning) {
         nextMoveTimeoutRef.current = setTimeout(() => {
           moveAgent();
-        }, 60000); // 60 seconds cooldown between movements
+        }, AGENT_CONFIG.MOVEMENT_COOLDOWN);
       }
     } catch (error) {
-      console.error("Failed to update agent location:", error);
+      if (error instanceof ApiError) {
+        console.error(`Failed to update agent location: ${error.message}`, error.statusCode);
+      } else {
+        console.error("Failed to update agent location:", error);
+      }
       isMovingRef.current = false;
     }
   }, [agentDestination, isRunning, moveAgent]);
