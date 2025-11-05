@@ -10,12 +10,13 @@ type AutonomousAgentProps = {
   path: LatLngLiteral[] | null;
   agentInfo: AgentInfo | null;
   onArrival?: () => void;
+  setIsChatboxVisible: (visible: boolean) => void;
 };
 
 /**
  * Renders and animates an autonomous agent moving through Venice
  */
-export default function AutonomousAgent({ path, agentInfo, onArrival }: AutonomousAgentProps) {
+export default function AutonomousAgent({ path, agentInfo, onArrival, setIsChatboxVisible }: AutonomousAgentProps) {
   const map = useMap();
   const routeRef = useRef<L.Polyline | null>(null);
   const agentRef = useRef<L.CircleMarker | null>(null);
@@ -69,6 +70,12 @@ export default function AutonomousAgent({ path, agentInfo, onArrival }: Autonomo
         fillOpacity: 0.8
       }).addTo(map);
 
+      if (setIsChatboxVisible) {
+        agentRef.current.on('click', () => {
+          console.log("Agent marker clicked, opening chatbox");
+          setIsChatboxVisible(true);
+        });
+      }
       // Add initial popup with agent info
       if (agentInfo) {
         agentRef.current.bindPopup(`
@@ -140,7 +147,7 @@ export default function AutonomousAgent({ path, agentInfo, onArrival }: Autonomo
         animationIntervalRef.current = null;
       }
     };
-  }, [path, map, agentInfo, timeSpeed, onArrival, isRunning]);
+  }, [path, map, agentInfo, timeSpeed, onArrival, isRunning, setIsChatboxVisible]);
 
   // Clear everything when path changes
   useEffect(() => {

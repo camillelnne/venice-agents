@@ -47,9 +47,9 @@ export const MAP_CONFIG = {
 export const TIME_CONFIG = {
   DEFAULT_SPEED: 5, // Venice minutes per real second
   SPEEDS: {
-    SLOW: 10,
-    NORMAL: 60,
-    FAST: 240,
+    SLOW: 1,
+    NORMAL: 5,
+    FAST: 60,
   },
   START_HOUR: 8,
   START_MINUTE: 0,

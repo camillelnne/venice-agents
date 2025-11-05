@@ -62,7 +62,7 @@ export default function VeniceMap() {
 
       <NetworkRenderer />
 
-      <AutonomousAgent path={agentPath} agentInfo={agentInfo} onArrival={handleAgentArrival} />
+      <AutonomousAgent path={agentPath} agentInfo={agentInfo} onArrival={handleAgentArrival} setIsChatboxVisible={setIsChatboxVisible} />
       
       {isChatboxVisible && <AgentChatbox agentInfo={agentInfo} setIsChatboxVisible={setIsChatboxVisible} />}
     </MapContainer>
