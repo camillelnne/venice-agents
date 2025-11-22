@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 Generate agent personas and daily routines from merchants_dataset.csv
 using OpenAI's gpt-5 with JSON mode.
@@ -23,9 +22,6 @@ from typing import Dict, List, Optional
 from dotenv import load_dotenv
 from openai import OpenAI
 
-# ============================================================
-# Configuration
-# ============================================================
 
 MODEL = "gpt-5"
 JSON_FORMAT = {"type": "json_object"}
@@ -67,10 +63,6 @@ Return ONLY valid JSON with this schema:
 }
 """
 
-# ============================================================
-# Data Structures
-# ============================================================
-
 @dataclass
 class DailyActivity:
     startTime: str
@@ -89,9 +81,6 @@ class AgentPersona:
     dailyRoutine: List[DailyActivity]
 
 
-# ============================================================
-# Utilities
-# ============================================================
 
 def load_existing(path: Path) -> Dict[str, AgentPersona]:
     """Load existing personas.json, keyed by name."""
@@ -126,9 +115,6 @@ def save_personas(path: Path, personas: Dict[str, AgentPersona]):
         json.dump(arr, f, ensure_ascii=False, indent=2)
 
 
-# ============================================================
-# LLM Call
-# ============================================================
 
 def generate_persona(client: OpenAI, row: Dict[str, str]) -> Optional[AgentPersona]:
     """Call OpenAI to generate personality + routine for a single merchant, then merge with CSV data."""
@@ -203,11 +189,6 @@ def generate_persona(client: OpenAI, row: Dict[str, str]) -> Optional[AgentPerso
     print(f"[FAIL] Could not generate persona for: {person}")
     return None
 
-
-# ============================================================
-# Main
-# ============================================================
-
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--input", required=True)
@@ -248,7 +229,6 @@ def main():
         persona = generate_persona(client, row)
 
         if persona:
-            # ✅ Actually store it in the dict
             personas[persona.name] = persona
             save_personas(output_path, personas)
             print(f"[OK  ] Saved '{persona.name}'")
