@@ -2,7 +2,18 @@ import pandas as pd
 import numpy as np
 import geopandas as gpd
 
-landregister_1740 = gpd.read_file("../public/1740_Catastici_2025-09-24.geojson")
+"""
+Build a CSV (for easier file visualization) and a parquet file (easier usage) where each feature is a person with:
+ - person (original name)
+ - shop_count (number of shops)
+ - shop_type (type of shop) (list)
+ - shop_type_eng (original translation) (list)
+ - shop_category (original metacategory) (list)
+ - shop_lat/lng (float) shop place (list)
+ - house_lat/lng  (float) house place 
+ """
+
+landregister_1740 = gpd.read_file("../public/data_raw/1740_Catastici_2025-09-24.geojson")
 print("length of langregister ",len(landregister_1740))
 
 df = landregister_1740.drop(columns=["author","owner_code","owner_count","place","PP_OwnerCode","PP_OwnerCode_SIMPL","an_rendi","id_napo","quantity_income","quality_income","parish_std","sestiere","PP_Function_TOP","PP_Function_MID","PP_Function_PROPERTY", "PP_Function_GEOMETRY","PP_Owner_Title","PP_Owner_Entity","PP_Owner_FirstName","PP_Owner_LastName","PP_Owner_Notes", "tif_path_img", "path_img"])
@@ -36,13 +47,6 @@ kept_groups = {name: grp for name, grp in grouped if keep_group(grp)}
 
 print(f"Total number of duplicated-tenant groups kept: {len(kept_groups)}")
 
-# Build a single CSV where each feature is a person with:
-#  - person (original name)
-#  - shop_type
-#  - shop_type_eng (original translation)
-#  - shop_category (original metacategory)
-#  - shop_lat/lng (float) shop place
-#  - house_lat/lng  (float) house place
 persons = []
 for name_norm, grp in kept_groups.items():
     g = gpd.GeoDataFrame(grp).copy()
@@ -54,10 +58,25 @@ for name_norm, grp in kept_groups.items():
     home_row = home_candidates.iloc[0] if not home_candidates.empty else g.iloc[0]
     home_geom = home_row.geometry
 
+    # collect all shops for this person (may be multiple)
     shop_rows = g[g["PP_Bottega_STD"].notna()].copy()
-    shop_row = shop_rows.iloc[0]
-    shop_type = shop_row["PP_Bottega_STD"]
-    shop_geom = shop_row.geometry
+    shop_types = []
+    shop_types_eng = []
+    shop_categories = []
+    shop_lats = []
+    shop_lngs = []
+
+    for _, s in shop_rows.iterrows():
+        shop_types.append(s.get("PP_Bottega_STD"))
+        shop_types_eng.append(s.get("PP_Bottega_TRAD"))
+        shop_categories.append(s.get("PP_Bottega_METACATEGORY"))
+        geom = s.geometry
+        if geom is None or geom.is_empty:
+            shop_lats.append(pd.NA)
+            shop_lngs.append(pd.NA)
+        else:
+            shop_lats.append(float(geom.y))
+            shop_lngs.append(float(geom.x))
 
     def geom_to_latlng(geom):
         if geom is None:
@@ -65,26 +84,26 @@ for name_norm, grp in kept_groups.items():
         return (float(geom.y), float(geom.x))  # (lat, lng)
 
     home_lat, home_lng = geom_to_latlng(home_geom)
-    shop_lat, shop_lng = geom_to_latlng(shop_geom)
-
 
     persons.append({
         "person": home_row.get("ten_name"),
-        "shop_type": shop_type,
-        "shop_type_eng": shop_row.get("PP_Bottega_TRAD"),
-        "shop_category": shop_row.get("PP_Bottega_METACATEGORY"),
-        "shop_lat": shop_lat,
-        "shop_lng": shop_lng,
-        "house_lat": home_lat,
-        "house_lng": home_lng
+        "shop_count": len(shop_types),
+        "shop_type": shop_types, 
+        "shop_type_eng": shop_types_eng, 
+        "shop_category": shop_categories, 
+        "shop_lat": shop_lats, 
+        "shop_lng": shop_lngs
     })
 
 
 persons_df = pd.DataFrame(persons)
 
-out_fp = "../public/merchants_dataset.csv"
+out_fp = "../public/data/merchants_dataset.csv"
+out_parquet = "../public/data/merchants_dataset.parquet"
 
 persons_df.to_csv(out_fp, index=False)
+persons_df.to_parquet(out_parquet, index=False)
 
-print(f"Saved {len(persons_df)} persons -> {out_fp}")
-persons_df.head()
+
+print(f"Saved {len(persons_df)} persons in csv -> {out_fp}")
+print(f"Saved {len(persons_df)} persons in parquet -> {out_parquet}")
