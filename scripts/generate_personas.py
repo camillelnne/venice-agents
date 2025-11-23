@@ -21,10 +21,14 @@ from typing import Dict, List, Optional
 
 from dotenv import load_dotenv
 from openai import OpenAI
+from pyproj import Transformer
 
 
 MODEL = "gpt-5"
 JSON_FORMAT = {"type": "json_object"}
+
+# Create coordinate transformer: UTM Zone 33N (EPSG:32633) to WGS84 (EPSG:4326)
+utm_to_wgs84 = Transformer.from_crs("EPSG:32633", "EPSG:4326", always_xy=True)
 
 SYSTEM_PROMPT = """
 You are an expert historian of Venice circa 1740 and a simulation designer.
@@ -124,10 +128,16 @@ def generate_persona(client: OpenAI, row: Dict[str, str]) -> Optional[AgentPerso
     shop_type_en = row["shop_type_eng"]
     shop_category = row["shop_category"]
 
-    shop_lat = float(row["shop_lat"])
-    shop_lng = float(row["shop_lng"])
-    house_lat = float(row["house_lat"])
-    house_lng = float(row["house_lng"])
+    # Read UTM coordinates from CSV
+    shop_utm_x = float(row["shop_lng"])  # UTM easting (X)
+    shop_utm_y = float(row["shop_lat"])  # UTM northing (Y)
+    house_utm_x = float(row["house_lng"])
+    house_utm_y = float(row["house_lat"])
+
+
+    # Convert from UTM Zone 33N to WGS84 (lat/lng)
+    shop_lng, shop_lat = utm_to_wgs84.transform(shop_utm_x, shop_utm_y)
+    house_lng, house_lat = utm_to_wgs84.transform(house_utm_x, house_utm_y)
 
     # Decide which shopType string you prefer; here I take English if available, else Italian
     shop_type = shop_type_en or shop_type_it

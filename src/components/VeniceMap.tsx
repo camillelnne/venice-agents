@@ -1,15 +1,14 @@
 "use client";
 import { MapContainer, TileLayer } from "react-leaflet";
 import L from "leaflet";
-import { useState } from "react";
 import "leaflet/dist/leaflet.css";
 import { useTime } from "@/lib/TimeContext";
+import { useNetwork } from "@/lib/NetworkContext";
+import { useAgent } from "@/hooks/useAgent";
 import { VENICE_BOUNDS_COORDS, VENICE_CENTER, MAP_CONFIG } from "@/lib/constants";
-import TimeDisplay from "./TimeDisplay";
-import NetworkRenderer from "./NetworkRenderer";
-import AutonomousAgent from "./AutonomousAgent";
-import AgentChatbox from "./AgentChatbox";
-import { useAgentMovement } from "@/hooks/useAgentMovement";
+import TimeDisplay from "@/components/TimeDisplay";
+import NetworkRenderer from "@/components/NetworkRenderer";
+import AgentRenderer from "@/components/AgentRenderer";
 
 // --- to see marker icons ---
 import icon from 'leaflet/dist/images/marker-icon.png';
@@ -28,10 +27,11 @@ const VENICE_BOUNDS = L.latLngBounds(
 );
 
 export default function VeniceMap() {
-  const [isChatboxVisible, setIsChatboxVisible] = useState(true);
-  const { isRunning } = useTime();
-
-  const { agentPath, agentInfo, handleAgentArrival } = useAgentMovement(isRunning);
+  const { currentTime, isRunning, timeSpeed } = useTime();
+  const { network } = useNetwork();
+  
+  // Use the new agent hook
+  const agent = useAgent(network, currentTime, isRunning, timeSpeed);
 
   return (
     <MapContainer
@@ -62,9 +62,8 @@ export default function VeniceMap() {
 
       <NetworkRenderer />
 
-      <AutonomousAgent path={agentPath} agentInfo={agentInfo} onArrival={handleAgentArrival} setIsChatboxVisible={setIsChatboxVisible} />
+      <AgentRenderer agent={agent} />
       
-      {isChatboxVisible && <AgentChatbox agentInfo={agentInfo} setIsChatboxVisible={setIsChatboxVisible} />}
     </MapContainer>
   );
 }

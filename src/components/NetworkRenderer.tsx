@@ -1,8 +1,8 @@
 "use client";
 import { useMap } from "react-leaflet";
 import L from "leaflet";
-import { useEffect, useState, useRef } from "react";
-import { buildNetworkFromGeoJSON, type StreetNetwork } from "@/lib/network";
+import { useEffect, useRef } from "react";
+import { useNetwork } from "@/lib/NetworkContext";
 import { NETWORK_CONFIG } from "@/lib/constants";
 
 /**
@@ -11,38 +11,7 @@ import { NETWORK_CONFIG } from "@/lib/constants";
 export default function NetworkRenderer() {
   const map = useMap();
   const networkLayerGroupRef = useRef<L.LayerGroup | null>(null);
-  const [network, setNetwork] = useState<StreetNetwork | null>(null);
-
-  // Load and build the network from GeoJSON files
-  useEffect(() => {
-    const loadNetwork = async () => {
-      try {
-        // Load both street and traghetto route files
-        const [streetsRes, traghettoRes] = await Promise.all([
-          fetch("/1808_street_cleaned.geojson"),
-          fetch("/1808_street_traghetto_route.geojson")
-        ]);
-
-        const [streetsData, traghettoData] = await Promise.all([
-          streetsRes.json(),
-          traghettoRes.json()
-        ]);
-
-        // Combine features from both files
-        const combinedGeoJSON = {
-          type: "FeatureCollection" as const,
-          features: [...streetsData.features, ...traghettoData.features]
-        };
-
-        const builtNetwork = buildNetworkFromGeoJSON(combinedGeoJSON);
-        setNetwork(builtNetwork);
-      } catch (error) {
-        console.error("Failed to load network:", error);
-      }
-    };
-
-    loadNetwork();
-  }, []);
+  const { network } = useNetwork();
 
   // Render the network on the map
   useEffect(() => {

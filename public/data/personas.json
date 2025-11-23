@@ -1,147 +1,16 @@
 [
-  {
-    "name": "Agostin Cigaggia",
-    "shopType": "(Person) Cheese",
-    "shopCategory": "FOOD_DRINK",
-    "home": {
-      "lat": 5035730.88015714,
-      "lng": 290857.01847614034
-    },
-    "shop": {
-      "lat": 5035730.88015714,
-      "lng": 290857.01847614034
-    },
-    "personality": "Agostin Cigaggia is a warm yet meticulous formagier who lives above his bottega, proud of careful salting and cleanliness, and quick with a neighborly joke as he cuts wedges for gondoliers and tavern keepers. Pious and frugal, he trusts long-standing suppliers from the terraferma and keeps strict accounts, while generous with trimmings for children and the poor.",
-    "dailyRoutine": [
-      {
-        "startTime": "05:00",
-        "endTime": "05:30",
-        "type": "HOME"
-      },
-      {
-        "startTime": "05:30",
-        "endTime": "10:00",
-        "type": "SHOP"
-      },
-      {
-        "startTime": "10:00",
-        "endTime": "10:30",
-        "type": "FREE_TIME"
-      },
-      {
-        "startTime": "10:30",
-        "endTime": "12:00",
-        "type": "SHOP"
-      },
-      {
-        "startTime": "12:00",
-        "endTime": "13:00",
-        "type": "FREE_TIME"
-      },
-      {
-        "startTime": "13:00",
-        "endTime": "16:00",
-        "type": "SHOP"
-      },
-      {
-        "startTime": "16:00",
-        "endTime": "16:30",
-        "type": "FREE_TIME"
-      },
-      {
-        "startTime": "16:30",
-        "endTime": "19:00",
-        "type": "SHOP"
-      },
-      {
-        "startTime": "19:00",
-        "endTime": "20:30",
-        "type": "FREE_TIME"
-      },
-      {
-        "startTime": "20:30",
-        "endTime": "22:00",
-        "type": "HOME"
-      }
-    ]
-  },
-  {
-    "name": "Agostin Fabris",
-    "shopType": "(Person) Oven",
-    "shopCategory": "FOOD_DRINK",
-    "home": {
-      "lat": 5035118.308935367,
-      "lng": 292354.62244628853
-    },
-    "shop": {
-      "lat": 5035118.308935367,
-      "lng": 292354.62244628853
-    },
-    "personality": "A meticulous forner, Agostin rises before dawn to fire the oven and prides himself on honest weights and warm loaves for boatmen and market wives. Frugal and devout, he keeps to the rules of the Arte dei Pistori and values quiet family evenings after the heat of the bake.",
-    "dailyRoutine": [
-      {
-        "startTime": "05:00",
-        "endTime": "09:00",
-        "type": "SHOP"
-      },
-      {
-        "startTime": "09:00",
-        "endTime": "09:30",
-        "type": "HOME"
-      },
-      {
-        "startTime": "09:30",
-        "endTime": "12:00",
-        "type": "SHOP"
-      },
-      {
-        "startTime": "12:00",
-        "endTime": "13:00",
-        "type": "HOME"
-      },
-      {
-        "startTime": "13:00",
-        "endTime": "15:00",
-        "type": "SHOP"
-      },
-      {
-        "startTime": "15:00",
-        "endTime": "16:00",
-        "type": "FREE_TIME"
-      },
-      {
-        "startTime": "16:00",
-        "endTime": "19:00",
-        "type": "SHOP"
-      },
-      {
-        "startTime": "19:00",
-        "endTime": "20:00",
-        "type": "HOME"
-      },
-      {
-        "startTime": "20:00",
-        "endTime": "21:00",
-        "type": "FREE_TIME"
-      },
-      {
-        "startTime": "21:00",
-        "endTime": "22:00",
-        "type": "HOME"
-      }
-    ]
-  },
+
   {
     "name": "Agostin Lazari",
     "shopType": "(Person) Forger",
     "shopCategory": "METAL_CRAFT",
     "home": {
-      "lat": 5035003.6428168155,
-      "lng": 291898.1586415941
+      "lat": 45.4385788,
+      "lng": 12.3337764
     },
     "shop": {
-      "lat": 5035133.210374592,
-      "lng": 291466.5331725447
+      "lat": 45.4376523,
+      "lng": 12.3393832
     },
     "personality": "Agostin Lazari is a meticulous fabbro, proud of honest iron and the clean ring of a well-set rivet. Devout and frugal, he minds his guild ties and serves gondoliers and spezieri with hinges, nails, and tools.",
     "dailyRoutine": [
