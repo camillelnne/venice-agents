@@ -4,7 +4,7 @@ using OpenAI's gpt-5 with JSON mode.
 
 Usage:
   python generate_personas.py \
-      --input data/merchants_dataset.csv \
+      --input public/data/merchants_dataset.csv \
       --output public/data/personas.json \
       --limit 20 \
       --resume
@@ -139,7 +139,7 @@ def generate_persona(client: OpenAI, row: Dict[str, str]) -> Optional[AgentPerso
     shop_lng, shop_lat = utm_to_wgs84.transform(shop_utm_x, shop_utm_y)
     house_lng, house_lat = utm_to_wgs84.transform(house_utm_x, house_utm_y)
 
-    # Decide which shopType string you prefer; here I take English if available, else Italian
+    # Take shop type in English by default
     shop_type = shop_type_en or shop_type_it
 
     user_prompt = f"""
@@ -158,7 +158,7 @@ def generate_persona(client: OpenAI, row: Dict[str, str]) -> Optional[AgentPerso
         try:
             completion = client.chat.completions.create(
                 model=MODEL,
-                response_format=JSON_FORMAT,  # {"type": "json_object"}
+                response_format=JSON_FORMAT,
                 messages=[
                     {"role": "system", "content": SYSTEM_PROMPT},
                     {"role": "user", "content": user_prompt},
@@ -167,12 +167,10 @@ def generate_persona(client: OpenAI, row: Dict[str, str]) -> Optional[AgentPerso
 
             content = completion.choices[0].message.content
             data = json.loads(content)
-
-            # Expect only personality + dailyRoutine from the model
             personality = data["personality"]
             routine = [DailyActivity(**x) for x in data["dailyRoutine"]]
 
-            # Merge routines bits that are in the same location back to back
+            # Merge routines bits that are in the same location and back to back
             for i in range(len(routine) - 1, 0, -1):
                 curr = routine[i]
                 prev = routine[i - 1]
