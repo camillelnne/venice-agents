@@ -143,16 +143,11 @@ export function useAgent(
     };
   }, []);
 
-  // Movement loop - runs every frame when simulation is running
+  // Movement loop: runs every frame when simulation is running
   useEffect(() => {
-    if (!agentState || !network || !isRunning) {
-      return;
-    }
+    if (!network || !isRunning) return;
 
-    // Initialize lastUpdateRef on first run
-    if (lastUpdateRef.current === 0) {
-      lastUpdateRef.current = Date.now();
-    }
+    lastUpdateRef.current = Date.now();
 
     const interval = setInterval(() => {
       const now = Date.now();
@@ -166,7 +161,7 @@ export function useAgent(
     }, 50); // Update every 50ms for smooth animation
 
     return () => clearInterval(interval);
-  }, [agentState, network, isRunning, timeSpeed]);
+  }, [network, isRunning, timeSpeed]);
 
   // Compute display from agent state
   const agentDisplay = useMemo((): AgentDisplay | null => {
@@ -174,7 +169,6 @@ export function useAgent(
       return null;
     }
 
-    // Get current position
     let position = getAgentPosition(agentState);
     
     // If no position from path (agent is stationary), use current node
