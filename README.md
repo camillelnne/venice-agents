@@ -45,11 +45,10 @@ An interactive Next.js application that visualizes AI-powered agent navigation a
 
 2. **Set up environment variables**
 
-   Create a `.env.local` file in the root directory:
+   Create a `.env` file in the root directory:
 
    ```env
    OPENAI_API_KEY=your_openai_api_key_here
-   NEXT_PUBLIC_PYTHON_API_URL=http://127.0.0.1:8000
    ```
 
 3. **Install Node.js dependencies**
@@ -73,18 +72,7 @@ An interactive Next.js application that visualizes AI-powered agent navigation a
    ```
 
 ### Running the Application
-
-1. **Start the Python API** (in one terminal)
-
-   ```bash
-   conda activate venice-agents  # if using conda
-   cd python_api
-   fastapi dev agent.py
-   ```
-
-   The API will start on `http://127.0.0.1:8000`
-
-2. **Start the Next.js development server** (in another terminal)
+**Start the Next.js development server** (in another terminal)
 
    ```bash
    npm run dev
@@ -92,39 +80,6 @@ An interactive Next.js application that visualizes AI-powered agent navigation a
 
    The app will be available at `http://localhost:3000`
 
-## Project Structure
-
-```
-venice-agents/
-├── python_api/
-│   ├── agent.py              # FastAPI endpoints
-│   ├── agent_persona.py      # Agent personality definitions
-│   ├── state_manager.py      # Agent state management
-│   ├── constants.py          # Shared constants
-│   └── validators.py         # Input validation
-├── src/
-│   ├── app/
-│   │   ├── api/              # Next.js API routes
-│   │   ├── page.tsx          # Main page
-│   │   └── layout.tsx        # Root layout
-│   ├── components/
-│   │   ├── VeniceMap.tsx     # Main map component
-│   │   ├── AutonomousAgent.tsx
-│   │   ├── AgentChatbox.tsx
-│   │   ├── NetworkRenderer.tsx
-│   │   └── TimeDisplay.tsx
-│   ├── hooks/
-│   │   └── useAgentMovement.ts
-│   ├── lib/
-│   │   ├── api-client.ts     # API client for backend
-│   │   ├── constants.ts      # Frontend constants
-│   │   ├── network.ts        # Pathfinding utilities
-│   │   └── TimeContext.tsx   # Time management
-│   └── types/
-│       └── agent.ts          # TypeScript type definitions
-└── public/
-    └── *.geojson             # Historical GeoJSON data
-```
 
 ## Development
 

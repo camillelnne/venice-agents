@@ -12,24 +12,6 @@ export const VENICE_BOUNDS_COORDS = {
 
 export const VENICE_CENTER: [number, number] = [45.438, 12.335];
 
-// Helper function to create Leaflet LatLngBounds (client-side only)
-export const getVeniceBounds = async () => {
-  if (typeof window === 'undefined') {
-    throw new Error('getVeniceBounds can only be called on the client side');
-  }
-  const L = await import('leaflet');
-  return L.default.latLngBounds(
-    [VENICE_BOUNDS_COORDS.south, VENICE_BOUNDS_COORDS.west],
-    [VENICE_BOUNDS_COORDS.north, VENICE_BOUNDS_COORDS.east]
-  );
-};
-
-// API Configuration
-export const API_CONFIG = {
-  TIMEOUT: 5000, // 5 seconds
-  RETRY_ATTEMPTS: 3,
-  RETRY_DELAY: 1000, // 1 second
-} as const;
 
 // Map Configuration
 export const MAP_CONFIG = {
@@ -70,7 +52,3 @@ export const NETWORK_CONFIG = {
   EDGE_OPACITY: 0.4,
 } as const;
 
-// Environment URLs
-export const getApiUrl = () => {
-  return process.env.NEXT_PUBLIC_PYTHON_API_URL || "http://127.0.0.1:8000";
-};
