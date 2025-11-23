@@ -216,41 +216,56 @@ export function moveAgentAlongPath(
     return state;
   }
 
-  // Calculate movement based on real-world walking speed
-  // Average walking speed: ~1.4 m/s = 5 km/h
-  // Multiply by timeSpeed to make movement proportional to simulation speed
-  // Also add a visual multiplier to make movement more visible (20x faster than realistic)
-  // TODO: fix bc agent too slow
-  const VISUAL_SPEED_MULTIPLIER = 20;
-  const WALKING_SPEED_M_PER_MS = (1.4 / 1000) * timeSpeed * VISUAL_SPEED_MULTIPLIER;
-  const APPROX_METERS_PER_DEGREE = 111000; // rough approximation at Venice latitude
+  // Calculate movement based on real-world walking speed (meters)
+  // Average walking speed: ~1.4 m/s
+  // `timeSpeed` is expressed as simulated minutes per real second (e.g. 5 = 5 simulated minutes / real second)
+  // Convert that to simulated seconds per real second: timeSpeed * 60.
+  // Move per real millisecond = walkingSpeed_m_per_s * (timeSpeed * 60) / 1000
+  // Apply an optional visual multiplier for faster visuals.
+  const REAL_WALKING_SPEED_M_PER_S = 1.4; // m/s
+  const simulatedSecondsPerRealSecond = timeSpeed * 60; // e.g. 5 min/s -> 300 simulated seconds per real second
+  const WALKING_SPEED_M_PER_MS =
+    (REAL_WALKING_SPEED_M_PER_S * simulatedSecondsPerRealSecond) / 1000;
 
-  // Calculate how many coordinate points to move based on time and speed
-  const distanceToMove = WALKING_SPEED_M_PER_MS * deltaTime;
-  const degreesToMove = distanceToMove / APPROX_METERS_PER_DEGREE;
+  // Distance (meters) to move this tick
+  let remainingMeters = WALKING_SPEED_M_PER_MS * deltaTime;
 
-  // Move through path points based on approximate distance
+  // Helper: convert a small lat/lng delta to meters using local scaling
+  const metersBetween = (a: { lat: number; lng: number }, b: { lat: number; lng: number }) => {
+    // Approx meters per degree latitude
+    const METERS_PER_DEGREE_LAT = 111320;
+    // scale longitude by cos(latitude)
+    const meanLatRad = ((a.lat + b.lat) / 2) * (Math.PI / 180);
+    const metersPerDegreeLng = METERS_PER_DEGREE_LAT * Math.cos(meanLatRad);
+
+    const dLatMeters = (b.lat - a.lat) * METERS_PER_DEGREE_LAT;
+    const dLngMeters = (b.lng - a.lng) * metersPerDegreeLng;
+    return Math.sqrt(dLatMeters * dLatMeters + dLngMeters * dLngMeters);
+  };
+
+  // Move through path points based on meters
   let newProgress = state.pathProgress;
-  let remainingDistance = degreesToMove;
 
-  while (
-    newProgress < state.currentPath.length - 1 &&
-    remainingDistance > 0
-  ) {
-    const current = state.currentPath[Math.floor(newProgress)];
-    const next = state.currentPath[Math.floor(newProgress) + 1];
+  while (newProgress < state.currentPath.length - 1 && remainingMeters > 0) {
+    const idx = Math.floor(newProgress);
+    const current = state.currentPath[idx];
+    const next = state.currentPath[idx + 1];
 
-    const segmentDistance = Math.sqrt(
-      Math.pow(next.lat - current.lat, 2) + Math.pow(next.lng - current.lng, 2)
-    );
+    // full length of this segment in meters
+    const segmentMeters = metersBetween(current, next);
+    // how much of this segment remains given current fractional progress
+    const fractionAlong = newProgress - idx;
+    const remainingSegmentMeters = segmentMeters * (1 - fractionAlong);
 
-    if (remainingDistance >= segmentDistance) {
-      remainingDistance -= segmentDistance;
-      newProgress += 1;
+    if (remainingMeters >= remainingSegmentMeters) {
+      // consume remaining part of this segment and step to next point
+      remainingMeters -= remainingSegmentMeters;
+      newProgress = idx + 1;
     } else {
-      // Partial movement along current segment
-      newProgress += remainingDistance / segmentDistance;
-      remainingDistance = 0;
+      // move part-way along this segment
+      const advanceFraction = remainingMeters / segmentMeters;
+      newProgress += advanceFraction;
+      remainingMeters = 0;
     }
   }
 
