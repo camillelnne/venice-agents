@@ -92,7 +92,9 @@ for name_norm, grp in kept_groups.items():
         "shop_type_eng": shop_types_eng, 
         "shop_category": shop_categories, 
         "shop_lat": shop_lats, 
-        "shop_lng": shop_lngs
+        "shop_lng": shop_lngs,
+        "house_lat": home_lat,
+        "house_lng": home_lng
     })
 
 
