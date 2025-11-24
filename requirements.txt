@@ -6,3 +6,4 @@ pydantic>=2.0.0
 uvicorn>=0.30.0
 python-dotenv
 pyarrow
+pandas

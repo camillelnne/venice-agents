@@ -22,6 +22,7 @@ from typing import Dict, List, Optional
 from dotenv import load_dotenv
 from openai import OpenAI
 from pyproj import Transformer
+import pandas as pd
 
 
 MODEL = "gpt-5"
@@ -124,13 +125,13 @@ def generate_persona(client: OpenAI, row: Dict[str, str]) -> Optional[AgentPerso
     """Call OpenAI to generate personality + routine for a single merchant, then merge with CSV data."""
 
     person = row["person"].strip()
-    shop_type_it = row["shop_type"]
-    shop_type_en = row["shop_type_eng"]
-    shop_category = row["shop_category"]
+    shop_type_it = row["shop_type"][0]
+    shop_type_en = row["shop_type_eng"][0]
+    shop_category = row["shop_category"][0]
 
     # Read UTM coordinates from CSV
-    shop_utm_x = float(row["shop_lng"])  # UTM easting (X)
-    shop_utm_y = float(row["shop_lat"])  # UTM northing (Y)
+    shop_utm_x = float(row["shop_lng"][0])  # UTM easting (X)
+    shop_utm_y = float(row["shop_lat"][0])  # UTM northing (Y)
     house_utm_x = float(row["house_lng"])
     house_utm_y = float(row["house_lat"])
 
@@ -218,8 +219,10 @@ def main():
 
     personas = load_existing(output_path) if args.resume else {}
 
-    with input_path.open("r", encoding="utf-8") as f:
-        rows = list(csv.DictReader(f))
+    # with input_path.open("r", encoding="utf-8") as f:
+    #     rows = list(csv.DictReader(f))
+    df = pd.read_parquet(input_path)
+    rows = df.fillna("").to_dict(orient="records")
 
     if args.limit:
         rows = rows[: args.limit]
