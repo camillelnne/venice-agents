@@ -109,7 +109,8 @@ export default function TimeDisplay() {
             border: timeSpeed === TIME_CONFIG.SPEEDS.SLOW ? '2px solid #8b4513' : '1px solid #ddd',
             backgroundColor: timeSpeed === TIME_CONFIG.SPEEDS.SLOW ? '#f3e6d8' : '#fff',
             cursor: 'pointer',
-            fontSize: '12px'
+            fontSize: '12px',
+            color:'#8b4513'
           }}
         >
           Slow
@@ -124,7 +125,8 @@ export default function TimeDisplay() {
             border: timeSpeed === TIME_CONFIG.SPEEDS.NORMAL ? '2px solid #8b4513' : '1px solid #ddd',
             backgroundColor: timeSpeed === TIME_CONFIG.SPEEDS.NORMAL ? '#f3e6d8' : '#fff',
             cursor: 'pointer',
-            fontSize: '12px'
+            fontSize: '12px',
+            color:'#8b4513'
           }}
         >
           Normal
@@ -139,7 +141,8 @@ export default function TimeDisplay() {
             border: timeSpeed === TIME_CONFIG.SPEEDS.FAST ? '2px solid #8b4513' : '1px solid #ddd',
             backgroundColor: timeSpeed === TIME_CONFIG.SPEEDS.FAST ? '#f3e6d8' : '#fff',
             cursor: 'pointer',
-            fontSize: '12px'
+            fontSize: '12px',
+            color:'#8b4513'
           }}
         >
           Fast
