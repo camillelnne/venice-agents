@@ -1,9 +1,11 @@
 "use client";
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useMap } from "react-leaflet";
 import L from "leaflet";
 import type { AgentDisplay } from "@/hooks/useAgent";
 import { AGENT_CONFIG } from "@/lib/constants";
+import { useThoughts } from "@/hooks/useThought";
+import { useTime } from "@/lib/TimeContext";
 
 interface AgentRendererProps {
   agent: AgentDisplay | null;
@@ -18,6 +20,61 @@ export default function AgentRenderer({ agent }: AgentRendererProps) {
   const pathRef = useRef<L.Polyline | null>(null);
   const lastPathLengthRef = useRef<number>(0);
   const hasInitializedRef = useRef(false);
+  const { generateThought, isGenerating } = useThoughts();
+  const [currentThought, setCurrentThought] = useState<string>("");
+  const { currentTime, timeSpeed } = useTime();
+
+  // Function to update popup content
+  const updatePopup = useCallback(() => {
+    if (!agent) return;
+    const popupContent = `
+      <div style="min-width: 200px;">
+        <strong>${agent.name}</strong><br/>
+        <em>${agent.shopType}</em><br/>
+        <strong>Activity:</strong> ${agent.currentActivity}<br/>
+        ${currentThought ? `
+          <hr style="margin: 8px 0;">
+          <div style="font-style: italic; color: #666; font-size: 0.9em;">
+            "${currentThought}"
+          </div>
+        ` : ''}
+      </div>
+    `;
+    if (!markerRef.current) return;
+    const popup = markerRef.current.getPopup();
+    if (popup) {
+      popup.setContent(popupContent);
+    } else {
+      markerRef.current.bindPopup(popupContent);
+    }
+  }, [agent, currentThought]);
+
+  // Generate thought when activity changes or on interval
+  useEffect(() => {
+    if (!agent) return;
+
+    const generateNewThought = async () => {
+      const currentLocation = agent.position || "Venice";
+      const thought = await generateThought(agent, currentTime, currentLocation);
+      
+      if (thought) {
+        setCurrentThought(thought.thought);
+      }
+    };
+
+    // Generate thought when activity changes
+    generateNewThought();
+
+    // Generate new thoughts periodically (every 2 minutes of simulation time)
+    const thoughtInterval = setInterval(generateNewThought, 120000 / timeSpeed);
+
+    return () => clearInterval(thoughtInterval);
+  }, [agent]);
+
+  // Update popup when thought changes
+  useEffect(() => {
+    updatePopup();
+  }, [updatePopup]);
 
   useEffect(() => {
     if (!agent) {
@@ -58,16 +115,6 @@ export default function AgentRenderer({ agent }: AgentRendererProps) {
 
     // Update marker position (this is smooth)
     markerRef.current.setLatLng(agent.position);
-
-    // Update popup content (only the text)
-    const popup = markerRef.current.getPopup();
-    if (popup) {
-      popup.setContent(`
-        <strong>${agent.name}</strong><br/>
-        <em>${agent.shopType}</em><br/>
-        ${agent.currentActivity}
-      `);
-    }
 
     // Only update path when it actually changes
     if (agent.path.length > 0) {

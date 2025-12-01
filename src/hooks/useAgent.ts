@@ -21,6 +21,7 @@ export interface AgentDisplay {
   name: string;
   shopType: string;
   currentActivity: string;
+  personality: string
 }
 
 export function useAgent(
@@ -209,6 +210,7 @@ export function useAgent(
       name: agentState.persona.name,
       shopType: agentState.persona.shopType,
       currentActivity: activity,
+      personality: agentState.persona.personality
     };
   }, [agentState, network]);
 

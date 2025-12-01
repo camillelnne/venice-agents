@@ -25,6 +25,9 @@ export interface AgentInfo {
   name: string;
   role: AgentRole;
   activity: string;
+  location?: VeniceCoordinates;
+  personality?: string;
+  thought?: string;
 }
 
 export interface AgentState extends AgentInfo {
@@ -43,14 +46,16 @@ export interface AgentMovement {
   reason: string;
 }
 
-export interface ChatMessage {
-  role: "user" | "assistant" | "system";
-  content: string;
-}
-
-export interface ChatResponse {
-  response: string;
+export interface ThoughtRequest {
   agent_name: string;
-  agent_role: string;
+  current_activity: string;
+  location: string;
+  time_of_day: string;
+  personality?: string;
+  context?: string;
 }
 
+export interface ThoughtResponse {
+  thought: string;
+  agent_name: string;
+}
