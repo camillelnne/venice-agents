@@ -6,7 +6,7 @@ import { useState, useEffect, useRef, useMemo } from "react";
 import { LatLngLiteral } from "leaflet";
 import type { Persona } from "@/types/persona";
 import type { StreetNetwork } from "@/lib/network";
-import { findPathBFS, pathToCoordinates } from "@/lib/network";
+import { findPathBFS, pathToCoordinates, findNearestNode } from "@/lib/network";
 import {
   initializeAgent,
   updateAgentRoutine,
@@ -164,6 +164,49 @@ export function useAgent(
     return () => clearInterval(interval);
   }, [network, isRunning, timeSpeed]);
 
+  // Override agent's destination (for spontaneous behavior)
+  const overrideDestination = (targetCoordinates: LatLngLiteral, reason: string) => {
+    if (!agentState || !network) {
+      console.warn("Cannot override destination: agent or network not ready");
+      return;
+    }
+
+    console.log(`🎯 Overriding destination for ${agentState.persona.name}:`, {
+      reason,
+      target: targetCoordinates,
+    });
+
+    // Find nearest node to target
+    const targetNode = findNearestNode(network, targetCoordinates.lat, targetCoordinates.lng);
+    
+    if (!targetNode) {
+      console.error("Could not find node near target coordinates");
+      return;
+    }
+
+    // Compute new path from current position to target
+    const nodePath = findPathBFS(network, agentState.currentNodeId, targetNode.id);
+    const smoothPath = nodePath ? pathToCoordinates(network, nodePath) : [];
+
+    if (smoothPath.length === 0) {
+      console.warn("Could not find path to target");
+      return;
+    }
+
+    // Update agent state with new path
+    setAgentState({
+      ...agentState,
+      targetNodeId: targetNode.id,
+      currentPath: smoothPath,
+      pathNodeIds: nodePath || [],
+      pathProgress: 0,
+      currentRoutineType: "FREE_TIME", // Mark as spontaneous activity
+      spontaneousActivity: reason, // Store the reason for display
+    });
+
+    console.log(`✅ New path computed: ${smoothPath.length} points`);
+  };
+
   // Compute display from agent state
   const agentDisplay = useMemo((): AgentDisplay | null => {
     if (!agentState || !network) {
@@ -200,7 +243,12 @@ export function useAgent(
         activity = "Traveling home";
         break;
       case "FREE_TIME":
-        activity = "Free time";
+        // Check if this is a spontaneous activity
+        if (agentState.spontaneousActivity) {
+          activity = agentState.spontaneousActivity;
+        } else {
+          activity = "Free time";
+        }
         break;
     }
 
@@ -214,5 +262,5 @@ export function useAgent(
     };
   }, [agentState, network]);
 
-  return agentDisplay;
+  return { agent: agentDisplay, overrideDestination };
 }

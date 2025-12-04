@@ -14,7 +14,8 @@ export function useThoughts() {
   const generateThought = useCallback(async (
     agentInfo: AgentDisplay,
     currentTime: Date,
-    location: VeniceCoordinates
+    location: VeniceCoordinates,
+    currentDestination?: string
   ): Promise<ThoughtResponse | null> => {
     if (isGenerating) return null;
 
@@ -36,9 +37,12 @@ export function useThoughts() {
         location: locationString,
         time_of_day: timeString,
         personality: agentInfo.personality,
+        current_destination: currentDestination,
       };
 
+      console.log('Sending thought request:', request);
       const thought = await ApiService.generateThought(request);
+      console.log('Received thought response:', thought);
       setLastThought(thought);
       return thought;
     } catch (error) {

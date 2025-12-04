@@ -5,6 +5,7 @@ from typing import Optional
 import os
 from openai import OpenAI
 from dotenv import load_dotenv
+import random
 
 load_dotenv()
 
@@ -29,10 +30,13 @@ class ThoughtRequest(BaseModel):
     time_of_day: str
     personality: Optional[str] = None
     context: Optional[str] = None
+    current_destination: Optional[str] = None
 
 class ThoughtResponse(BaseModel):
     thought: str
     agent_name: str
+    override_routine: bool = False
+    desired_action: Optional[str] = None
 
 @app.get("/")
 async def root():
@@ -41,49 +45,85 @@ async def root():
 @app.post("/generate-thought", response_model=ThoughtResponse)
 async def generate_thought(request: ThoughtRequest):
     try:
-        prompt = f"""
-        You are {request.agent_name}, a Venetian merchant in 1740.
+        # 20% chance to consider deviating from routine
+        should_consider_deviation = random.random() < 0.2
         
-        Current situation:
-        - Activity: {request.current_activity}
-        - Location: {request.location}
-        - Time: {request.time_of_day}
-        {f"- Personality: {request.personality}" if request.personality else ""}
-        
-        Generate a brief, authentic thought (1-2 sentences) that this person might have right now, for example which describes what they are doing now.
-        
-        Respond in this exact format:
-        THOUGHT: [your thought here]
-        """
+        if should_consider_deviation:
+            prompt = f"""
+            You are {request.agent_name}, a Venetian merchant in 1740.
+            
+            Current situation:
+            - Current Activity: {request.current_activity}
+            - Location: {request.location}
+            - Time: {request.time_of_day}
+            {f"- Planned Destination: {request.current_destination}" if request.current_destination else ""}
+            {f"- Personality: {request.personality}" if request.personality else ""}
+            
+            You're currently following your daily routine, but you can choose to do something spontaneous if you feel like it.
+            
+            Consider: Are you tired? Bored? Want to socialize? Need a break? Curious about something?
+            
+            Respond in this format:
+            THOUGHT: [what you're thinking/feeling]
+            OVERRIDE: [YES or NO - do you want to deviate from your routine?]
+            ACTION: [if YES, what would you like to do? e.g., "take a walk to Rialto", "visit a tavern", "stop and rest", "chat with neighbors"]
+            """
+        else:
+            prompt = f"""
+            You are {request.agent_name}, a Venetian merchant in 1740.
+            
+            Current situation:
+            - Activity: {request.current_activity}
+            - Location: {request.location}
+            - Time: {request.time_of_day}
+            {f"- Personality: {request.personality}" if request.personality else ""}
+            
+            Generate a brief, authentic thought (1-2 sentences) that describes what you are doing or feeling right now.
+            
+            Respond in this exact format:
+            THOUGHT: [your thought here]
+            """
         
         response = client.chat.completions.create(
             model="gpt-4",
             messages=[
-                {"role": "system", "content": "You are a historical simulation assistant helping create authentic 18th century Venetian character thoughts."},
+                {"role": "system", "content": "You are a historical simulation assistant helping create authentic 18th century Venetian character thoughts and decisions."},
                 {"role": "user", "content": prompt}
             ],
-            max_tokens=150,
+            max_tokens=200,
             temperature=0.8
         )
         
         content = response.choices[0].message.content
+        print(f"LLM Response: {content}")
+        
         # Parse the response
         lines = content.strip().split('\n')
         thought = ""
+        override = False
+        desired_action = None
         
         for line in lines:
             if line.startswith("THOUGHT:"):
                 thought = line.replace("THOUGHT:", "").strip()
+            elif line.startswith("OVERRIDE:"):
+                override_text = line.replace("OVERRIDE:", "").strip().upper()
+                override = override_text == "YES"
+            elif line.startswith("ACTION:"):
+                desired_action = line.replace("ACTION:", "").strip()
         
         if not thought:
             thought = content.strip()
         
         return ThoughtResponse(
             thought=thought,
-            agent_name=request.agent_name
+            agent_name=request.agent_name,
+            override_routine=override,
+            desired_action=desired_action
         )
         
     except Exception as e:
+        print(f"Error: {e}")
         raise HTTPException(status_code=500, detail=f"Error generating thought: {str(e)}")
 
 if __name__ == "__main__":

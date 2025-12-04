@@ -6,8 +6,9 @@ An interactive Next.js application that visualizes AI-powered agent navigation a
 
 - **Historical Accuracy**: Based on 1808 Venice street and canal network
 - **Autonomous AI Agents**: LLM-powered agents with unique personalities and daily routines
+- **Spontaneous Behavior**: Agents can autonomously decide to deviate from their routines (5% chance)
 - **Real-time Pathfinding**: BFS algorithm for navigation through historic Venice
-- **Interactive Chat**: Converse with agents about life in 1808 Venice
+- **Interactive Thoughts**: Watch agents think and make decisions in real-time
 - **Time Simulation**: Adjustable time progression with day/night cycles
 
 ## Architecture
@@ -72,13 +73,30 @@ An interactive Next.js application that visualizes AI-powered agent navigation a
    ```
 
 ### Running the Application
-**Start the Next.js development server** (in another terminal)
+
+**Run the script which starts the backend and the app at the same time**
 
    ```bash
-   npm run dev
+   ./start-dev.sh
    ```
 
+   The API will be available at `http://localhost:8000`
+
    The app will be available at `http://localhost:3000`
+
+### How Spontaneous Behavior Works
+
+Agents generate thoughts periodically using GPT-4. With a 5% probability, the LLM is asked if the agent wants to deviate from their routine. The agent might decide to:
+
+- Take a walk to a specific location (e.g., "take a walk to Rialto")
+- Visit a tavern for socializing
+- Stop and rest
+- Chat with neighbors
+
+When an override occurs, you'll see:
+- A console log: `🎯 Agent wants to do: [action]`
+- The agent's thought bubble shows their reasoning
+- (Future enhancement: Agent will actually change their path based on the action)
 
 
 ## Development

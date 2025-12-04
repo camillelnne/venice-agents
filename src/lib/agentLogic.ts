@@ -17,6 +17,7 @@ export interface AgentState {
   pathProgress: number; // Index in currentPath (how far along the smooth path)
   currentRoutineType: RoutineType;
   targetNodeId: string;
+  spontaneousActivity?: string; // Description of spontaneous override action
 }
 
 /**
@@ -158,6 +159,13 @@ export function updateAgentRoutine(
   const activeRoutine = getActiveRoutine(state.persona, currentTime);
   const newRoutineType = activeRoutine?.type || "HOME";
 
+  // Don't override if agent is in the middle of a spontaneous activity
+  // Only return to routine if they've reached their spontaneous destination
+  if (state.spontaneousActivity && state.currentPath.length > 0) {
+    // Agent is still traveling to spontaneous destination
+    return { state, pathChanged: false };
+  }
+
   // Check if routine changed
   if (newRoutineType !== state.currentRoutineType) {
     const newTargetNodeId = getTargetNodeForRoutine(
@@ -180,6 +188,7 @@ export function updateAgentRoutine(
           currentPath: smoothPath,
           pathNodeIds: nodePath || [],
           pathProgress: 0,
+          spontaneousActivity: undefined, // Clear spontaneous activity when returning to routine
         },
         pathChanged: true,
       };
@@ -189,6 +198,7 @@ export function updateAgentRoutine(
         state: {
           ...state,
           currentRoutineType: newRoutineType,
+          spontaneousActivity: undefined, // Clear spontaneous activity
         },
         pathChanged: false,
       };
@@ -273,18 +283,28 @@ export function moveAgentAlongPath(
 
   // Update current node if we've progressed through the path significantly
   let newCurrentNodeId = state.currentNodeId;
+  let clearSpontaneous = state.spontaneousActivity;
+  
   if (
     state.pathNodeIds.length > 0 &&
     newProgress >= state.currentPath.length - 1
   ) {
     // Reached end of path
     newCurrentNodeId = state.targetNodeId;
+    
+    // If this was a spontaneous activity and we've reached destination, clear it
+    // This allows the agent to return to routine on the next time update
+    if (state.spontaneousActivity) {
+      clearSpontaneous = undefined;
+      console.log("✅ Agent reached spontaneous destination, will return to routine on next time update");
+    }
   }
 
   return {
     ...state,
     pathProgress: newProgress,
     currentNodeId: newCurrentNodeId,
+    spontaneousActivity: clearSpontaneous,
   };
 }
 
