@@ -48,7 +48,7 @@ async def generate_thought(request: ThoughtRequest):
         # 20% chance to consider deviating from routine
         should_consider_deviation = random.random() < 0.2
         
-        if should_consider_deviation:
+        if should_consider_deviation and not("travel" in str.lower(request.current_activity)): # if travelling, shouldn't be overrinding
             prompt = f"""
             You are {request.agent_name}, a Venetian merchant in 1740.
             
@@ -61,12 +61,12 @@ async def generate_thought(request: ThoughtRequest):
             
             You're currently following your daily routine, but you can choose to do something spontaneous if you feel like it.
             
-            Consider: Are you tired? Bored? Want to socialize? Need a break? Curious about something?
+            Consider: Are you tired? Bored? Want to socialize? Curious about something?
             
             Respond in this format:
-            THOUGHT: [what you're thinking/feeling]
+            THOUGHT: [what you're thinking/feeling, in first person.]
             OVERRIDE: [YES or NO - do you want to deviate from your routine?]
-            ACTION: [if YES, what would you like to do? e.g., "take a walk to Rialto", "visit a tavern", "stop and rest", "chat with neighbors"]
+            ACTION: [if YES, what would you like to do? Write in first person. e.g., "take a walk to Rialto", "visit a tavern", "chat with neighbors"]
             """
         else:
             prompt = f"""

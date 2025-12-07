@@ -47,6 +47,11 @@ export const VENICE_LANDMARKS: Record<string, NamedLocation> = {
     name: "Dorsoduro",
     coordinates: { lat: 45.4300, lng: 12.3240 },
     description: "An artistic district along the water"
+  },
+  "Tavern": {
+    name: "Tavern",
+    coordinates: { lat: 45.4390, lng: 12.3334 }, 
+    description: "A tavern"
   }
 };
 
@@ -97,9 +102,7 @@ export function parseActionType(action: string): ActionType {
   
   if (actionLower.includes("walk") || actionLower.includes("go to") || actionLower.includes("visit")) {
     return "navigate";
-  } else if (actionLower.includes("rest") || actionLower.includes("break") || actionLower.includes("pause")) {
-    return "rest";
-  } else if (actionLower.includes("chat") || actionLower.includes("socialize") || actionLower.includes("talk")) {
+  } else if (actionLower.includes("chat") || actionLower.includes("socialize") || actionLower.includes("talk") || actionLower.includes("tavern")|| actionLower.includes("socialize")) {
     return "socialize";
   } else if (actionLower.includes("wander") || actionLower.includes("explore")) {
     return "wander";

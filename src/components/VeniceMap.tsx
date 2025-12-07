@@ -64,16 +64,14 @@ export default function VeniceMap() {
         break;
       }
       
-      case "rest":
-        console.log("😴 Agent wants to rest - staying at current location");
-        // For "rest", we could pause movement temporarily
-        // For now, this is just logged
-        // Future: implement a pause mechanism
-        break;
-      
       case "socialize":
         console.log("💬 Agent wants to socialize");
         // Future: find nearby agents or social locations -> hard code location of a tavern? find one in data?
+        const coordinates = getLocationCoordinates("Tavern");
+        if (coordinates) {
+          console.log(`🗺️  Navigating to Tavern:`, coordinates);
+          overrideDestination(coordinates, `Visiting Tavern`);
+        }
         break;
       
       case "wander":

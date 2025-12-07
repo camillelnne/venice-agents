@@ -27,7 +27,7 @@ export default function AgentRenderer({ agent, onSpontaneousAction }: AgentRende
   
   // Cooldown mechanism after spontaneous override
   const overrideCooldownRef = useRef<number>(0); // timestamp when cooldown ends
-  const COOLDOWN_DURATION = 1200000; // 20 minutes of simulation time in milliseconds
+  const COOLDOWN_DURATION = 3600000; // 60 minutes of simulation time in milliseconds
 
   // Function to update popup content
   const updatePopup = useCallback(() => {
@@ -99,54 +99,6 @@ export default function AgentRenderer({ agent, onSpontaneousAction }: AgentRende
 
     generateNewThought();
   }, [agent?.currentActivity, agent?.name, timeSpeed, COOLDOWN_DURATION]);
-
-  // Generate periodic thoughts
-  useEffect(() => {
-    if (!agent) return;
-
-    const generateNewThought = async () => {
-      // Check if we're in cooldown period
-      const now = Date.now();
-      if (overrideCooldownRef.current > now) {
-        console.log('⏸️  Thought generation paused (cooldown after override)');
-        return;
-      }
-
-      const currentLocation = agent.position;
-      const currentDestination = agent.currentActivity.includes('to') 
-        ? agent.currentActivity.split('to ')[1]
-        : undefined;
-      
-      const thought = await generateThought(
-        agent, 
-        currentTime, 
-        currentLocation,
-        currentDestination
-      );
-      
-      if (thought) {
-        setCurrentThought(thought.thought);
-        // Set cooldown period: no new thoughts for a while
-        // Convert simulation time to real time based on timeSpeed
-        const realCooldownMs = COOLDOWN_DURATION / (timeSpeed * 60);
-        overrideCooldownRef.current = now + realCooldownMs;
-        
-        const cooldownMinutes = Math.round(COOLDOWN_DURATION / 60000);
-        console.log(`⏸️  Thought generation paused for ${cooldownMinutes} simulation minutes (${Math.round(realCooldownMs/1000)}s real time)`);
-        if (thought.override_routine && thought.desired_action && onSpontaneousAction) {
-          console.log('🎯 Agent wants to do:', thought.desired_action);
-          onSpontaneousAction(thought.desired_action, thought.thought);
-          
-          
-        }
-      }
-    };
-
-    // Generate new thoughts periodically (every 1 minute of simulation time)
-    const thoughtInterval = setInterval(generateNewThought, 120000 / timeSpeed);
-
-    return () => clearInterval(thoughtInterval);
-  }, [agent?.name, timeSpeed, generateThought, onSpontaneousAction]);
 
   // Update popup when thought changes
   useEffect(() => {
