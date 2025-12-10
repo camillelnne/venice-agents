@@ -4,7 +4,7 @@ using OpenAI's gpt-5 with JSON mode.
 
 Usage:
   python generate_personas.py \
-      --input public/data/merchants_dataset.csv \
+      --input public/data/merchants_dataset.parquet \
       --output public/data/personas.json \
       --limit 20 \
       --resume
