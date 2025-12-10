@@ -211,6 +211,10 @@ async def generate_simple_thought(request: SimpleThoughtRequest):
 
 @app.post("/decide-detour", response_model=DetourDecisionResponse)
 async def decide_detour(request: DetourDecisionRequest):
+    
+    if not request.options:
+      return DetourDecisionResponse(choice_id="none", thought=None)
+
     try:
         options_text = "\n".join(
             [
