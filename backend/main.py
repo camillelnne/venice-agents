@@ -12,6 +12,11 @@ load_dotenv()
 
 app = FastAPI(title="Venice Agents Backend")
 
+
+
+MODEL = "gpt-5"
+JSON_FORMAT = {"type": "json_object"}
+
 # CORS middleware to allow frontend requests
 app.add_middleware(
     CORSMiddleware,
@@ -115,13 +120,13 @@ async def generate_thought(request: ThoughtRequest):
             """
         
         response = client.chat.completions.create(
-            model="gpt-4",
+            model=MODEL,
+            response_format=JSON_FORMAT,
             messages=[
                 {"role": "system", "content": "You are a historical simulation assistant helping create authentic 18th century Venetian character thoughts and decisions."},
                 {"role": "user", "content": prompt}
             ],
-            max_tokens=200,
-            temperature=0.8
+
         )
 
         content = response.choices[0].message.content
@@ -169,26 +174,30 @@ async def generate_simple_thought(request: SimpleThoughtRequest):
         {f"- Context: {request.context}" if request.context else ""}
 
         Provide a concise inner thought (1-2 sentences). Do not propose actions, plans, or decisions.
-        Respond only with JSON matching this schema:
-        {{ "thought": "<first person thought>", "agent_name": "{request.agent_name}" }}
+        
+        Respond ONLY with valid JSON matching this schema:
+        {{
+          "thought": "<first person thought here>",
+          "agent_name": "{request.agent_name}"
+        }}
         """
 
         response = client.chat.completions.create(
-            model="gpt-4",
+            model=MODEL,
+            response_format=JSON_FORMAT,
             messages=[
-                {"role": "system", "content": "You are the character, thinking briefly about what is happening. Stay concise and authentic."},
+                {"role": "system", "content": "You are the character, thinking briefly about what is happening. Stay concise and authentic. Return only valid JSON."},
                 {"role": "user", "content": user_prompt},
             ],
-            max_tokens=150,
-            temperature=0.7,
-            response_format={"type": "json_object"},
+
         )
 
         content = response.choices[0].message.content
         print(f"/thought LLM Response: {content}")
+        
         parsed = json.loads(content)
-
         thought = parsed.get("thought", "").strip()
+        
         if not thought:
             thought = content.strip()
 
@@ -228,14 +237,12 @@ async def decide_detour(request: DetourDecisionRequest):
         """
 
         response = client.chat.completions.create(
-            model="gpt-4",
+            model=MODEL,
             messages=[
                 {"role": "system", "content": "You decide on a detour using only the provided options. Pick the most fitting id or 'none'."},
                 {"role": "user", "content": user_prompt},
             ],
-            max_tokens=150,
-            temperature=0.4,
-            response_format={"type": "json_object"},
+            response_format=JSON_FORMAT,
         )
 
         content = response.choices[0].message.content

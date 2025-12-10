@@ -6,7 +6,6 @@ import { useTime } from "@/lib/TimeContext";
 import { useNetwork } from "@/lib/NetworkContext";
 import { useAgent } from "@/hooks/useAgent";
 import { VENICE_BOUNDS_COORDS, VENICE_CENTER, MAP_CONFIG } from "@/lib/constants";
-import { parseLocationFromAction, getLocationCoordinates, parseActionType, getRandomLandmark } from "@/lib/landmarks";
 import TimeDisplay from "@/components/TimeDisplay";
 import NetworkRenderer from "@/components/NetworkRenderer";
 import AgentRenderer from "@/components/AgentRenderer";
@@ -32,60 +31,7 @@ export default function VeniceMap() {
   const { network } = useNetwork();
   
   // Use the new agent hook
-  const { agent, overrideDestination } = useAgent(network, currentTime, isRunning, timeSpeed);
-
-  // Handle spontaneous actions from LLM
-  const handleSpontaneousAction = (action: string, thought: string) => {
-    console.log('🎯 Agent spontaneous action:', { action, thought });
-    
-    // Parse the action to determine what to do
-    const actionType = parseActionType(action);
-    
-    switch (actionType) {
-      case "navigate": {
-        // Try to extract location from action
-        const locationName = parseLocationFromAction(action);
-        
-        if (locationName) {
-          const coordinates = getLocationCoordinates(locationName);
-          if (coordinates) {
-            console.log(`🗺️  Navigating to ${locationName}:`, coordinates);
-            overrideDestination(coordinates, `Visiting ${locationName}`);
-          } else {
-            console.warn(`Location "${locationName}" not found`);
-          }
-        } else {
-          // No specific location found, go to a random landmark
-          console.log("No specific location in action, choosing random landmark");
-          const randomLandmark = getRandomLandmark();
-          console.log(`🎲 Navigating to random location: ${randomLandmark.name}`);
-          overrideDestination(randomLandmark.coordinates, `Visiting ${randomLandmark.name}`);
-        }
-        break;
-      }
-      
-      case "socialize":
-        console.log("💬 Agent wants to socialize");
-        // Future: find nearby agents or social locations -> hard code location of a tavern? find one in data?
-        const coordinates = getLocationCoordinates("Tavern");
-        if (coordinates) {
-          console.log(`🗺️  Navigating to Tavern:`, coordinates);
-          overrideDestination(coordinates, `Visiting Tavern`);
-        }
-        break;
-      
-      case "wander":
-        console.log("🚶 Agent wants to wander");
-        // Pick a random nearby location
-        const randomLandmark = getRandomLandmark();
-        console.log(`🎲 Wandering to: ${randomLandmark.name}`);
-        overrideDestination(randomLandmark.coordinates, `Wandering to ${randomLandmark.name}`);
-        break;
-      
-      default:
-        console.log("❓ Unknown action type, doing nothing");
-    }
-  };
+  const { agent } = useAgent(network, currentTime, isRunning, timeSpeed);
 
   return (
     <MapContainer
@@ -116,7 +62,7 @@ export default function VeniceMap() {
 
       <NetworkRenderer />
 
-      <AgentRenderer agent={agent} onSpontaneousAction={handleSpontaneousAction} />
+      <AgentRenderer agent={agent} />
       
     </MapContainer>
   );
