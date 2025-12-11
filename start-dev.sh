@@ -12,6 +12,19 @@ if [ ! -f .env ]; then
     exit 1
 fi
 
+# Prompt for number of agents
+read -p "How many agents would you like to simulate? (default: 3): " num_agents
+num_agents=${num_agents:-3}
+
+# Validate input
+if ! [[ "$num_agents" =~ ^[0-9]+$ ]] || [ "$num_agents" -lt 1 ]; then
+    echo "⚠️  Invalid number. Using default: 3"
+    num_agents=3
+fi
+
+echo "📊 Starting simulation with $num_agents agent(s)..."
+export NEXT_PUBLIC_NUM_AGENTS=$num_agents
+
 # Start backend in background
 echo "🐍 Starting FastAPI backend..."
 cd backend

@@ -2,14 +2,16 @@
 import { MapContainer, TileLayer } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
+import { useMemo, useState, useEffect } from "react";
 import { useTime } from "@/lib/TimeContext";
 import { useNetwork } from "@/lib/NetworkContext";
-import { useAgent } from "@/hooks/useAgent";
-import { usePois } from "@/hooks/usePois";
+import { useAgents } from "@/hooks/useAgents";
 import { VENICE_BOUNDS_COORDS, VENICE_CENTER, MAP_CONFIG } from "@/lib/constants";
 import TimeDisplay from "@/components/TimeDisplay";
 import NetworkRenderer from "@/components/NetworkRenderer";
 import AgentRenderer from "@/components/AgentRenderer";
+import type { AgentInfo } from "@/hooks/useAgents";
+import type { Persona } from "@/types/persona";
 
 // --- to see marker icons ---
 import icon from 'leaflet/dist/images/marker-icon.png';
@@ -30,10 +32,46 @@ const VENICE_BOUNDS = L.latLngBounds(
 export default function VeniceMap() {
   const { currentTime, isRunning, timeSpeed } = useTime();
   const { network } = useNetwork();
-  const { pois } = usePois();
+  const [personas, setPersonas] = useState<Persona[]>([]);
   
-  // Use the new agent hook
-  const { agent } = useAgent(network, currentTime, isRunning, timeSpeed, pois);
+  // Read number of agents from environment variable
+  const numAgents = useMemo(() => {
+    const envNum = process.env.NEXT_PUBLIC_NUM_AGENTS;
+    const parsed = envNum ? parseInt(envNum, 10) : 3;
+    return isNaN(parsed) || parsed < 1 ? 3 : parsed;
+  }, []);
+
+  // Load personas from JSON
+  useEffect(() => {
+    const loadPersonas = async () => {
+      try {
+        const response = await fetch("/data/personas.json");
+        if (!response.ok) {
+          throw new Error(`Failed to load personas: ${response.status}`);
+        }
+        const data = await response.json();
+        setPersonas(Array.isArray(data) ? data : []);
+      } catch (err) {
+        console.error("Error loading personas:", err);
+        setPersonas([]);
+      }
+    };
+    loadPersonas();
+  }, []);
+
+  // Create agent info array from personas
+  const agentInfos = useMemo<AgentInfo[]>(() => {
+    if (personas.length === 0) return [];
+    
+    // Take the first N personas for our agents
+    return personas.slice(0, numAgents).map((persona, index) => ({
+      id: `agent_${index + 1}`,
+      persona
+    }));
+  }, [personas, numAgents]);
+
+  // Use the multi-agent hook
+  const { agents } = useAgents(agentInfos, network, currentTime, isRunning, timeSpeed);
 
   return (
     <MapContainer
@@ -64,7 +102,7 @@ export default function VeniceMap() {
 
       <NetworkRenderer />
 
-      <AgentRenderer agent={agent} />
+      <AgentRenderer agents={agents} />
       
     </MapContainer>
   );
