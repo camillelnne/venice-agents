@@ -5,7 +5,7 @@ const API_BASE_URL = 'http://localhost:8000';
 export class ApiService {
   static async generateThought(request: ThoughtRequest): Promise<ThoughtResponse> {
     try {
-      const response = await fetch(`${API_BASE_URL}/generate-thought`, {
+      const response = await fetch(`${API_BASE_URL}/thought`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

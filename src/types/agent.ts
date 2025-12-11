@@ -49,16 +49,13 @@ export interface AgentMovement {
 export interface ThoughtRequest {
   agent_name: string;
   current_activity: string;
-  location: string;
+  location_label: string;
   time_of_day: string;
   personality?: string;
   context?: string;
-  current_destination?: string;
 }
 
 export interface ThoughtResponse {
   thought: string;
   agent_name: string;
-  override_routine: boolean;
-  desired_action?: string;
 }

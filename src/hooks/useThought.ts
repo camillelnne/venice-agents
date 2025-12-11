@@ -4,7 +4,7 @@
 
 import { useState, useCallback } from 'react';
 import { ApiService } from '@/lib/api';
-import type { ThoughtRequest, ThoughtResponse, AgentInfo, VeniceCoordinates } from '@/types/agent';
+import type { ThoughtRequest, ThoughtResponse, VeniceCoordinates } from '@/types/agent';
 import { AgentDisplay } from './useAgent';
 
 export function useThoughts() {
@@ -14,8 +14,7 @@ export function useThoughts() {
   const generateThought = useCallback(async (
     agentInfo: AgentDisplay,
     currentTime: Date,
-    location: VeniceCoordinates,
-    currentDestination?: string
+    location: VeniceCoordinates
   ): Promise<ThoughtResponse | null> => {
     if (isGenerating) return null;
 
@@ -28,16 +27,15 @@ export function useThoughts() {
         hour12: false 
       });
 
-      // Convert VeniceCoordinates to location string
-      const locationString = `Venice (${location.lat.toFixed(4)}, ${location.lng.toFixed(4)})`;
+      // Convert VeniceCoordinates to a simple label
+      const locationLabel = `Venice (${location.lat.toFixed(4)}, ${location.lng.toFixed(4)})`;
 
       const request: ThoughtRequest = {
         agent_name: agentInfo.name,
         current_activity: agentInfo.currentActivity,
-        location: locationString,
+        location_label: locationLabel,
         time_of_day: timeString,
         personality: agentInfo.personality,
-        current_destination: currentDestination,
       };
 
       console.log('Sending thought request:', request);
