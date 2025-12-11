@@ -13,7 +13,7 @@ app = FastAPI(title="Venice Agents Backend")
 
 
 
-MODEL = "gpt-5"
+MODEL = "gpt-4o-mini"
 JSON_FORMAT = {"type": "json_object"}
 
 # CORS middleware to allow frontend requests
@@ -85,6 +85,8 @@ async def generate_simple_thought(request: SimpleThoughtRequest):
         response = client.chat.completions.create(
             model=MODEL,
             response_format=JSON_FORMAT,
+            max_tokens=100,
+            temperature=0.8,
             messages=[
                 {"role": "system", "content": "You are the character, thinking briefly about what is happening. Stay concise and authentic. Return only valid JSON."},
                 {"role": "user", "content": user_prompt},

@@ -24,3 +24,20 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Agent tooltip styling */
+.agent-tooltip {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  border: 2px solid #333 !important;
+  border-radius: 4px !important;
+  padding: 8px !important;
+  font-size: 12px !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3) !important;
+  max-width: 250px !important;
+  white-space: normal !important;
+  word-wrap: break-word !important;
+}
+
+.agent-tooltip::before {
+  border-top-color: #333 !important;
+}

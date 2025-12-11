@@ -41,7 +41,7 @@ Your task:
 - The JSON will be parsed by a computer, so strict structure matters.
 
 RULES:
-- Occupation: 1-2 words, according to the shop type and shop category.
+- Occupation: 1-2 words, according to the shop type and shop category. In English.
 - Personality: 1-2 sentences, historically plausible.
 - Routine: Use 05:00-22:00 as main day range.
 - Time granularity: 30-60 minutes.
