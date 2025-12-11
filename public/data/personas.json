@@ -1,18 +1,17 @@
 [
-
   {
-    "name": "Agostin Lazari",
-    "shopType": "(Person) Forger",
-    "shopCategory": "METAL_CRAFT",
+    "name": "Agostin Cigaggia",
+    "shopType": "Cheesemonger",
+    "shopCategory": "FOOD_DRINK",
     "home": {
-      "lat": 45.4385788,
-      "lng": 12.3337764
+      "lat": 45.44378882279249,
+      "lng": 12.325677522959008
     },
     "shop": {
-      "lat": 45.4376523,
-      "lng": 12.3393832
+      "lat": 45.44378882279249,
+      "lng": 12.325677522959008
     },
-    "personality": "Agostin Lazari is a meticulous fabbro, proud of honest iron and the clean ring of a well-set rivet. Devout and frugal, he minds his guild ties and serves gondoliers and spezieri with hinges, nails, and tools.",
+    "personality": "Methodical and plain-spoken, he prides himself on honest weights and careful curing of cheeses from the terraferma. Devout yet sociable near San Moisè, he keeps a thrifty house and cultivates steady ties with cooks and tavern keepers.",
     "dailyRoutine": [
       {
         "startTime": "05:00",
@@ -21,11 +20,6 @@
       },
       {
         "startTime": "05:30",
-        "endTime": "06:00",
-        "type": "TRAVEL_TO_SHOP"
-      },
-      {
-        "startTime": "06:00",
         "endTime": "09:00",
         "type": "SHOP"
       },
@@ -36,13 +30,8 @@
       },
       {
         "startTime": "09:30",
-        "endTime": "12:00",
-        "type": "SHOP"
-      },
-      {
-        "startTime": "12:00",
         "endTime": "12:30",
-        "type": "TRAVEL_HOME"
+        "type": "SHOP"
       },
       {
         "startTime": "12:30",
@@ -51,36 +40,26 @@
       },
       {
         "startTime": "13:30",
-        "endTime": "14:00",
-        "type": "TRAVEL_TO_SHOP"
-      },
-      {
-        "startTime": "14:00",
-        "endTime": "18:00",
+        "endTime": "16:30",
         "type": "SHOP"
       },
       {
-        "startTime": "18:00",
-        "endTime": "18:30",
+        "startTime": "16:30",
+        "endTime": "17:00",
         "type": "FREE_TIME"
       },
       {
-        "startTime": "18:30",
-        "endTime": "19:00",
-        "type": "TRAVEL_HOME"
+        "startTime": "17:00",
+        "endTime": "20:00",
+        "type": "SHOP"
       },
       {
-        "startTime": "19:00",
+        "startTime": "20:00",
         "endTime": "21:00",
-        "type": "HOME"
+        "type": "FREE_TIME"
       },
       {
         "startTime": "21:00",
-        "endTime": "21:30",
-        "type": "FREE_TIME"
-      },
-      {
-        "startTime": "21:30",
         "endTime": "22:00",
         "type": "HOME"
       }

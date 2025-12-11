@@ -1,10 +1,10 @@
 """
-Generate agent personas and daily routines from merchants_dataset.csv
+Generate agent personas and daily routines from merchants_dataset.parquet
 using OpenAI's gpt-5 with JSON mode.
 
 Usage:
   python generate_personas.py \
-      --input public/data/merchants_dataset.csv \
+      --input public/data/merchants_dataset.parquet \
       --output public/data/personas.json \
       --limit 20 \
       --resume
@@ -41,9 +41,10 @@ Your task:
 - The JSON will be parsed by a computer, so strict structure matters.
 
 RULES:
-- Personality: 1–2 sentences, historically plausible.
-- Routine: Use 05:00–22:00 as main day range.
-- Time granularity: 30–60 minutes.
+- Occupation: 1-2 words, according to the shop type and shop category.
+- Personality: 1-2 sentences, historically plausible.
+- Routine: Use 05:00-22:00 as main day range.
+- Time granularity: 30-60 minutes.
 - Activity types (MUST match EXACTLY):
     "HOME"
     "SHOP"
@@ -57,6 +58,7 @@ OUTPUT:
 Return ONLY valid JSON with this schema:
 
 {
+	"occupation": "string",
   "personality": "string",
   "dailyRoutine": [
     {
@@ -151,7 +153,7 @@ def generate_persona(client: OpenAI, row: Dict[str, str]) -> Optional[AgentPerso
     House coordinates: [{house_lat}, {house_lng}]
     Shop coordinates: [{shop_lat}, {shop_lng}]
 
-    Generate a historically plausible personality + daily routine.
+    Generate a historically plausible profession + personality + daily routine.
     """
 
     # attempt to generate persona up to 3 times
@@ -168,6 +170,7 @@ def generate_persona(client: OpenAI, row: Dict[str, str]) -> Optional[AgentPerso
 
             content = completion.choices[0].message.content
             data = json.loads(content)
+            occupation = data["occupation"]
             personality = data["personality"]
             routine = [DailyActivity(**x) for x in data["dailyRoutine"]]
 
@@ -182,7 +185,7 @@ def generate_persona(client: OpenAI, row: Dict[str, str]) -> Optional[AgentPerso
 
             persona = AgentPersona(
                 name=person,
-                shopType=shop_type,
+                shopType=occupation,
                 shopCategory=shop_category,
                 home={"lat": house_lat, "lng": house_lng},
                 shop={"lat": shop_lat, "lng": shop_lng},

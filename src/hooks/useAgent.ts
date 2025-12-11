@@ -234,7 +234,7 @@ export function useAgent(
         activity = "At home";
         break;
       case "SHOP":
-        activity = `Working at ${agentState.persona.shopType}`;
+        activity = "Working";
         break;
       case "TRAVEL_TO_SHOP":
         activity = "Traveling to shop";
