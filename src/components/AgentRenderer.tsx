@@ -30,19 +30,35 @@ export default function AgentRenderer({ agents }: AgentRendererProps) {
   const map = useMap();
   const markersRef = useRef<Map<string, L.CircleMarker>>(new Map());
   const pathsRef = useRef<Map<string, L.Polyline>>(new Map());
-  const tooltipsRef = useRef<Map<string, L.Tooltip>>(new Map()); // Store tooltip references
+  const tooltipsRef = useRef<Map<string, L.Tooltip>>(new Map());
   const lastPathLengthsRef = useRef<Map<string, number>>(new Map());
   const hasInitializedRef = useRef(false);
-  const { generateThought, isGenerating } = useThoughts();
-  const [currentThoughts, setCurrentThoughts] = useState<Map<string, string>>(new Map());
+  const { generateThought } = useThoughts();
+  
+  // Track generated thoughts per agent (non-detour thoughts)
+  const [generatedThoughts, setGeneratedThoughts] = useState<Map<string, string>>(new Map());
+  
+  // Track last activity per agent
+  const lastActivityRef = useRef<Map<string, string>>(new Map());
+  
   const { currentTime } = useTime();
 
   // Add a ref to track tooltip visibility state
   const tooltipVisibilityRef = useRef<Map<string, boolean>>(new Map());
 
-  // Function to update popup content for a specific agent
-  const updatePopup = useCallback((agentId: string, agent: AgentDisplay) => {
-    const thought = currentThoughts.get(agentId) || "";
+  // Function to get current thought for an agent (prioritize detour thought)
+  const getCurrentThought = useCallback((agent: AgentDisplay): string => {
+    // Prioritize detour thought if it exists
+    if (agent.detourThought) {
+      return agent.detourThought;
+    }
+    // Fall back to generated thought
+    return generatedThoughts.get(agent.id) || "";
+  }, [generatedThoughts]);
+
+  // Function to update tooltip content for a specific agent
+  const updateTooltip = useCallback((agentId: string, agent: AgentDisplay) => {
+    const thought = getCurrentThought(agent);
     const tooltipContent = `
       <div style="min-width: 200px;">
         <strong>${agent.name}</strong><br/>
@@ -65,11 +81,19 @@ export default function AgentRenderer({ agents }: AgentRendererProps) {
     if (tooltip) {
       tooltip.setContent(tooltipContent);
     }
-  }, [currentThoughts]);
+  }, [getCurrentThought]);
 
-  // Generate thoughts for agents when their activity changes
+  // Generate thoughts for agents when their activity changes (but only if no detour thought)
   useEffect(() => {
     agents.forEach(async (agent) => {
+      // Skip if activity hasn't changed
+      const lastActivity = lastActivityRef.current.get(agent.id);
+      if (agent.currentActivity === lastActivity) return;
+      lastActivityRef.current.set(agent.id, agent.currentActivity);
+      
+      // Skip thought generation if we have a detour thought
+      if (agent.detourThought) return;
+
       const generateNewThought = async () => {
         const thought = await generateThought(
           agent, 
@@ -78,7 +102,7 @@ export default function AgentRenderer({ agents }: AgentRendererProps) {
         );
         
         if (thought) {
-          setCurrentThoughts(prev => {
+          setGeneratedThoughts(prev => {
             const next = new Map(prev);
             next.set(agent.id, thought.thought);
             return next;
@@ -88,14 +112,14 @@ export default function AgentRenderer({ agents }: AgentRendererProps) {
 
       generateNewThought();
     });
-  }, [agents.map(a => `${a.id}:${a.currentActivity}`).join("|")]);
+  }, [agents.map(a => `${a.id}:${a.currentActivity}`).join("|"), currentTime, generateThought]);
 
-  // Update popups when thoughts change
+  // Update tooltips when thoughts change
   useEffect(() => {
     agents.forEach(agent => {
-      updatePopup(agent.id, agent);
+      updateTooltip(agent.id, agent);
     });
-  }, [agents, currentThoughts, updatePopup]);
+  }, [agents, generatedThoughts, updateTooltip]);
 
   // Main effect to render and update agents
   useEffect(() => {
@@ -108,6 +132,7 @@ export default function AgentRenderer({ agents }: AgentRendererProps) {
         markersRef.current.delete(agentId);
         tooltipsRef.current.delete(agentId);
         tooltipVisibilityRef.current.delete(agentId);
+        lastActivityRef.current.delete(agentId);
       }
     });
 
@@ -138,20 +163,30 @@ export default function AgentRenderer({ agents }: AgentRendererProps) {
           fillOpacity: 0.8,
         }).addTo(map);
         
+        const thought = getCurrentThought(agent);
+        
         // Create and store tooltip
         const tooltip = L.tooltip({
-          permanent: true,  // Always visible (until we toggle it)
-          direction: 'top',  // Position above marker
-          className: 'agent-tooltip',  // Custom CSS class
-          offset: [0, -10]  // Offset from marker
+          permanent: true,
+          direction: 'top',
+          className: 'agent-tooltip',
+          offset: [0, -10]
         }).setContent(`
-          <strong>${agent.name}</strong><br/>
-          <em>${agent.shopType}</em><br/>
-          ${agent.currentActivity}
+          <div style="min-width: 200px;">
+            <strong>${agent.name}</strong><br/>
+            <em>${agent.shopType}</em><br/>
+            <strong>Activity:</strong> ${agent.currentActivity}<br/>
+            ${thought ? `
+              <hr style="margin: 8px 0;">
+              <div style="font-style: italic; color: #666; font-size: 0.9em;">
+                💭 "${thought}"
+              </div>
+            ` : ''}
+          </div>
         `);
         
         marker.bindTooltip(tooltip);
-        tooltipsRef.current.set(agent.id, tooltip); // Store tooltip reference
+        tooltipsRef.current.set(agent.id, tooltip);
         
         // Initialize as visible
         tooltipVisibilityRef.current.set(agent.id, true);
@@ -177,7 +212,6 @@ export default function AgentRenderer({ agents }: AgentRendererProps) {
         markersRef.current.set(agent.id, marker);
 
         if (!hasInitializedRef.current && index === 0) {
-          //map.setView(agent.position, 17);
           hasInitializedRef.current = true;
         }
       } else {
@@ -211,7 +245,7 @@ export default function AgentRenderer({ agents }: AgentRendererProps) {
         lastPathLengthsRef.current.set(agent.id, 0);
       }
     });
-  }, [agents, map]);
+  }, [agents, map, getCurrentThought]);
 
   // Cleanup on unmount
   useEffect(() => {
@@ -223,8 +257,9 @@ export default function AgentRenderer({ agents }: AgentRendererProps) {
       tooltipsRef.current.clear();
       tooltipVisibilityRef.current.clear();
       lastPathLengthsRef.current.clear();
+      lastActivityRef.current.clear();
     };
   }, []);
 
-  return null; // This component doesn't render React elements
+  return null;
 }

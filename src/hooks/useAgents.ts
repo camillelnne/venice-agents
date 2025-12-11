@@ -23,6 +23,7 @@ export interface AgentDisplay {
   shopType: string;
   currentActivity: string;
   personality: string;
+  detourThought?: string;
 }
 
 export interface AgentInfo {

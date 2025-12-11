@@ -31,7 +31,8 @@ export interface AgentDisplay {
   name: string;
   shopType: string;
   currentActivity: string;
-  personality: string
+  personality: string;
+  detourThought?: string; // Thought from detour decision
 }
 
 const parseTimeToMinutes = (timeStr: string): number => {
@@ -381,6 +382,7 @@ export function useAgent(
           pathProgress: 0,
           spontaneousEndTime: simMinutes + dwellMinutes,
           spontaneousActivity: poi.label,
+          detourThought: resp.thought || undefined, // Store detour thought
         });
 
         if (resp.thought) {
@@ -566,7 +568,8 @@ export function useAgent(
       name: agentState.persona.name,
       shopType: agentState.persona.shopType,
       currentActivity: activity,
-      personality: agentState.persona.personality
+      personality: agentState.persona.personality,
+      detourThought: agentState.detourThought
     };
   }, [agentState, network]);
 
