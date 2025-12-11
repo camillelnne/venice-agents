@@ -38,35 +38,35 @@
     "id": "poi_0006",
     "lat": 45.430100806104335,
     "lng": 12.328912670617767,
-    "type": "CASA",
+    "type": "SCUOLA",
     "label": "case dispensate gratis dalla scola della Misericordia"
   },
   {
     "id": "poi_0007",
     "lat": 45.438862098451125,
     "lng": 12.328127735044067,
-    "type": "CASA",
+    "type": "PISTORIA",
     "label": "Casa, e Pistoria"
   },
   {
     "id": "poi_0008",
     "lat": 45.43894773439285,
     "lng": 12.32954174039531,
-    "type": "CASA",
+    "type": "FORNO",
     "label": "Casa, e Forno"
   },
   {
     "id": "poi_0009",
     "lat": 45.43897482306894,
     "lng": 12.329587374496745,
-    "type": "CASA",
+    "type": "FORNO",
     "label": "Casa, e Forno"
   },
   {
     "id": "poi_0010",
     "lat": 45.43898851691364,
     "lng": 12.329616581730033,
-    "type": "CASA",
+    "type": "FORNO",
     "label": "Casa, e Forno"
   },
   {
@@ -101,7 +101,7 @@
     "id": "poi_0015",
     "lat": 45.43461643175736,
     "lng": 12.330683692026149,
-    "type": "CASA",
+    "type": "LOCANDA",
     "label": "Casa, Locanda"
   },
   {
@@ -122,7 +122,7 @@
     "id": "poi_0018",
     "lat": 45.435329041432276,
     "lng": 12.330346316220641,
-    "type": "CASA",
+    "type": "TEATRO",
     "label": "Casa nel Teatro data per l'amore d'Iddio"
   },
   {
@@ -157,28 +157,28 @@
     "id": "poi_0023",
     "lat": 45.434321691404406,
     "lng": 12.333726885754745,
-    "type": "CASA",
+    "type": "LOCANDA",
     "label": "Casa Locanda Nova Consorti"
   },
   {
     "id": "poi_0024",
     "lat": 45.434303161401054,
     "lng": 12.333747659871575,
-    "type": "CASA",
+    "type": "LOCANDA",
     "label": "Casa Locanda Nova Consorti"
   },
   {
     "id": "poi_0025",
     "lat": 45.43428153276523,
     "lng": 12.333764315545453,
-    "type": "CASA",
+    "type": "LOCANDA",
     "label": "Casa Locanda Nova Consorti"
   },
   {
     "id": "poi_0026",
     "lat": 45.43426277055975,
     "lng": 12.333775150172544,
-    "type": "CASA",
+    "type": "LOCANDA",
     "label": "Casa Locanda Consorti"
   },
   {
@@ -199,7 +199,7 @@
     "id": "poi_0029",
     "lat": 45.43382314022119,
     "lng": 12.333256686508069,
-    "type": "CASA",
+    "type": "FORNO",
     "label": "Casa e Forno"
   },
   {
@@ -220,7 +220,7 @@
     "id": "poi_0032",
     "lat": 45.4358154468867,
     "lng": 12.345170414622899,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa con horto"
   },
   {
@@ -234,28 +234,28 @@
     "id": "poi_0034",
     "lat": 45.43554104625057,
     "lng": 12.346807220379686,
-    "type": "CASA",
+    "type": "FORNO",
     "label": "Casa e forno"
   },
   {
     "id": "poi_0035",
     "lat": 45.4356693217731,
     "lng": 12.34719535249671,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa sive palazo con horto"
   },
   {
     "id": "poi_0036",
     "lat": 45.43582387785354,
     "lng": 12.34612921739396,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa son horto"
   },
   {
     "id": "poi_0037",
     "lat": 45.43592834658978,
     "lng": 12.346188928983022,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa con horto di ragione e per suo uso"
   },
   {
@@ -269,14 +269,14 @@
     "id": "poi_0039",
     "lat": 45.43533259396457,
     "lng": 12.346276274805989,
-    "type": "PALAZZO",
+    "type": "ORTO",
     "label": "Palazzo con horto di loro ragione e per loro uso"
   },
   {
     "id": "poi_0040",
     "lat": 45.43703544952363,
     "lng": 12.331343152026744,
-    "type": "CASA",
+    "type": "FORNO",
     "label": "casa, forno e inviamento"
   },
   {
@@ -318,7 +318,7 @@
     "id": "poi_0046",
     "lat": 45.43838894360293,
     "lng": 12.332570366764479,
-    "type": "CASA",
+    "type": "FORNO",
     "label": "casa e forno"
   },
   {
@@ -332,7 +332,7 @@
     "id": "poi_0048",
     "lat": 45.43833790397239,
     "lng": 12.333331482487011,
-    "type": "OGLIO",
+    "type": "OGLIO,MANDOLER",
     "label": "bottega olio da mandoler in calle del figher ora inclusa nella casa"
   },
   {
@@ -353,7 +353,7 @@
     "id": "poi_0051",
     "lat": 45.44316784674506,
     "lng": 12.336846050562471,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa tenuta con orto"
   },
   {
@@ -437,14 +437,14 @@
     "id": "poi_0063",
     "lat": 45.44127559536651,
     "lng": 12.337975409853723,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa con Orto"
   },
   {
     "id": "poi_0064",
     "lat": 45.44143296066109,
     "lng": 12.33815879603742,
-    "type": "CASA",
+    "type": "FORNO",
     "label": "Casa con Forno"
   },
   {
@@ -885,7 +885,7 @@
     "id": "poi_0127",
     "lat": 45.43966070401719,
     "lng": 12.336542814195086,
-    "type": "CASA",
+    "type": "LOCANDA",
     "label": "Due case di Locanda"
   },
   {
@@ -976,14 +976,14 @@
     "id": "poi_0140",
     "lat": 45.43971923487513,
     "lng": 12.337159147352457,
-    "type": "NARANZER",
+    "type": "NARANZER,ERBARIOL",
     "label": "Bottega di naranzer e posto di erbariol"
   },
   {
     "id": "poi_0141",
     "lat": 45.43961640875597,
     "lng": 12.337085679288212,
-    "type": "CALZE",
+    "type": "CALZE,PIRIER",
     "label": "Bottega di Calze con altra bottega di Pirier e Apartamento di sopra"
   },
   {
@@ -1046,14 +1046,14 @@
     "id": "poi_0150",
     "lat": 45.43900202899004,
     "lng": 12.327779239085869,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa con orto"
   },
   {
     "id": "poi_0151",
     "lat": 45.43911104236182,
     "lng": 12.328373287192791,
-    "type": "LOCO",
+    "type": "SCUOLA",
     "label": "Luoco a pepian serve per scuola di devozione"
   },
   {
@@ -1298,7 +1298,7 @@
     "id": "poi_0186",
     "lat": 45.43379647274654,
     "lng": 12.323734723050425,
-    "type": "CASA",
+    "type": "FORNO",
     "label": "casa e forno due terzi propri"
   },
   {
@@ -1410,7 +1410,7 @@
     "id": "poi_0202",
     "lat": 45.433564608737534,
     "lng": 12.325333430976428,
-    "type": "SPECIER",
+    "type": "SPECIER,CONFETTI",
     "label": "casa e bottega da specier da confetti"
   },
   {
@@ -1536,7 +1536,7 @@
     "id": "poi_0220",
     "lat": 45.43528530754052,
     "lng": 12.33270521152943,
-    "type": "CASA",
+    "type": "FORNO",
     "label": "Casa e Forno"
   },
   {
@@ -1620,7 +1620,7 @@
     "id": "poi_0232",
     "lat": 45.43768729370562,
     "lng": 12.336213614268619,
-    "type": "CASA",
+    "type": "OSTERIA",
     "label": "Casa e osteria"
   },
   {
@@ -1711,7 +1711,7 @@
     "id": "poi_0245",
     "lat": 45.432350494132706,
     "lng": 12.32113894565898,
-    "type": "CASA",
+    "type": "FORNO",
     "label": "due case e forno"
   },
   {
@@ -1879,28 +1879,28 @@
     "id": "poi_0269",
     "lat": 45.43500195165709,
     "lng": 12.339074410808376,
-    "type": "CASA",
+    "type": "CASINO",
     "label": "casa grande in nove soleri, parte vuota, parte affittata a casino"
   },
   {
     "id": "poi_0270",
     "lat": 45.43501877700055,
     "lng": 12.33906474116974,
-    "type": "CASA",
+    "type": "CASINO",
     "label": "Altra parte della casa grande in nove soleri,parte vuota,parte affittata a casin"
   },
   {
     "id": "poi_0271",
     "lat": 45.43503202501497,
     "lng": 12.339053462372563,
-    "type": "CASA",
+    "type": "CASINO",
     "label": "Altra parte della casa grande in nove soleri,parte vuota,parte affittata a casin"
   },
   {
     "id": "poi_0272",
     "lat": 45.435047850173056,
     "lng": 12.339044036278171,
-    "type": "CASA",
+    "type": "CASINO",
     "label": "Altra parte della casa grande in nove soleri,parte vuota,parte affittata a casin"
   },
   {
@@ -2096,7 +2096,7 @@
     "id": "poi_0300",
     "lat": 45.44023489216167,
     "lng": 12.33880034064746,
-    "type": "CASA",
+    "type": "FORNO",
     "label": "casa e forno"
   },
   {
@@ -2523,7 +2523,7 @@
     "id": "poi_0361",
     "lat": 45.43909295968014,
     "lng": 12.321568953101636,
-    "type": "CASA",
+    "type": "FORNO",
     "label": "Altra metà di casa con il fondo del Forno"
   },
   {
@@ -2565,7 +2565,7 @@
     "id": "poi_0367",
     "lat": 45.43604506272284,
     "lng": 12.318334409645212,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa con orto"
   },
   {
@@ -2614,14 +2614,14 @@
     "id": "poi_0374",
     "lat": 45.43816330291274,
     "lng": 12.321269779151296,
-    "type": "CASA",
+    "type": "SCUOLA",
     "label": "Dieci case pagavano una volta dodeci ducati l'una, ora sono date dalla istessa scola a fratelli poveri della medema gratis"
   },
   {
     "id": "poi_0375",
     "lat": 45.43814430105069,
     "lng": 12.321279265684703,
-    "type": "CASA",
+    "type": "SCUOLA",
     "label": "Dieci case pagavano una volta dodeci ducati l'una, ora sono date dalla istessa scola a fratelli poveri della medema gratis"
   },
   {
@@ -2684,7 +2684,7 @@
     "id": "poi_0384",
     "lat": 45.43886068312188,
     "lng": 12.330778925961871,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "casa con orto"
   },
   {
@@ -2936,7 +2936,7 @@
     "id": "poi_0420",
     "lat": 45.44004148474118,
     "lng": 12.333562383939912,
-    "type": "SPECIER",
+    "type": "SPECIER,CONFETTI",
     "label": "bottega da spetier da confetti"
   },
   {
@@ -2950,7 +2950,7 @@
     "id": "poi_0422",
     "lat": 45.44002804101259,
     "lng": 12.333595321237171,
-    "type": "CONFETTI",
+    "type": "CONFETTI,OGLIO",
     "label": "bottega da oglio e confetti"
   },
   {
@@ -3195,7 +3195,7 @@
     "id": "poi_0457",
     "lat": 45.43998443882607,
     "lng": 12.332307254717412,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "casa con orto appartato"
   },
   {
@@ -3468,7 +3468,7 @@
     "id": "poi_0496",
     "lat": 45.43360816472315,
     "lng": 12.334043654167091,
-    "type": "CASA",
+    "type": "OSPIZIO",
     "label": "Casa fatta ospitio"
   },
   {
@@ -4047,7 +4047,7 @@
   },
   {
     "id": "poi_0579",
-    "lat": 45.44272857662573,
+    "lat": 45.44272857662574,
     "lng": 12.332472440767438,
     "type": "FABRO",
     "label": "Casa, e Bottega da Fabro"
@@ -4056,7 +4056,7 @@
     "id": "poi_0580",
     "lat": 45.4426813191003,
     "lng": 12.332129276968441,
-    "type": "MEDICINE",
+    "type": "MEDICINE,SPECIER",
     "label": "Casa, e Bottega da Spicier da Medicine"
   },
   {
@@ -4266,7 +4266,7 @@
     "id": "poi_0610",
     "lat": 45.44331809427793,
     "lng": 12.332484807332571,
-    "type": "CASA",
+    "type": "FORNO",
     "label": "Casa e Forno"
   },
   {
@@ -4287,7 +4287,7 @@
     "id": "poi_0613",
     "lat": 45.43411271567293,
     "lng": 12.344590587391902,
-    "type": "TENTOR",
+    "type": "TENTOR,SARTOR",
     "label": "Bottega di tentoria con mezzato e bottega di sartor"
   },
   {
@@ -4343,7 +4343,7 @@
     "id": "poi_0621",
     "lat": 45.43403044010426,
     "lng": 12.345237951384965,
-    "type": "ZAVATER",
+    "type": "ZAVATER,SCALETER",
     "label": "Casa e bottega di scaletter e botteghin di zavatter"
   },
   {
@@ -4406,7 +4406,7 @@
     "id": "poi_0630",
     "lat": 45.43403154623544,
     "lng": 12.34548219398646,
-    "type": "TABACCO",
+    "type": "TABACCO,STIORE",
     "label": "Bottega di stiore con altra di tabacco"
   },
   {
@@ -4427,7 +4427,7 @@
     "id": "poi_0633",
     "lat": 45.433933816024364,
     "lng": 12.346299841916702,
-    "type": "MEDICINE",
+    "type": "MEDICINE,SPECIER,CONFETTI",
     "label": "Case due e bottega da spicier da confetti con altra da medicina"
   },
   {
@@ -4448,7 +4448,7 @@
     "id": "poi_0636",
     "lat": 45.43393316240801,
     "lng": 12.346404956319086,
-    "type": "SPECIER",
+    "type": "SPECIER,CONFETTI,LINARIOL",
     "label": "Casa e bottega da spicier da confetti con altra di linarol"
   },
   {
@@ -4518,7 +4518,7 @@
     "id": "poi_0646",
     "lat": 45.433868735023815,
     "lng": 12.346967637178277,
-    "type": "SPECIER",
+    "type": "SPECIER,CONFETTI",
     "label": "Bottega di spicier da confetti"
   },
   {
@@ -4616,14 +4616,14 @@
     "id": "poi_0660",
     "lat": 45.43379773756712,
     "lng": 12.34742703558276,
-    "type": "BARBIER",
+    "type": "BARBIER,ACQUAVITA",
     "label": "Casa e bottega d'acquavita con bottega di barbier alla Scoazzera"
   },
   {
     "id": "poi_0661",
     "lat": 45.43380850675868,
     "lng": 12.347431451637199,
-    "type": "BARBIER",
+    "type": "BARBIER,ACQUAVITA",
     "label": "Casa e bottega d'acquavita con bottega di barbier alla Scoazzera"
   },
   {
@@ -4756,7 +4756,7 @@
     "id": "poi_0680",
     "lat": 45.43394695164881,
     "lng": 12.347512022852666,
-    "type": "CALEGHER",
+    "type": "CALEGHER,SARTOR",
     "label": "Casa e bottega di calegher con bottega di sartor"
   },
   {
@@ -4833,7 +4833,7 @@
     "id": "poi_0691",
     "lat": 45.43491885193013,
     "lng": 12.347798020565781,
-    "type": "MEDICINE",
+    "type": "MEDICINE,SPECIER",
     "label": "Casa e bottega specier da medicina"
   },
   {
@@ -4868,7 +4868,7 @@
     "id": "poi_0696",
     "lat": 45.43494360892808,
     "lng": 12.347297356338299,
-    "type": "PIGNATER",
+    "type": "PIGNATER,FORNACE",
     "label": "Casa e bottega con fornase da pignatter da affittar"
   },
   {
@@ -4987,7 +4987,7 @@
     "id": "poi_0713",
     "lat": 45.43511624484675,
     "lng": 12.345431075217062,
-    "type": "CASETTA",
+    "type": "CANEVA",
     "label": "Due casette tenute per uso di caneva"
   },
   {
@@ -5015,7 +5015,7 @@
     "id": "poi_0717",
     "lat": 45.43941815781808,
     "lng": 12.336663599917038,
-    "type": "SCULTOR",
+    "type": "SCULTOR,VIN",
     "label": "magazen vino alla bottega di scultor"
   },
   {
@@ -5057,14 +5057,14 @@
     "id": "poi_0723",
     "lat": 45.44171974974338,
     "lng": 12.327957678929051,
-    "type": "CASA",
+    "type": "FORNO",
     "label": "casa e forno"
   },
   {
     "id": "poi_0724",
     "lat": 45.44180952329439,
     "lng": 12.328817584953562,
-    "type": "CASA",
+    "type": "FONDACO",
     "label": "casa del guardiano del fontego de Turchi"
   },
   {
@@ -5190,7 +5190,7 @@
     "id": "poi_0742",
     "lat": 45.43816742905708,
     "lng": 12.335529317895045,
-    "type": "BECCARIA",
+    "type": "BECCARIA,SARTOR",
     "label": "Bottega da Sartor, Becher e Strassarol"
   },
   {
@@ -5351,7 +5351,7 @@
     "id": "poi_0765",
     "lat": 45.43849650432271,
     "lng": 12.335351770921488,
-    "type": "SPECIER",
+    "type": "SPECIER,CONFETTI",
     "label": "Bottega da Spicier da Confetti"
   },
   {
@@ -5365,7 +5365,7 @@
     "id": "poi_0767",
     "lat": 45.4386293865083,
     "lng": 12.335438450395525,
-    "type": "ORSIN",
+    "type": "ORSIN,NODARO",
     "label": "Bottega da Orsin e Scancello da Nodaro"
   },
   {
@@ -5456,21 +5456,21 @@
     "id": "poi_0780",
     "lat": 45.438857760652,
     "lng": 12.335443679976878,
-    "type": "SALUMIER",
+    "type": "SALUMIER,BOTIRO",
     "label": "Botteghe due In una da Salumier e Buttiro"
   },
   {
     "id": "poi_0781",
     "lat": 45.43883886989021,
     "lng": 12.335470149513283,
-    "type": "SALUMIER",
+    "type": "SALUMIER,BOTIRO",
     "label": "Bottega Salumier e Buttiro"
   },
   {
     "id": "poi_0782",
     "lat": 45.438825465080754,
     "lng": 12.335500197567857,
-    "type": "SALUMIER",
+    "type": "SALUMIER,BOTIRO",
     "label": "Bottega Salumier, e Buttiro"
   },
   {
@@ -5575,7 +5575,7 @@
     "id": "poi_0797",
     "lat": 45.43907737198629,
     "lng": 12.33547852592359,
-    "type": "SALUMIER",
+    "type": "SALUMIER,BOTIRO",
     "label": "Bottega Buttiro, e Salumier"
   },
   {
@@ -5806,7 +5806,7 @@
     "id": "poi_0830",
     "lat": 45.43937632850066,
     "lng": 12.335018691258234,
-    "type": "SALUMIER",
+    "type": "SALUMIER,BATTIORO",
     "label": "Bottega da Battioro e Salumier"
   },
   {
@@ -6079,7 +6079,7 @@
     "id": "poi_0869",
     "lat": 45.43950992211324,
     "lng": 12.33464235520407,
-    "type": "NARANZER",
+    "type": "NARANZER,SALUMIER",
     "label": "Bottega divisa in due da naranzer e da salumier"
   },
   {
@@ -6317,19 +6317,19 @@
     "id": "poi_0903",
     "lat": 45.43917570448653,
     "lng": 12.334810015131204,
-    "type": "SPECIER",
+    "type": "SPECIER,CONFETTI",
     "label": "Botega da Specier da confetti"
   },
   {
     "id": "poi_0904",
     "lat": 45.439184983699,
     "lng": 12.334821661605796,
-    "type": "SPECIER",
+    "type": "SPECIER,CONFETTI",
     "label": "Botega da Specier da confetti"
   },
   {
     "id": "poi_0905",
-    "lat": 45.43919629548121,
+    "lat": 45.43919629548122,
     "lng": 12.334834633925977,
     "type": "GALINER",
     "label": "Botega da Galiner"
@@ -6408,14 +6408,14 @@
     "id": "poi_0916",
     "lat": 45.43887339438055,
     "lng": 12.335385792050111,
-    "type": "VOLTA",
+    "type": "BANCO",
     "label": "Volte numero 7 servono per libri banco del Giro"
   },
   {
     "id": "poi_0917",
     "lat": 45.43885898408172,
     "lng": 12.335368700846267,
-    "type": "VOLTA",
+    "type": "BANCO",
     "label": "Volte numero 6 Archivio del Banco del Giro"
   },
   {
@@ -7486,7 +7486,7 @@
     "id": "poi_1070",
     "lat": 45.43864562313644,
     "lng": 12.334653121121319,
-    "type": "BUTTADOR",
+    "type": "BUTTADOR,ORESE",
     "label": "bottega da butador d'orese"
   },
   {
@@ -8060,14 +8060,14 @@
     "id": "poi_1152",
     "lat": 45.44191850473686,
     "lng": 12.322357063994628,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "casa a pepian e orto"
   },
   {
     "id": "poi_1153",
     "lat": 45.441934240093666,
     "lng": 12.322391652246425,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "casa a pepian e orto nella stessa cereria"
   },
   {
@@ -8081,7 +8081,7 @@
     "id": "poi_1155",
     "lat": 45.44186022051056,
     "lng": 12.322901934868254,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "casa grande con orto"
   },
   {
@@ -8116,28 +8116,28 @@
     "id": "poi_1160",
     "lat": 45.44232000273588,
     "lng": 12.32314365840953,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "casa in soler con orto"
   },
   {
     "id": "poi_1161",
     "lat": 45.44227286416256,
     "lng": 12.323391204279265,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "casa in soler e orto"
   },
   {
     "id": "poi_1162",
     "lat": 45.44242145978843,
     "lng": 12.32369712592106,
-    "type": "MEDICINE",
+    "type": "MEDICINE,SPECIER",
     "label": "bottega da specier da medicine"
   },
   {
     "id": "poi_1163",
     "lat": 45.442189367373835,
     "lng": 12.324005160974405,
-    "type": "CASA",
+    "type": "FORNO",
     "label": "casa in soler con forno"
   },
   {
@@ -8228,7 +8228,7 @@
     "id": "poi_1176",
     "lat": 45.44248113426845,
     "lng": 12.324150862007562,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "casa in soler con orto"
   },
   {
@@ -8256,7 +8256,7 @@
     "id": "poi_1180",
     "lat": 45.44261881027658,
     "lng": 12.324339692806035,
-    "type": "CASA",
+    "type": "SCUOLA",
     "label": "diverse case date gratis dalla Scola di San Marco"
   },
   {
@@ -8347,7 +8347,7 @@
     "id": "poi_1193",
     "lat": 45.443245834876656,
     "lng": 12.32508434857486,
-    "type": "SPECIER",
+    "type": "SPECIER,CONFETTI",
     "label": "bottega da specier de confetture e casa in soler"
   },
   {
@@ -8368,7 +8368,7 @@
     "id": "poi_1196",
     "lat": 45.44340759808447,
     "lng": 12.324830368421187,
-    "type": "MERCANTE",
+    "type": "MERCANTE,SEDA",
     "label": "bottega da mercante da seda"
   },
   {
@@ -8403,7 +8403,7 @@
     "id": "poi_1201",
     "lat": 45.44343243726862,
     "lng": 12.32507148473334,
-    "type": "MEDICINE",
+    "type": "MEDICINE,SPECIER",
     "label": "casa in soler e bottega da specier da medicine"
   },
   {
@@ -8452,7 +8452,7 @@
     "id": "poi_1208",
     "lat": 45.443964599604776,
     "lng": 12.324338615779169,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "casa in soler con orto"
   },
   {
@@ -8473,7 +8473,7 @@
     "id": "poi_1211",
     "lat": 45.44412758870544,
     "lng": 12.324227929568643,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "casa in soler e orto"
   },
   {
@@ -8487,7 +8487,7 @@
     "id": "poi_1213",
     "lat": 45.44254075912579,
     "lng": 12.322746307416551,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "casa con orto a pepian"
   },
   {
@@ -8501,28 +8501,28 @@
     "id": "poi_1215",
     "lat": 45.44284974412146,
     "lng": 12.32258832683533,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "casa in soler e orto"
   },
   {
     "id": "poi_1216",
     "lat": 45.442893068795264,
     "lng": 12.322769002080422,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "casa in soler e orto"
   },
   {
     "id": "poi_1217",
     "lat": 45.442883629819484,
     "lng": 12.322366643616677,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "cas in soler e orto"
   },
   {
     "id": "poi_1218",
     "lat": 45.442929606727446,
     "lng": 12.322054538768484,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "casa in soler e orto"
   },
   {
@@ -8536,14 +8536,14 @@
     "id": "poi_1220",
     "lat": 45.44344008502942,
     "lng": 12.322745631601672,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "casa in soler con orto"
   },
   {
     "id": "poi_1221",
     "lat": 45.44410475956433,
     "lng": 12.323087703412378,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "casa a pepian con orto"
   },
   {
@@ -8571,14 +8571,14 @@
     "id": "poi_1225",
     "lat": 45.44458013749243,
     "lng": 12.323100536867113,
-    "type": "PALAZZO",
+    "type": "ORTO",
     "label": "palazzo con orto"
   },
   {
     "id": "poi_1226",
     "lat": 45.444136496060295,
     "lng": 12.322244228666866,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "casa in soler con orto"
   },
   {
@@ -8592,7 +8592,7 @@
     "id": "poi_1228",
     "lat": 45.444587213947685,
     "lng": 12.322947757223954,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "casa in soler con orto"
   },
   {
@@ -8620,21 +8620,21 @@
     "id": "poi_1232",
     "lat": 45.44465676109629,
     "lng": 12.322398288428637,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "casa in soler con orto"
   },
   {
     "id": "poi_1233",
     "lat": 45.444798640966646,
     "lng": 12.322387532639766,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "casa in soler con orto"
   },
   {
     "id": "poi_1234",
     "lat": 45.44487152142843,
     "lng": 12.322313411906677,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "casa in soler con orto"
   },
   {
@@ -8648,14 +8648,14 @@
     "id": "poi_1236",
     "lat": 45.444203695376906,
     "lng": 12.321246629676876,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "casa in soler con orto"
   },
   {
     "id": "poi_1237",
     "lat": 45.44472403239236,
     "lng": 12.321373418607891,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "casa in soler con orto"
   },
   {
@@ -8690,7 +8690,7 @@
     "id": "poi_1242",
     "lat": 45.44589895048765,
     "lng": 12.319489903052581,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "casa in soler con orto"
   },
   {
@@ -8711,7 +8711,7 @@
     "id": "poi_1245",
     "lat": 45.44574919129849,
     "lng": 12.318590391292615,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "casa in soler con orto"
   },
   {
@@ -8739,7 +8739,7 @@
     "id": "poi_1249",
     "lat": 45.44453577082729,
     "lng": 12.31815323672851,
-    "type": "CASA",
+    "type": "GIARDINO",
     "label": "casa con giardino"
   },
   {
@@ -8760,7 +8760,7 @@
     "id": "poi_1252",
     "lat": 45.4451171665678,
     "lng": 12.319381579605231,
-    "type": "CASA",
+    "type": "GIARDINO",
     "label": "casa con giardini"
   },
   {
@@ -8788,14 +8788,14 @@
     "id": "poi_1256",
     "lat": 45.446395160932944,
     "lng": 12.319996422380438,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "casa in soler con orto"
   },
   {
     "id": "poi_1257",
     "lat": 45.446314095695996,
     "lng": 12.320115358403406,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "casa in soler con orto"
   },
   {
@@ -8816,7 +8816,7 @@
     "id": "poi_1260",
     "lat": 45.44574514456063,
     "lng": 12.32094494288221,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "casa in soler con orto e tentoria"
   },
   {
@@ -8830,14 +8830,14 @@
     "id": "poi_1262",
     "lat": 45.44574978558072,
     "lng": 12.32135461586051,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "casa in soler e orto"
   },
   {
     "id": "poi_1263",
     "lat": 45.44587936075756,
     "lng": 12.321334344044047,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "casa in soler e orto"
   },
   {
@@ -8851,14 +8851,14 @@
     "id": "poi_1265",
     "lat": 45.4453348909813,
     "lng": 12.322026456997353,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "casa in soler con orto"
   },
   {
     "id": "poi_1266",
     "lat": 45.4453263961703,
     "lng": 12.322058156261782,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "casa in soler con orto"
   },
   {
@@ -8872,7 +8872,7 @@
     "id": "poi_1268",
     "lat": 45.44575875381823,
     "lng": 12.32269088614442,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "casa in soler con orto"
   },
   {
@@ -8900,7 +8900,7 @@
     "id": "poi_1272",
     "lat": 45.44526269013216,
     "lng": 12.32326560135824,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "casa in soler, orto e fabrica di colori"
   },
   {
@@ -8914,7 +8914,7 @@
     "id": "poi_1274",
     "lat": 45.44488366185334,
     "lng": 12.323558145096248,
-    "type": "PALAZZO",
+    "type": "ORTO",
     "label": "palazzo con orto"
   },
   {
@@ -8942,7 +8942,7 @@
     "id": "poi_1278",
     "lat": 45.444464715266335,
     "lng": 12.324921703349261,
-    "type": "CASA",
+    "type": "FORNO",
     "label": "casa a pepian e metà di forno"
   },
   {
@@ -9341,7 +9341,7 @@
     "id": "poi_1335",
     "lat": 45.44518172353754,
     "lng": 12.326603012987029,
-    "type": "CASA",
+    "type": "SCUOLA",
     "label": "casa appresso la scola"
   },
   {
@@ -9397,7 +9397,7 @@
     "id": "poi_1343",
     "lat": 45.44535138720899,
     "lng": 12.32647451122157,
-    "type": "FRUTARIOL",
+    "type": "FRUTARIOL,ERBARIOL",
     "label": "bottega da fruttariol e bottega da erbariol"
   },
   {
@@ -9411,7 +9411,7 @@
     "id": "poi_1345",
     "lat": 45.44544427252399,
     "lng": 12.326362663586929,
-    "type": "CASA",
+    "type": "SCUOLA",
     "label": "casa sopra la scola"
   },
   {
@@ -9432,7 +9432,7 @@
     "id": "poi_1348",
     "lat": 45.44551627960183,
     "lng": 12.32728268040139,
-    "type": "CASA",
+    "type": "CHIESA",
     "label": "casa, sopra la Sinagoga"
   },
   {
@@ -9467,7 +9467,7 @@
     "id": "poi_1353",
     "lat": 45.444683941350235,
     "lng": 12.3255346276582,
-    "type": "LOCO",
+    "type": "SCUOLA",
     "label": "luoghi vicini alla scola per vario uso"
   },
   {
@@ -9523,28 +9523,28 @@
     "id": "poi_1361",
     "lat": 45.444634082447315,
     "lng": 12.325428445206823,
-    "type": "CASA",
+    "type": "SCUOLA",
     "label": "casa sotto la scola"
   },
   {
     "id": "poi_1362",
     "lat": 45.444647336279864,
     "lng": 12.325439757836364,
-    "type": "CASA",
+    "type": "SCUOLA",
     "label": "casa sotto la scola"
   },
   {
     "id": "poi_1363",
     "lat": 45.44465842755427,
     "lng": 12.325456599761086,
-    "type": "CASA",
+    "type": "SCUOLA",
     "label": "casa sotto la scola"
   },
   {
     "id": "poi_1364",
     "lat": 45.444829309100584,
     "lng": 12.325600203990927,
-    "type": "ERBARIOL",
+    "type": "ERBARIOL,FRUTARIOL",
     "label": "bottega da frutariol ed erbariol"
   },
   {
@@ -10041,7 +10041,7 @@
     "id": "poi_1435",
     "lat": 45.43068388042138,
     "lng": 12.332694819464756,
-    "type": "MEDICINE",
+    "type": "MEDICINE,SPECIER",
     "label": "casa e bottega da specier da medicine"
   },
   {
@@ -10055,7 +10055,7 @@
     "id": "poi_1437",
     "lat": 45.429431675623995,
     "lng": 12.333211058852324,
-    "type": "TERRENO",
+    "type": "ORTO",
     "label": "terren sine orto"
   },
   {
@@ -10090,7 +10090,7 @@
     "id": "poi_1442",
     "lat": 45.42855093269844,
     "lng": 12.331283496686346,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa con orto"
   },
   {
@@ -10368,7 +10368,7 @@
   },
   {
     "id": "poi_1482",
-    "lat": 45.431235091221,
+    "lat": 45.43123509122099,
     "lng": 12.33693610860301,
     "type": "TRAGHETTO",
     "label": "Libertà numero 26"
@@ -10930,7 +10930,7 @@
     "id": "poi_1562",
     "lat": 45.43561444391655,
     "lng": 12.341159048387977,
-    "type": "CASA",
+    "type": "ALBERGO",
     "label": "casa albergo"
   },
   {
@@ -11217,14 +11217,14 @@
     "id": "poi_1603",
     "lat": 45.4419560209758,
     "lng": 12.321862937055363,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa in soler con orto ben rovinoso"
   },
   {
     "id": "poi_1604",
     "lat": 45.44150995982168,
     "lng": 12.322333016094902,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa in soler con orto"
   },
   {
@@ -11245,14 +11245,14 @@
     "id": "poi_1607",
     "lat": 45.44062100069124,
     "lng": 12.320689896836317,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa in soler con orto per uso del confessor"
   },
   {
     "id": "poi_1608",
     "lat": 45.44071244683225,
     "lng": 12.320439335327762,
-    "type": "CASA",
+    "type": "CHIESA",
     "label": "Casa a pepian per commodo della chiesa"
   },
   {
@@ -11266,14 +11266,14 @@
     "id": "poi_1610",
     "lat": 45.44001734882198,
     "lng": 12.320679294050477,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa in soler, Orto e Casetta in capo l'orto"
   },
   {
     "id": "poi_1611",
     "lat": 45.44012773413346,
     "lng": 12.320047564222367,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa in soler con orto"
   },
   {
@@ -11476,7 +11476,7 @@
     "id": "poi_1640",
     "lat": 45.437128663079115,
     "lng": 12.338504034672452,
-    "type": "CASA",
+    "type": "FORNO",
     "label": "casa e forno"
   },
   {
@@ -11588,7 +11588,7 @@
     "id": "poi_1656",
     "lat": 45.43541142056331,
     "lng": 12.336655355252498,
-    "type": "LEGADOR",
+    "type": "LEGADOR,LIBRER",
     "label": "Bottega da Ligador da Libri"
   },
   {
@@ -11602,7 +11602,7 @@
     "id": "poi_1658",
     "lat": 45.43531966292916,
     "lng": 12.33659456020383,
-    "type": "SPECIER",
+    "type": "SPECIER,CONFETTI",
     "label": "Bottega da Spicier da Confetti"
   },
   {
@@ -12064,14 +12064,14 @@
     "id": "poi_1724",
     "lat": 45.43589934970616,
     "lng": 12.335247957106395,
-    "type": "SPECIAL",
+    "type": "SPECIAL,MEDICINE",
     "label": "Casa, et Bottega da Special da Medicine"
   },
   {
     "id": "poi_1725",
     "lat": 45.43580370209092,
     "lng": 12.335034135424658,
-    "type": "SPECIER",
+    "type": "SPECIER,CONFETTI",
     "label": "Bottega, et Casa da spicier da Confetti"
   },
   {
@@ -12106,7 +12106,7 @@
     "id": "poi_1730",
     "lat": 45.43612540315769,
     "lng": 12.334970491531859,
-    "type": "CASA",
+    "type": "FORNO",
     "label": "Casa in soler et Forno"
   },
   {
@@ -12141,7 +12141,7 @@
     "id": "poi_1735",
     "lat": 45.436740830306526,
     "lng": 12.334528946103632,
-    "type": "MEZZANINA",
+    "type": "POSTA",
     "label": "Due Mezadi sotto la detta Posta di Modena"
   },
   {
@@ -12659,14 +12659,14 @@
     "id": "poi_1809",
     "lat": 45.44381583664502,
     "lng": 12.326403839619655,
-    "type": "SPECIER",
+    "type": "SPECIER,CONFETTI",
     "label": "Botegha da spitier da confetti et casa a pepian"
   },
   {
     "id": "poi_1810",
     "lat": 45.44391022313892,
     "lng": 12.326303568048795,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa in soler con orto"
   },
   {
@@ -12701,14 +12701,14 @@
     "id": "poi_1815",
     "lat": 45.443990860965236,
     "lng": 12.32607452404389,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa in soler con horto"
   },
   {
     "id": "poi_1816",
     "lat": 45.44401567428844,
     "lng": 12.326015838185924,
-    "type": "BASTION",
+    "type": "CANEVA",
     "label": "Passalitio per passar dal Bastion alla Caneva"
   },
   {
@@ -12720,7 +12720,7 @@
   },
   {
     "id": "poi_1818",
-    "lat": 45.44072684761189,
+    "lat": 45.4407268476119,
     "lng": 12.34440608358815,
     "type": "LEGNAME",
     "label": "casa e bottega da legname"
@@ -12799,21 +12799,21 @@
     "id": "poi_1829",
     "lat": 45.438663929497835,
     "lng": 12.34293786495699,
-    "type": "MEDICINE",
+    "type": "MEDICINE,SPECIER",
     "label": "casa e bottega da specier da medicina"
   },
   {
     "id": "poi_1830",
     "lat": 45.438659347063485,
     "lng": 12.342965975352199,
-    "type": "MEDICINE",
+    "type": "MEDICINE,SPECIER",
     "label": "casa e bottega da specier da medicine"
   },
   {
     "id": "poi_1831",
     "lat": 45.43850391457103,
     "lng": 12.342869134736215,
-    "type": "SPECIER",
+    "type": "SPECIER,CONFETTI",
     "label": "bottega da specier da confetti"
   },
   {
@@ -12862,7 +12862,7 @@
     "id": "poi_1838",
     "lat": 45.4389995360174,
     "lng": 12.341397343866552,
-    "type": "SPECIER",
+    "type": "SPECIER,CONFETTI",
     "label": "casa e bottega da specier da confetti"
   },
   {
@@ -13002,7 +13002,7 @@
     "id": "poi_1858",
     "lat": 45.439149015898565,
     "lng": 12.341208176689758,
-    "type": "FABRO",
+    "type": "FABRO,FRUTARIOL",
     "label": "bottega da fruttarol e bottega da favro"
   },
   {
@@ -13044,7 +13044,7 @@
     "id": "poi_1864",
     "lat": 45.438539574375355,
     "lng": 12.341761692948099,
-    "type": "FRUTARIOL",
+    "type": "FRUTARIOL,CAPELER",
     "label": "bottega da capeler con altra botteghetta da fruttarol"
   },
   {
@@ -13268,7 +13268,7 @@
     "id": "poi_1896",
     "lat": 45.43763256682151,
     "lng": 12.341517916262356,
-    "type": "GALINER",
+    "type": "GALINER,CORDAROL",
     "label": "casa e bottega da galliner con bottega da cordarol"
   },
   {
@@ -13408,14 +13408,14 @@
     "id": "poi_1916",
     "lat": 45.43756598970071,
     "lng": 12.341097988850464,
-    "type": "MEDICINE",
+    "type": "MEDICINE,SPECIER,PERUCHIER",
     "label": "casa e bottega da specier da medicine e compresa bottega da peruchier"
   },
   {
     "id": "poi_1917",
     "lat": 45.4376240268146,
     "lng": 12.341080316893397,
-    "type": "BATTIORO",
+    "type": "BATTIORO,STRAMAZER",
     "label": "altro appartamento della casa compresa bottega di batioro e del stramazer"
   },
   {
@@ -13443,14 +13443,14 @@
     "id": "poi_1921",
     "lat": 45.436519285148705,
     "lng": 12.34206844625834,
-    "type": "CASA",
+    "type": "FORNO",
     "label": "casa con forno"
   },
   {
     "id": "poi_1922",
     "lat": 45.43650834601852,
     "lng": 12.342043228643902,
-    "type": "CASETTA",
+    "type": "FORNO",
     "label": "casetta di detto forno"
   },
   {
@@ -13597,7 +13597,7 @@
     "id": "poi_1943",
     "lat": 45.43731338464551,
     "lng": 12.339579826801302,
-    "type": "TORNIDOR",
+    "type": "TORNIDOR,SARTOR",
     "label": "casa e botteghe da sartor e tornidor"
   },
   {
@@ -13611,7 +13611,7 @@
     "id": "poi_1945",
     "lat": 45.43723986100223,
     "lng": 12.339482086584704,
-    "type": "SPECIER",
+    "type": "SPECIER,CONFETTI",
     "label": "casa e bottega da spicier da confetti"
   },
   {
@@ -13660,14 +13660,14 @@
     "id": "poi_1952",
     "lat": 45.436892687331294,
     "lng": 12.33982428241729,
-    "type": "TORNIDOR",
+    "type": "TORNIDOR,DORADOR",
     "label": "due botteghe da tornidor e dorador"
   },
   {
     "id": "poi_1953",
     "lat": 45.43687872741601,
     "lng": 12.339840205838755,
-    "type": "INTAGLIADOR",
+    "type": "INTAGLIADOR,ERBARIOL",
     "label": "casa con due botteghe da erbariol ed intagliador"
   },
   {
@@ -13751,7 +13751,7 @@
     "id": "poi_1965",
     "lat": 45.437098725723445,
     "lng": 12.340100538391843,
-    "type": "LEGADOR",
+    "type": "LEGADOR,LIBRER",
     "label": "bottega da legador da libri"
   },
   {
@@ -13828,7 +13828,7 @@
     "id": "poi_1976",
     "lat": 45.43684744473506,
     "lng": 12.340454783587946,
-    "type": "LEGADOR",
+    "type": "LEGADOR,BUTTADOR,LIBRER",
     "label": "casa con due botteghe da ligador da libri e buttador"
   },
   {
@@ -13917,7 +13917,7 @@
   },
   {
     "id": "poi_1989",
-    "lat": 45.43663877070797,
+    "lat": 45.436638770707965,
     "lng": 12.339816458491036,
     "type": "BOTTER",
     "label": "bottega da botter"
@@ -14022,7 +14022,7 @@
   },
   {
     "id": "poi_2004",
-    "lat": 45.43650472979249,
+    "lat": 45.436504729792496,
     "lng": 12.339694988734482,
     "type": "MARANGON",
     "label": "bottega da marangon"
@@ -14122,7 +14122,7 @@
     "id": "poi_2018",
     "lat": 45.435141706543774,
     "lng": 12.32287198261835,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa propria con orto per uso"
   },
   {
@@ -14136,7 +14136,7 @@
     "id": "poi_2020",
     "lat": 45.43505839645004,
     "lng": 12.322975494169642,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa con Orto"
   },
   {
@@ -14150,7 +14150,7 @@
     "id": "poi_2022",
     "lat": 45.435059936937854,
     "lng": 12.322304849116694,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa con orto"
   },
   {
@@ -14199,7 +14199,7 @@
     "id": "poi_2029",
     "lat": 45.43335162837186,
     "lng": 12.322580264986273,
-    "type": "MALVASIA",
+    "type": "MALVASIA,CAFFÈ",
     "label": "Bottega con inviamento da malvasia et bottega da caffè"
   },
   {
@@ -14248,7 +14248,7 @@
     "id": "poi_2036",
     "lat": 45.43397436338474,
     "lng": 12.323003642876117,
-    "type": "FORNO",
+    "type": "FORNO,SCALETER",
     "label": "Casa, e bottega con inviamento scaleter disse proprio di forno"
   },
   {
@@ -14276,7 +14276,7 @@
     "id": "poi_2040",
     "lat": 45.43484826858447,
     "lng": 12.323727575105908,
-    "type": "ACQUA",
+    "type": "ACQUA,TABACCO",
     "label": "Casa, e botega con inviamento d'aqua de vita, e tabaco"
   },
   {
@@ -14297,7 +14297,7 @@
     "id": "poi_2043",
     "lat": 45.43482230650084,
     "lng": 12.323653078231269,
-    "type": "FABRO",
+    "type": "FABRO,SARTOR",
     "label": "Casa e bottega da favro e da sartor"
   },
   {
@@ -14318,7 +14318,7 @@
     "id": "poi_2046",
     "lat": 45.43459172068022,
     "lng": 12.32355486195918,
-    "type": "FASCI",
+    "type": "FASCI,MANDOLER",
     "label": "Casa, e bottega con inviamento da mandoler, et fassi"
   },
   {
@@ -14605,7 +14605,7 @@
     "id": "poi_2087",
     "lat": 45.43524602182665,
     "lng": 12.324191628898017,
-    "type": "MEDICINE",
+    "type": "MEDICINE,SPECIER",
     "label": "Casa, et bottega da specier da medicine all'insegna di Santa Margherita"
   },
   {
@@ -14654,7 +14654,7 @@
     "id": "poi_2094",
     "lat": 45.43462274634238,
     "lng": 12.32504138199331,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa con Orto"
   },
   {
@@ -14745,14 +14745,14 @@
     "id": "poi_2107",
     "lat": 45.44633429658745,
     "lng": 12.324459080931748,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa con orto"
   },
   {
     "id": "poi_2108",
     "lat": 45.44636418846373,
     "lng": 12.324356190405682,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa con orto"
   },
   {
@@ -14766,21 +14766,21 @@
     "id": "poi_2110",
     "lat": 45.44596453109534,
     "lng": 12.3238328114466,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa con orto"
   },
   {
     "id": "poi_2111",
     "lat": 45.44641645859263,
     "lng": 12.32412931756573,
-    "type": "PALAZZO",
+    "type": "ORTO",
     "label": "Pallazzo con orto"
   },
   {
     "id": "poi_2112",
     "lat": 45.44772271364219,
     "lng": 12.322071604599452,
-    "type": "PALAZZO",
+    "type": "ORTO",
     "label": "Palazzo Vuoto con Orto"
   },
   {
@@ -14801,28 +14801,28 @@
     "id": "poi_2115",
     "lat": 45.446839782822714,
     "lng": 12.323580307629086,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa con orto, per uso"
   },
   {
     "id": "poi_2116",
     "lat": 45.446817651518295,
     "lng": 12.323738776193942,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa con orticello per uso"
   },
   {
     "id": "poi_2117",
     "lat": 45.44710888618977,
     "lng": 12.323845023565001,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa con orto"
   },
   {
     "id": "poi_2118",
     "lat": 45.44664796222892,
     "lng": 12.324436333864313,
-    "type": "PALAZZO",
+    "type": "GIARDINO",
     "label": "Pallazzo con giardino per uso"
   },
   {
@@ -14841,7 +14841,7 @@
   },
   {
     "id": "poi_2121",
-    "lat": 45.446422958336804,
+    "lat": 45.44642295833681,
     "lng": 12.325218806925612,
     "type": "BARBIER",
     "label": "Casa con bottegha da barbier"
@@ -14850,21 +14850,21 @@
     "id": "poi_2122",
     "lat": 45.44679106174122,
     "lng": 12.325347578454716,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa con orticello"
   },
   {
     "id": "poi_2123",
     "lat": 45.44707378705209,
     "lng": 12.325530152170735,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa con orto"
   },
   {
     "id": "poi_2124",
     "lat": 45.4465722793472,
     "lng": 12.3258243329956,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa con orticello"
   },
   {
@@ -14906,14 +14906,14 @@
     "id": "poi_2130",
     "lat": 45.445903926493905,
     "lng": 12.327222571337915,
-    "type": "MEDICINE",
+    "type": "MEDICINE,SPECIER",
     "label": "Casa e Bottegha spicier medicine"
   },
   {
     "id": "poi_2131",
     "lat": 45.44590613071197,
     "lng": 12.327294155188698,
-    "type": "CASA",
+    "type": "GIARDINO",
     "label": "Casin con giardin per uso"
   },
   {
@@ -14941,7 +14941,7 @@
     "id": "poi_2135",
     "lat": 45.44573165135555,
     "lng": 12.327877274412355,
-    "type": "PALAZZO",
+    "type": "ORTO",
     "label": "Palazzo con orto e casin"
   },
   {
@@ -14976,21 +14976,21 @@
     "id": "poi_2140",
     "lat": 45.44583986176513,
     "lng": 12.328193649278601,
-    "type": "CASA",
+    "type": "CORTE",
     "label": "Casa con corte"
   },
   {
     "id": "poi_2141",
     "lat": 45.44589396900529,
     "lng": 12.328196405532932,
-    "type": "CASA",
+    "type": "CORTE",
     "label": "Casa con corte"
   },
   {
     "id": "poi_2142",
     "lat": 45.445955885514145,
     "lng": 12.328201161990508,
-    "type": "CASA",
+    "type": "CORTE",
     "label": "Casa con corte"
   },
   {
@@ -15081,14 +15081,14 @@
     "id": "poi_2155",
     "lat": 45.44575427915431,
     "lng": 12.329078481066572,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa con orticello"
   },
   {
     "id": "poi_2156",
     "lat": 45.44544796829938,
     "lng": 12.329088475190396,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa con orto"
   },
   {
@@ -15123,28 +15123,28 @@
     "id": "poi_2161",
     "lat": 45.445671578372846,
     "lng": 12.329653281769552,
-    "type": "CASA",
+    "type": "FORNO",
     "label": "Casa con forno"
   },
   {
     "id": "poi_2162",
     "lat": 45.44569834982826,
     "lng": 12.329665321934735,
-    "type": "CASA",
+    "type": "FORNO",
     "label": "Casa con forno"
   },
   {
     "id": "poi_2163",
     "lat": 45.44572263594651,
     "lng": 12.32967342753918,
-    "type": "CASA",
+    "type": "FORNO",
     "label": "Casa con forno"
   },
   {
     "id": "poi_2164",
     "lat": 45.445745028293295,
     "lng": 12.329685131203549,
-    "type": "CASA",
+    "type": "FORNO",
     "label": "Casa con forno"
   },
   {
@@ -15179,70 +15179,70 @@
     "id": "poi_2169",
     "lat": 45.44615536559976,
     "lng": 12.329576521392797,
-    "type": "PALAZZO",
+    "type": "ORTO",
     "label": "Palazzo con orto"
   },
   {
     "id": "poi_2170",
     "lat": 45.44618963837903,
     "lng": 12.329405968315287,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa con orticello"
   },
   {
     "id": "poi_2171",
     "lat": 45.446260796714405,
     "lng": 12.329131855772891,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa con orticello"
   },
   {
     "id": "poi_2172",
     "lat": 45.446591183170845,
     "lng": 12.329101117577691,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa e orticello"
   },
   {
     "id": "poi_2173",
     "lat": 45.44663976051004,
     "lng": 12.32913187293842,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa con orticello"
   },
   {
     "id": "poi_2174",
     "lat": 45.44679156831327,
     "lng": 12.329064547473694,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa con orto"
   },
   {
     "id": "poi_2175",
     "lat": 45.44670423147787,
     "lng": 12.329014184532637,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa con orto"
   },
   {
     "id": "poi_2176",
     "lat": 45.44657387753218,
     "lng": 12.328902313616071,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa con orticello"
   },
   {
     "id": "poi_2177",
     "lat": 45.44649813149093,
     "lng": 12.328931831246457,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa con orto"
   },
   {
     "id": "poi_2178",
     "lat": 45.446930096868,
     "lng": 12.328714538951372,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa con orto"
   },
   {
@@ -15263,84 +15263,84 @@
     "id": "poi_2181",
     "lat": 45.446717624310054,
     "lng": 12.327593367227275,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa con orto in 4 affittanze"
   },
   {
     "id": "poi_2182",
     "lat": 45.44670101775914,
     "lng": 12.327619490277888,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa con orto in 4 affittanze"
   },
   {
     "id": "poi_2183",
     "lat": 45.446698394216774,
     "lng": 12.327640163887523,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa con orto in 4 affittanze"
   },
   {
     "id": "poi_2184",
     "lat": 45.44669012795473,
     "lng": 12.32766431815618,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa con orto in 4 affittanze"
   },
   {
     "id": "poi_2185",
     "lat": 45.44668248032594,
     "lng": 12.327696348107217,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa con orto in 4 affittanze"
   },
   {
     "id": "poi_2186",
     "lat": 45.44687914618281,
     "lng": 12.327584246239814,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa con orto per uso"
   },
   {
     "id": "poi_2187",
     "lat": 45.44690646976874,
     "lng": 12.327445437370281,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa con orto"
   },
   {
     "id": "poi_2188",
     "lat": 45.44740696155448,
     "lng": 12.327337425377168,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa con orticello"
   },
   {
     "id": "poi_2189",
     "lat": 45.446893875041035,
     "lng": 12.327040339386139,
-    "type": "PALAZZO",
+    "type": "ORTO",
     "label": "Palazzo con orto"
   },
   {
     "id": "poi_2190",
     "lat": 45.446922831415364,
     "lng": 12.326882737551305,
-    "type": "CASA",
+    "type": "CORTE",
     "label": "Casa con corte"
   },
   {
     "id": "poi_2191",
     "lat": 45.447139431027594,
     "lng": 12.326934598973804,
-    "type": "FRUTARIOL",
+    "type": "FRUTARIOL,PARTIORO",
     "label": "Casa da partioro et bottegha da fruttaruol cavata da un magazen di detta casa"
   },
   {
     "id": "poi_2192",
     "lat": 45.44761569325808,
     "lng": 12.32638927258002,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa con orto"
   },
   {
@@ -15354,21 +15354,21 @@
     "id": "poi_2194",
     "lat": 45.447537276216366,
     "lng": 12.32687233726303,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa con orticello"
   },
   {
     "id": "poi_2195",
     "lat": 45.447778074232154,
     "lng": 12.327028758016526,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa con orto grande"
   },
   {
     "id": "poi_2196",
     "lat": 45.44773878464341,
     "lng": 12.327093038793219,
-    "type": "CASETTA",
+    "type": "ORTO",
     "label": "Casetta con orticello"
   },
   {
@@ -15389,28 +15389,28 @@
     "id": "poi_2199",
     "lat": 45.4483608604288,
     "lng": 12.328825693527175,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa con orticello"
   },
   {
     "id": "poi_2200",
     "lat": 45.44784085360034,
     "lng": 12.328524492482575,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa con orticello"
   },
   {
     "id": "poi_2201",
     "lat": 45.44758368437787,
     "lng": 12.328396148751205,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa con orticello"
   },
   {
     "id": "poi_2202",
     "lat": 45.447466134000884,
     "lng": 12.328328946931787,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa con orticello"
   },
   {
@@ -15480,14 +15480,14 @@
     "id": "poi_2212",
     "lat": 45.44432088388502,
     "lng": 12.328519493660078,
-    "type": "PALAZZO",
+    "type": "ORTO",
     "label": "Palazzo con orto"
   },
   {
     "id": "poi_2213",
     "lat": 45.44428669701927,
     "lng": 12.32835992385184,
-    "type": "PALAZZO",
+    "type": "ORTO",
     "label": "Pallazzo con orto"
   },
   {
@@ -15515,7 +15515,7 @@
     "id": "poi_2217",
     "lat": 45.444176203110324,
     "lng": 12.327711303414604,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa con orto"
   },
   {
@@ -15613,7 +15613,7 @@
     "id": "poi_2231",
     "lat": 45.443709132256174,
     "lng": 12.32799159894932,
-    "type": "CASA",
+    "type": "FORNO",
     "label": "Casa e parte una di forno"
   },
   {
@@ -15634,7 +15634,7 @@
     "id": "poi_2234",
     "lat": 45.44287199868381,
     "lng": 12.328411201573617,
-    "type": "CASA",
+    "type": "SCUOLA",
     "label": "Casa di residenza del prete, scola di tesseri da tella in detta casa"
   },
   {
@@ -15823,21 +15823,21 @@
     "id": "poi_2261",
     "lat": 45.44276158401802,
     "lng": 12.329651664372534,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa vuota con orto in 2 soleri"
   },
   {
     "id": "poi_2262",
     "lat": 45.44305989746147,
     "lng": 12.329466611905946,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa per uso con orticello"
   },
   {
     "id": "poi_2263",
     "lat": 45.443554606270034,
     "lng": 12.330050555912814,
-    "type": "STRAMAZER",
+    "type": "STRAMAZER,TAGLIAPIETRA",
     "label": "Casa con bottega di tagliapiera et da stramazer"
   },
   {
@@ -15858,7 +15858,7 @@
     "id": "poi_2266",
     "lat": 45.443508203218265,
     "lng": 12.330305528919522,
-    "type": "BASTION",
+    "type": "CORTE",
     "label": "Bastion da vin con corte et altre case divise"
   },
   {
@@ -15886,21 +15886,21 @@
     "id": "poi_2270",
     "lat": 45.44356203037459,
     "lng": 12.330807458726943,
-    "type": "CASA",
+    "type": "CORTE",
     "label": "Casa con Pistoria, Corte"
   },
   {
     "id": "poi_2271",
     "lat": 45.44359382983167,
     "lng": 12.33082032799745,
-    "type": "CASA",
+    "type": "CORTE",
     "label": "Casa con Pistoria, Corte"
   },
   {
     "id": "poi_2272",
     "lat": 45.44379440371913,
     "lng": 12.329968383469568,
-    "type": "NARANZER",
+    "type": "NARANZER,ERBARIOL",
     "label": "Casa et due botteghe una d'erbarol et altra de naranzer"
   },
   {
@@ -15921,7 +15921,7 @@
     "id": "poi_2275",
     "lat": 45.44398438623249,
     "lng": 12.329709031576243,
-    "type": "SARTOR",
+    "type": "SARTOR,MARZER",
     "label": "Casa, e Bottega da Sartor e Marzer"
   },
   {
@@ -15963,14 +15963,14 @@
     "id": "poi_2281",
     "lat": 45.444716661327455,
     "lng": 12.329785145493114,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa con Orticello"
   },
   {
     "id": "poi_2282",
     "lat": 45.444945342755254,
     "lng": 12.329750310638987,
-    "type": "MARZER",
+    "type": "MARZER,MERCANTE",
     "label": "Casa e Bottega da marcer e da mercante"
   },
   {
@@ -15984,7 +15984,7 @@
     "id": "poi_2284",
     "lat": 45.44465140406817,
     "lng": 12.32949591950197,
-    "type": "LUGANEGHER",
+    "type": "LUGANEGHER,FABRO",
     "label": "Bottega da Fabro, era Inviamento da Luganegher"
   },
   {
@@ -16026,21 +16026,21 @@
     "id": "poi_2290",
     "lat": 45.44365601562866,
     "lng": 12.329506122189363,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa con Orto per uso"
   },
   {
     "id": "poi_2291",
     "lat": 45.44364847277572,
     "lng": 12.329546154101902,
-    "type": "CASA",
+    "type": "CORTE",
     "label": "Casa con Corte"
   },
   {
     "id": "poi_2292",
     "lat": 45.44346621737126,
     "lng": 12.329393215353457,
-    "type": "CASA",
+    "type": "CORTE",
     "label": "Casa con Corte"
   },
   {
@@ -16376,63 +16376,63 @@
     "id": "poi_2340",
     "lat": 45.44602292602178,
     "lng": 12.330527680094404,
-    "type": "CASA",
+    "type": "GIARDINO",
     "label": "Casa con Giardini"
   },
   {
     "id": "poi_2341",
     "lat": 45.445971285588975,
     "lng": 12.330351163511684,
-    "type": "CASA",
+    "type": "GIARDINO",
     "label": "Casa con Giardino"
   },
   {
     "id": "poi_2342",
     "lat": 45.44624401676234,
     "lng": 12.330230949541964,
-    "type": "CASA",
+    "type": "GIARDINO",
     "label": "Casa con Giardino per loro uso"
   },
   {
     "id": "poi_2343",
     "lat": 45.44634794794312,
     "lng": 12.335243382801947,
-    "type": "CASA",
+    "type": "GIARDINO",
     "label": "Casa con Giardino per suo uso"
   },
   {
     "id": "poi_2344",
     "lat": 45.44575898972643,
     "lng": 12.333706697382299,
-    "type": "CASA",
+    "type": "GIARDINO",
     "label": "Casa con Giardino per loro uso"
   },
   {
     "id": "poi_2345",
     "lat": 45.4458220268492,
     "lng": 12.333500733515356,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa con Orticello e Tre Trereni da Legname"
   },
   {
     "id": "poi_2346",
     "lat": 45.445858925204064,
     "lng": 12.333514025056742,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa con Orticello e Tre Trereni da Legname"
   },
   {
     "id": "poi_2347",
     "lat": 45.44588318270876,
     "lng": 12.333521117580458,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa con Orticello e Tre Trereni da Legname"
   },
   {
     "id": "poi_2348",
     "lat": 45.44601676147686,
     "lng": 12.332942096045823,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa con Orto"
   },
   {
@@ -16446,7 +16446,7 @@
     "id": "poi_2350",
     "lat": 45.446383775409295,
     "lng": 12.331942619952214,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa con Orto per loro uso"
   },
   {
@@ -16474,35 +16474,35 @@
     "id": "poi_2354",
     "lat": 45.44642800624353,
     "lng": 12.331521751570111,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa con orto inaffittata"
   },
   {
     "id": "poi_2355",
     "lat": 45.44649274153623,
     "lng": 12.331370131071747,
-    "type": "CASA",
+    "type": "GIARDINO",
     "label": "Casa con Giardino"
   },
   {
     "id": "poi_2356",
     "lat": 45.44653713383156,
     "lng": 12.331180528388671,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa con Orto per loro Uso"
   },
   {
     "id": "poi_2357",
     "lat": 45.446971349351315,
     "lng": 12.331112330652688,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa con Orto per loro uso"
   },
   {
     "id": "poi_2358",
     "lat": 45.44767950902618,
     "lng": 12.331287248791426,
-    "type": "CASA",
+    "type": "CORTE",
     "label": "Casa e Corte"
   },
   {
@@ -16516,14 +16516,14 @@
     "id": "poi_2360",
     "lat": 45.446780342004544,
     "lng": 12.330405309219751,
-    "type": "CASA",
+    "type": "GIARDINO",
     "label": "Casa con Giardino per loro uso"
   },
   {
     "id": "poi_2361",
     "lat": 45.44685177792552,
     "lng": 12.330212320765844,
-    "type": "CASA",
+    "type": "GIARDINO",
     "label": "Casa con Giardino per loro uso"
   },
   {
@@ -16838,7 +16838,7 @@
     "id": "poi_2406",
     "lat": 45.43946860591495,
     "lng": 12.329755400766649,
-    "type": "CASA",
+    "type": "OSPIZIO",
     "label": "Casa et Ospizio"
   },
   {
@@ -16936,7 +16936,7 @@
     "id": "poi_2420",
     "lat": 45.440250431122756,
     "lng": 12.330035552370605,
-    "type": "MEDICINE",
+    "type": "MEDICINE,SPECIER",
     "label": "Casa e bottega da specier da medicine"
   },
   {
@@ -16950,7 +16950,7 @@
     "id": "poi_2422",
     "lat": 45.44027019926677,
     "lng": 12.329989223242213,
-    "type": "SPECIER",
+    "type": "SPECIER,CONFETTI",
     "label": "Casa e BOttega da specier da confetti"
   },
   {
@@ -17055,7 +17055,7 @@
     "id": "poi_2437",
     "lat": 45.44148832587775,
     "lng": 12.342023665461133,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa, squero, tezza e horto"
   },
   {
@@ -17069,28 +17069,28 @@
     "id": "poi_2439",
     "lat": 45.440225402915146,
     "lng": 12.340969711081728,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Portion di casa con horto e corte"
   },
   {
     "id": "poi_2440",
     "lat": 45.440177965580965,
     "lng": 12.340943657167486,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Portion della suddetta casa con horto e corte"
   },
   {
     "id": "poi_2441",
     "lat": 45.4401071274456,
     "lng": 12.340911000617508,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Portion della suddetta casa con horto e corte"
   },
   {
     "id": "poi_2442",
     "lat": 45.43997637445089,
     "lng": 12.341032318794122,
-    "type": "CASA",
+    "type": "CORTE",
     "label": "Casa con corte"
   },
   {
@@ -17111,7 +17111,7 @@
     "id": "poi_2445",
     "lat": 45.43984906548718,
     "lng": 12.338696345648136,
-    "type": "MEDICINE",
+    "type": "MEDICINE,SPECIAL",
     "label": "casa con bottega da speciale di medicine"
   },
   {
@@ -17223,7 +17223,7 @@
     "id": "poi_2461",
     "lat": 45.439688293579884,
     "lng": 12.338186551532655,
-    "type": "CASETTA",
+    "type": "FORNO",
     "label": "casetta con forno e inviamento"
   },
   {
@@ -17293,7 +17293,7 @@
     "id": "poi_2471",
     "lat": 45.439328932620846,
     "lng": 12.340543926190168,
-    "type": "CASA",
+    "type": "FORNO",
     "label": "casa con forno e inviamento"
   },
   {
@@ -17349,7 +17349,7 @@
     "id": "poi_2479",
     "lat": 45.4388869729868,
     "lng": 12.34062325419144,
-    "type": "MEDICINE",
+    "type": "MEDICINE,SPECIAL",
     "label": "bottega da speciale di medicina con camerino"
   },
   {
@@ -17398,7 +17398,7 @@
     "id": "poi_2486",
     "lat": 45.43994802488459,
     "lng": 12.340060550409612,
-    "type": "BARBIER",
+    "type": "BARBIER,TABACCO",
     "label": "casa con due botteghe una da tabacco l'altra da barbier"
   },
   {
@@ -17762,21 +17762,21 @@
     "id": "poi_2538",
     "lat": 45.432388886114744,
     "lng": 12.331473355257085,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "casa pepian e soler con orto"
   },
   {
     "id": "poi_2539",
     "lat": 45.43242223554528,
     "lng": 12.331522229588703,
-    "type": "CASA",
+    "type": "FORNO",
     "label": "quarta parte di casa sopra il forno"
   },
   {
     "id": "poi_2540",
     "lat": 45.432447220872994,
     "lng": 12.331525166172366,
-    "type": "CARATI",
+    "type": "FORNO",
     "label": "carati del forno"
   },
   {
@@ -17790,14 +17790,14 @@
     "id": "poi_2542",
     "lat": 45.43246992936631,
     "lng": 12.331529856146332,
-    "type": "CARATI",
+    "type": "FORNO",
     "label": "carati del forno"
   },
   {
     "id": "poi_2543",
     "lat": 45.432431302253846,
     "lng": 12.331538261974748,
-    "type": "CARATI",
+    "type": "FORNO",
     "label": "carati del forno"
   },
   {
@@ -17874,7 +17874,7 @@
     "id": "poi_2554",
     "lat": 45.43329409419587,
     "lng": 12.336019602554737,
-    "type": "BARBIER",
+    "type": "BARBIER,ACQUA,FIORER",
     "label": "bottega da aque e da fiorier con una mezza bottega da barbier in frezaria corris"
   },
   {
@@ -18068,7 +18068,7 @@
   },
   {
     "id": "poi_2582",
-    "lat": 45.43373807794184,
+    "lat": 45.43373807794185,
     "lng": 12.33667697681823,
     "type": "TORNIDOR",
     "label": "bottega da tornidor"
@@ -18140,7 +18140,7 @@
     "id": "poi_2592",
     "lat": 45.43337794801109,
     "lng": 12.336933260980073,
-    "type": "MANDOLER",
+    "type": "MANDOLER,CONFETTI,OGLIO",
     "label": "Bottega da confetti  ed Oglio di mandorle"
   },
   {
@@ -18175,7 +18175,7 @@
     "id": "poi_2597",
     "lat": 45.43308087729324,
     "lng": 12.337227249759765,
-    "type": "NARANZER",
+    "type": "NARANZER,ERBARIOL",
     "label": "bottega da erbarol e naranzer e casa in due soleri"
   },
   {
@@ -18588,7 +18588,7 @@
     "id": "poi_2656",
     "lat": 45.434398114690715,
     "lng": 12.335276919977318,
-    "type": "CORDAROL",
+    "type": "CORDAROL,PERUCHIER",
     "label": "bottega da peruchier e bottega di cordelle"
   },
   {
@@ -19050,7 +19050,7 @@
     "id": "poi_2722",
     "lat": 45.431956123973954,
     "lng": 12.33510857694502,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "casa in soler con orto"
   },
   {
@@ -19540,7 +19540,7 @@
     "id": "poi_2792",
     "lat": 45.4397574109933,
     "lng": 12.3340942978899,
-    "type": "SALUMIER",
+    "type": "SALUMIER,LUGANEGHER",
     "label": "Bottega da Salumier e Luganegher"
   },
   {
@@ -19715,7 +19715,7 @@
     "id": "poi_2817",
     "lat": 45.439979283340136,
     "lng": 12.333937408990156,
-    "type": "SALUMIER",
+    "type": "SALUMIER,NARANZER",
     "label": "Botteghe da Narancer e Salumier"
   },
   {
@@ -19750,63 +19750,63 @@
     "id": "poi_2822",
     "lat": 45.439628537375114,
     "lng": 12.334344923838808,
-    "type": "SALUMIER",
+    "type": "SALUMIER,FRUTARIOL",
     "label": "Due botteghe unite di Salumier e Fruttariol, magazin e volta divisa in 6 Padroni"
   },
   {
     "id": "poi_2823",
     "lat": 45.439644431233816,
     "lng": 12.334353125920316,
-    "type": "SALUMIER",
+    "type": "SALUMIER,FRUTARIOL",
     "label": "Due botteghe unite di Salumier e Fruttariol, magazin e volta divisa in 6 Padroni"
   },
   {
     "id": "poi_2824",
     "lat": 45.43962432626737,
     "lng": 12.334361052423803,
-    "type": "SALUMIER",
+    "type": "SALUMIER,FRUTARIOL",
     "label": "Due botteghe unite di Salumier e Fruttariol, magazin e volta divisa in 6 Padroni"
   },
   {
     "id": "poi_2825",
     "lat": 45.43963663142441,
     "lng": 12.334364093014306,
-    "type": "SALUMIER",
+    "type": "SALUMIER,FRUTARIOL",
     "label": "Due botteghe unite di Salumier e Fruttariol, magazin e volta divisa in 6 Padroni"
   },
   {
     "id": "poi_2826",
     "lat": 45.43961756917999,
     "lng": 12.334377300987754,
-    "type": "SALUMIER",
+    "type": "SALUMIER,FRUTARIOL",
     "label": "Due botteghe unite di Salumier e Fruttariol, magazin e volta divisa in 6 Padroni"
   },
   {
     "id": "poi_2827",
     "lat": 45.43963141881619,
     "lng": 12.334380992893704,
-    "type": "SALUMIER",
+    "type": "SALUMIER,FRUTARIOL",
     "label": "Due botteghe unite di Salumier e Fruttariol, magazin e volta divisa in 6 Padroni"
   },
   {
     "id": "poi_2828",
     "lat": 45.4395992540775,
     "lng": 12.334440403551456,
-    "type": "SALUMIER",
+    "type": "SALUMIER,MANDOLER",
     "label": "Bottega da Salumier con altra da Mandoler con Casa"
   },
   {
     "id": "poi_2829",
     "lat": 45.439595306400115,
     "lng": 12.334456362609613,
-    "type": "SALUMIER",
+    "type": "SALUMIER,MANDOLER",
     "label": "Bottega da Salumier con altra da Mandoler con Casa"
   },
   {
     "id": "poi_2830",
     "lat": 45.4395928113934,
     "lng": 12.334471755802879,
-    "type": "SALUMIER",
+    "type": "SALUMIER,MANDOLER",
     "label": "Bottega da Salumier con altra da Mandoler con Casa"
   },
   {
@@ -19820,42 +19820,42 @@
     "id": "poi_2832",
     "lat": 45.43957414849691,
     "lng": 12.334474977634539,
-    "type": "BARBIER",
+    "type": "BARBIER,SALUMIER",
     "label": "Casa, e botteghe Salumier Barbier divise in Consorti numero 6"
   },
   {
     "id": "poi_2833",
     "lat": 45.439570061157845,
     "lng": 12.334480708373519,
-    "type": "BARBIER",
+    "type": "BARBIER,SALUMIER",
     "label": "Casa, e botteghe Salumier Barbier divise in Consorti numero 6"
   },
   {
     "id": "poi_2834",
     "lat": 45.43956676621688,
     "lng": 12.334485950508736,
-    "type": "BARBIER",
+    "type": "BARBIER,SALUMIER",
     "label": "Casa, e botteghe Salumier Barbier divise in Consorti numero 6"
   },
   {
     "id": "poi_2835",
     "lat": 45.43956375257317,
     "lng": 12.334493962087855,
-    "type": "BARBIER",
+    "type": "BARBIER,SALUMIER",
     "label": "Casa, e botteghe Salumier Barbier divise in Consorti numero 6"
   },
   {
     "id": "poi_2836",
     "lat": 45.4395615104362,
     "lng": 12.334502033017252,
-    "type": "BARBIER",
+    "type": "BARBIER,SALUMIER",
     "label": "Casa, e botteghe Salumier Barbier divise in Consorti numero 6"
   },
   {
     "id": "poi_2837",
     "lat": 45.43955770439281,
     "lng": 12.334510533197465,
-    "type": "BARBIER",
+    "type": "BARBIER,SALUMIER",
     "label": "Casa, e botteghe Salumier Barbier divise in Consorti numero 6"
   },
   {
@@ -20254,7 +20254,7 @@
     "id": "poi_2894",
     "lat": 45.4325169544912,
     "lng": 12.333125255991796,
-    "type": "MEDICINE",
+    "type": "MEDICINE,SPECIER",
     "label": "Bottega da Specier da Medicine all'insegna della Novizza"
   },
   {
@@ -20275,7 +20275,7 @@
     "id": "poi_2897",
     "lat": 45.4325194153237,
     "lng": 12.333354990946534,
-    "type": "LUGANEGHER",
+    "type": "LUGANEGHER,MARZER",
     "label": "Bottegha da Marzer, Posto d'Inviamento da Luganegher"
   },
   {
@@ -20310,7 +20310,7 @@
     "id": "poi_2902",
     "lat": 45.432589913483696,
     "lng": 12.333602208890262,
-    "type": "SPECIER",
+    "type": "SPECIER,CONFETTI",
     "label": "Casa e Bottega Specier da Confetture"
   },
   {
@@ -20583,7 +20583,7 @@
     "id": "poi_2941",
     "lat": 45.43253768900465,
     "lng": 12.316746076887037,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa dominicale per proprio uso con horto"
   },
   {
@@ -20702,7 +20702,7 @@
     "id": "poi_2958",
     "lat": 45.43264009618189,
     "lng": 12.312018011619164,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa Domenicale per proprio uso con cortivo ed orto"
   },
   {
@@ -20730,14 +20730,14 @@
     "id": "poi_2962",
     "lat": 45.43281021811818,
     "lng": 12.313157657576602,
-    "type": "CASA",
+    "type": "FORNO",
     "label": "Casa e Forno da pan"
   },
   {
     "id": "poi_2963",
     "lat": 45.43268002849746,
     "lng": 12.314425440049446,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa in soler con orto, e cortivo"
   },
   {
@@ -20751,7 +20751,7 @@
     "id": "poi_2965",
     "lat": 45.43266987510326,
     "lng": 12.314561575103111,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Altra casa in soler con orticello"
   },
   {
@@ -20779,7 +20779,7 @@
     "id": "poi_2969",
     "lat": 45.43270833168198,
     "lng": 12.31505145849923,
-    "type": "MEDICINE",
+    "type": "MEDICINE,SPECIER",
     "label": "Casa in soler e bottegha da spicier da medicine"
   },
   {
@@ -20884,7 +20884,7 @@
     "id": "poi_2984",
     "lat": 45.43385086066536,
     "lng": 12.31646259548861,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa dominicale con cortivo et orto per proprio uso"
   },
   {
@@ -20912,35 +20912,35 @@
     "id": "poi_2988",
     "lat": 45.43357893350161,
     "lng": 12.317714720409585,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa in soler con orticello et a pepian"
   },
   {
     "id": "poi_2989",
     "lat": 45.43350886216404,
     "lng": 12.317273229658255,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "In detta casa soler di sotto et a pepian con orto"
   },
   {
     "id": "poi_2990",
     "lat": 45.433633942177835,
     "lng": 12.317119135969454,
-    "type": "CASA",
+    "type": "CORTE",
     "label": "Casa dominicale con corte et orticello per proprio uso"
   },
   {
     "id": "poi_2991",
     "lat": 45.43387502819042,
     "lng": 12.317820043285163,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa domenicale con orto e giardino per proprio uso"
   },
   {
     "id": "poi_2992",
     "lat": 45.433917786036005,
     "lng": 12.317233459175528,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa in soler con orto"
   },
   {
@@ -20961,7 +20961,7 @@
     "id": "poi_2995",
     "lat": 45.434082564809344,
     "lng": 12.317149074650183,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "In detta casa a pepian con orticello vacua"
   },
   {
@@ -21066,7 +21066,7 @@
     "id": "poi_3010",
     "lat": 45.43331270835068,
     "lng": 12.356901844841651,
-    "type": "MEDICINE",
+    "type": "MEDICINE,SPECIAL",
     "label": "Casa bottega speciale medicine"
   },
   {
@@ -21101,7 +21101,7 @@
     "id": "poi_3015",
     "lat": 45.43293470989416,
     "lng": 12.35706681699138,
-    "type": "CASA",
+    "type": "FORNO",
     "label": "Casa e Forno"
   },
   {
@@ -21395,7 +21395,7 @@
     "id": "poi_3057",
     "lat": 45.43254315964604,
     "lng": 12.354406520911095,
-    "type": "MARZER",
+    "type": "MARZER,MEDICINE",
     "label": "casa e bottega marcer e spiciale da medicina"
   },
   {
@@ -21430,7 +21430,7 @@
     "id": "poi_3062",
     "lat": 45.432572971865504,
     "lng": 12.354742250604218,
-    "type": "CASA",
+    "type": "PISTORIA",
     "label": "casa e pistoria"
   },
   {
@@ -21612,7 +21612,7 @@
     "id": "poi_3088",
     "lat": 45.43047902500516,
     "lng": 12.359100715931694,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "casa et orto"
   },
   {
@@ -21633,14 +21633,14 @@
     "id": "poi_3091",
     "lat": 45.43108079391725,
     "lng": 12.354245528715776,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "casa in orto"
   },
   {
     "id": "poi_3092",
     "lat": 45.43040988089729,
     "lng": 12.354580703572172,
-    "type": "ALBORANTE",
+    "type": "ALBORANTE,TAGIER",
     "label": "casa, bottega e terreno da tagier et alborante"
   },
   {
@@ -21724,7 +21724,7 @@
     "id": "poi_3104",
     "lat": 45.4321566226977,
     "lng": 12.352876764536434,
-    "type": "CASA",
+    "type": "PISTORIA",
     "label": "casa e pistoria e 3 inviamenti"
   },
   {
@@ -21794,7 +21794,7 @@
     "id": "poi_3114",
     "lat": 45.43227941127516,
     "lng": 12.353881376242343,
-    "type": "ERBARIOL",
+    "type": "ERBARIOL,BIAVARIOL",
     "label": "casa e bottega biavariol erbarol"
   },
   {
@@ -21941,7 +21941,7 @@
     "id": "poi_3135",
     "lat": 45.432522688173655,
     "lng": 12.357384181866438,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "casa et orto"
   },
   {
@@ -22242,14 +22242,14 @@
     "id": "poi_3178",
     "lat": 45.435863577419454,
     "lng": 12.325120669220349,
-    "type": "MEDICINE",
+    "type": "MEDICINE,SPECIER",
     "label": "Casa e Bottega Spitier medicine"
   },
   {
     "id": "poi_3179",
     "lat": 45.435846597193596,
     "lng": 12.325112757279685,
-    "type": "MANDOLER",
+    "type": "MANDOLER,OGLIO",
     "label": "Casa e Bottega da oglio da mandorle dolzi"
   },
   {
@@ -22284,7 +22284,7 @@
     "id": "poi_3184",
     "lat": 45.43568494446446,
     "lng": 12.32501160590988,
-    "type": "CASA",
+    "type": "PISTORIA",
     "label": "Casa e Pistoria"
   },
   {
@@ -22494,7 +22494,7 @@
     "id": "poi_3214",
     "lat": 45.43577676006542,
     "lng": 12.326247827655386,
-    "type": "SPECIER",
+    "type": "SPECIER,CONFETTI",
     "label": "Bottega voda era da spitier da confetti"
   },
   {
@@ -22802,7 +22802,7 @@
     "id": "poi_3258",
     "lat": 45.43502214082325,
     "lng": 12.333235329753107,
-    "type": "GALINER",
+    "type": "GALINER,PERUCHIER",
     "label": "Casa con due Botteghe da Peruchier, e Galiner"
   },
   {
@@ -22872,7 +22872,7 @@
     "id": "poi_3268",
     "lat": 45.43567179340647,
     "lng": 12.334643815219776,
-    "type": "PISTOR",
+    "type": "PISTOR,FENESTRER",
     "label": "Pistoria, casa con Bottega appresso del Fenestrer"
   },
   {
@@ -22907,7 +22907,7 @@
     "id": "poi_3273",
     "lat": 45.435654513772626,
     "lng": 12.3351693477886,
-    "type": "MEDICINE",
+    "type": "MEDICINE,SPECIAL",
     "label": "Bottega sive Speciale da Medicine con Casa di sopra"
   },
   {
@@ -23019,7 +23019,7 @@
     "id": "poi_3289",
     "lat": 45.43455211504239,
     "lng": 12.335201018769782,
-    "type": "CASA",
+    "type": "LOCANDA",
     "label": "Casa Locanda"
   },
   {
@@ -23082,7 +23082,7 @@
     "id": "poi_3298",
     "lat": 45.43438886517706,
     "lng": 12.335250024467635,
-    "type": "SPECIAL",
+    "type": "SPECIAL,MEDICINE",
     "label": "Casa e Bottega da special da Medicine con Bottega altra contigua sublocata"
   },
   {
@@ -23110,35 +23110,35 @@
     "id": "poi_3302",
     "lat": 45.43514803808092,
     "lng": 12.334896050039474,
-    "type": "CAMERA",
+    "type": "LOCANDA",
     "label": "Camera Locanda delle due Chiavi"
   },
   {
     "id": "poi_3303",
     "lat": 45.43521376575264,
     "lng": 12.334829238104563,
-    "type": "CASA",
+    "type": "LOCANDA",
     "label": "Casa Locanda alle 3 Rose"
   },
   {
     "id": "poi_3304",
     "lat": 45.43515340357615,
     "lng": 12.334732888378214,
-    "type": "CASA",
+    "type": "LOCANDA",
     "label": "Casa in Locanda de tre Visi"
   },
   {
     "id": "poi_3305",
     "lat": 45.43476317672251,
     "lng": 12.33456881591288,
-    "type": "CASA",
+    "type": "LOCANDA",
     "label": "Casa Locanda di S. Piero col Galo"
   },
   {
     "id": "poi_3306",
     "lat": 45.434738670232605,
     "lng": 12.334545353357253,
-    "type": "APPARTAMENTO",
+    "type": "CASINO",
     "label": "Appartamento hora Casin sopra le scale"
   },
   {
@@ -23208,7 +23208,7 @@
     "id": "poi_3316",
     "lat": 45.4329713498385,
     "lng": 12.317103903876792,
-    "type": "MEDICINE",
+    "type": "MEDICINE,SPECIER",
     "label": "casa e bottega da specier da medicina"
   },
   {
@@ -23236,7 +23236,7 @@
     "id": "poi_3320",
     "lat": 45.43287509408032,
     "lng": 12.317181142162585,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "casa con orto"
   },
   {
@@ -23250,14 +23250,14 @@
     "id": "poi_3322",
     "lat": 45.43293121163883,
     "lng": 12.317573140584164,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "casa con orto d'affittar"
   },
   {
     "id": "poi_3323",
     "lat": 45.43283799607542,
     "lng": 12.318021677463472,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "casa con orto"
   },
   {
@@ -23292,14 +23292,14 @@
     "id": "poi_3328",
     "lat": 45.43287955015148,
     "lng": 12.319064393481217,
-    "type": "PISTOR",
+    "type": "PISTOR,FORNO",
     "label": "bottega da forno e inviamento da pistor"
   },
   {
     "id": "poi_3329",
     "lat": 45.433260555848705,
     "lng": 12.318765735567563,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "casa con orto"
   },
   {
@@ -23320,7 +23320,7 @@
     "id": "poi_3332",
     "lat": 45.43299573831021,
     "lng": 12.319351602314846,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "casa con orto d'affittar"
   },
   {
@@ -23334,7 +23334,7 @@
     "id": "poi_3334",
     "lat": 45.43318234568561,
     "lng": 12.31967181322825,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "casa con orto"
   },
   {
@@ -23369,7 +23369,7 @@
     "id": "poi_3339",
     "lat": 45.43357777728074,
     "lng": 12.320350554474963,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "casa con orto"
   },
   {
@@ -23390,14 +23390,14 @@
     "id": "poi_3342",
     "lat": 45.433993886913186,
     "lng": 12.321607709005331,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "casa con orto"
   },
   {
     "id": "poi_3343",
     "lat": 45.43401357400741,
     "lng": 12.321659264651313,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "casa con orto"
   },
   {
@@ -23418,14 +23418,14 @@
     "id": "poi_3346",
     "lat": 45.434743981748106,
     "lng": 12.3189891637909,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "casa con orto"
   },
   {
     "id": "poi_3347",
     "lat": 45.433818289163305,
     "lng": 12.31824571886571,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "casa con orto"
   },
   {
@@ -23509,7 +23509,7 @@
     "id": "poi_3359",
     "lat": 45.43352369838671,
     "lng": 12.327998709611785,
-    "type": "MEDICINE",
+    "type": "MEDICINE,SPECIER",
     "label": "Casa e Bottega da Spicier di Medicine con Inviamento"
   },
   {
@@ -23593,7 +23593,7 @@
     "id": "poi_3371",
     "lat": 45.43433431691466,
     "lng": 12.329707775929164,
-    "type": "MEDICINE",
+    "type": "MEDICINE,SPECIAL",
     "label": "Casa e Bottega da Speciale di Medicine"
   },
   {
@@ -23761,7 +23761,7 @@
     "id": "poi_3395",
     "lat": 45.4392666975336,
     "lng": 12.321082460005325,
-    "type": "SPECIER",
+    "type": "SPECIER,CONFETTI,MARZER",
     "label": "casa e bottega da marzer e altra da spicier da confetture"
   },
   {
@@ -23775,7 +23775,7 @@
     "id": "poi_3397",
     "lat": 45.439295092766095,
     "lng": 12.321141683563786,
-    "type": "TENTOR",
+    "type": "TENTOR,PANNI",
     "label": "casa e bottega da tentor da panni"
   },
   {
@@ -23824,7 +23824,7 @@
     "id": "poi_3404",
     "lat": 45.43988078671897,
     "lng": 12.321721653896905,
-    "type": "MEDICINE",
+    "type": "MEDICINE,SPECIER",
     "label": "bottega ed inviamento da specier da medicine all'insegna del Pavon"
   },
   {
@@ -23901,7 +23901,7 @@
     "id": "poi_3415",
     "lat": 45.44035359372366,
     "lng": 12.32271531957454,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "casa con orto"
   },
   {
@@ -23936,7 +23936,7 @@
     "id": "poi_3420",
     "lat": 45.43688700390575,
     "lng": 12.343358033249602,
-    "type": "CASA",
+    "type": "FORNO",
     "label": "Casa con forno"
   },
   {
@@ -23985,7 +23985,7 @@
     "id": "poi_3427",
     "lat": 45.4368070009163,
     "lng": 12.344142447238918,
-    "type": "CASA",
+    "type": "CHIESA",
     "label": "Casa del Gastaldo agente del Venerando Monastero"
   },
   {
@@ -24027,7 +24027,7 @@
     "id": "poi_3433",
     "lat": 45.435951528735714,
     "lng": 12.344684012568017,
-    "type": "SPECIER",
+    "type": "SPECIER,CONFETTI",
     "label": "Casa e bottega da specier da confetture"
   },
   {
@@ -24076,7 +24076,7 @@
     "id": "poi_3440",
     "lat": 45.436147237944205,
     "lng": 12.342499080115246,
-    "type": "SPECIER",
+    "type": "SPECIER,CONFETTI",
     "label": "Casa e bottega da specier da confetture"
   },
   {
@@ -24090,7 +24090,7 @@
     "id": "poi_3442",
     "lat": 45.43612417392654,
     "lng": 12.342706578764643,
-    "type": "MEDICINE",
+    "type": "MEDICINE,SPECIER",
     "label": "Casa e bottega specier da medicine"
   },
   {
@@ -24489,7 +24489,7 @@
     "id": "poi_3499",
     "lat": 45.43746264184703,
     "lng": 12.331966231739562,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "casa con orticello"
   },
   {
@@ -24510,7 +24510,7 @@
     "id": "poi_3502",
     "lat": 45.437558482099206,
     "lng": 12.331928607031854,
-    "type": "MANDOLER",
+    "type": "MANDOLER,OGLIO",
     "label": "botteghe due in una da oglio di mandorle dolci"
   },
   {
@@ -24524,7 +24524,7 @@
     "id": "poi_3504",
     "lat": 45.4377840806943,
     "lng": 12.33220763106291,
-    "type": "BATTI",
+    "type": "BATTI,BROCHETTA",
     "label": "bottega di batti brochette"
   },
   {
@@ -25035,7 +25035,7 @@
     "id": "poi_3577",
     "lat": 45.43747235040659,
     "lng": 12.33435942491377,
-    "type": "SPECIER",
+    "type": "SPECIER,MEDICINE",
     "label": "bottega di spezier da medicina"
   },
   {
@@ -25560,7 +25560,7 @@
     "id": "poi_3652",
     "lat": 45.44405456726483,
     "lng": 12.337183759340487,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "casa in soler con orticello"
   },
   {
@@ -25630,7 +25630,7 @@
     "id": "poi_3662",
     "lat": 45.44141942085305,
     "lng": 12.334488763895102,
-    "type": "SPECIER",
+    "type": "SPECIER,CONFETTI",
     "label": "bottega da specier da confetti"
   },
   {
@@ -25840,7 +25840,7 @@
     "id": "poi_3692",
     "lat": 45.44100510275944,
     "lng": 12.335203836951148,
-    "type": "MEDICINE",
+    "type": "MEDICINE,SPECIER",
     "label": "casa e bottega da spicier da medicina"
   },
   {
@@ -25861,7 +25861,7 @@
     "id": "poi_3695",
     "lat": 45.44132423846853,
     "lng": 12.335997417939042,
-    "type": "CASA",
+    "type": "FORNO",
     "label": "casa con forno"
   },
   {
@@ -26106,35 +26106,35 @@
     "id": "poi_3730",
     "lat": 45.43947114936579,
     "lng": 12.32479976251296,
-    "type": "CASA",
+    "type": "CORTE",
     "label": "casa con corte rovinosa"
   },
   {
     "id": "poi_3731",
     "lat": 45.43935932482696,
     "lng": 12.324637478566904,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "casa con orto"
   },
   {
     "id": "poi_3732",
     "lat": 45.439306842910426,
     "lng": 12.32458141140501,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "casa con orto"
   },
   {
     "id": "poi_3733",
     "lat": 45.43891166676714,
     "lng": 12.32412464404179,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "casa con orto"
   },
   {
     "id": "poi_3734",
     "lat": 45.439101881258736,
     "lng": 12.324478045202229,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "casa con orto"
   },
   {
@@ -26148,7 +26148,7 @@
     "id": "poi_3736",
     "lat": 45.44104069672061,
     "lng": 12.323347049687166,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "casa con orto"
   },
   {
@@ -26302,7 +26302,7 @@
     "id": "poi_3758",
     "lat": 45.44080685768974,
     "lng": 12.330595560388797,
-    "type": "CASA",
+    "type": "FORNO",
     "label": "Casa in soler et forno"
   },
   {
@@ -26498,7 +26498,7 @@
     "id": "poi_3786",
     "lat": 45.43832171622822,
     "lng": 12.326429914737028,
-    "type": "CASA",
+    "type": "SCUOLA",
     "label": "quattro case in soler abitate da quattro cappellani della scola"
   },
   {
@@ -26540,14 +26540,14 @@
     "id": "poi_3792",
     "lat": 45.438477430768,
     "lng": 12.327075896417762,
-    "type": "PALAZZO",
+    "type": "CASINO",
     "label": "palazzo con casino e giardino"
   },
   {
     "id": "poi_3793",
     "lat": 45.43836398720033,
     "lng": 12.326668849570309,
-    "type": "CASA",
+    "type": "FORNO",
     "label": "casa e forno"
   },
   {
@@ -26680,7 +26680,7 @@
     "id": "poi_3812",
     "lat": 45.43732720732388,
     "lng": 12.347309280742376,
-    "type": "SPECIAL",
+    "type": "SPECIAL,MEDICINE",
     "label": "casa e bottega da special da medicine e inviamento"
   },
   {
@@ -26806,7 +26806,7 @@
     "id": "poi_3830",
     "lat": 45.43652224290269,
     "lng": 12.347654901264365,
-    "type": "BARBIER",
+    "type": "BARBIER,ACQUAVITA",
     "label": "bottega era da acquavite ora da barbier"
   },
   {
@@ -26876,7 +26876,7 @@
     "id": "poi_3840",
     "lat": 45.43807375733896,
     "lng": 12.350349563702418,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "casa con orto"
   },
   {
@@ -27030,21 +27030,21 @@
     "id": "poi_3862",
     "lat": 45.4361600433083,
     "lng": 12.326906508049975,
-    "type": "CASETTA",
+    "type": "SCUOLA",
     "label": "Casete tre a pepian sotto la scola de Calegheri date per carità"
   },
   {
     "id": "poi_3863",
     "lat": 45.43613865518533,
     "lng": 12.326950961822737,
-    "type": "CASETTA",
+    "type": "SCUOLA",
     "label": "Casete tre a pepian sotto la Scola de Calegheri date per carità"
   },
   {
     "id": "poi_3864",
     "lat": 45.43611694417832,
     "lng": 12.32700339538938,
-    "type": "CASETTA",
+    "type": "SCUOLA",
     "label": "Casete tre a pepian sotto la Scola de Calegheri date per carità"
   },
   {
@@ -27184,7 +27184,7 @@
     "id": "poi_3884",
     "lat": 45.43569225620949,
     "lng": 12.326870498782023,
-    "type": "CASA",
+    "type": "FORNO",
     "label": "Casa e Forno"
   },
   {
@@ -27303,7 +27303,7 @@
     "id": "poi_3901",
     "lat": 45.43103019747602,
     "lng": 12.326312504209065,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa pepian con horto unito"
   },
   {
@@ -27317,7 +27317,7 @@
     "id": "poi_3903",
     "lat": 45.431275763553984,
     "lng": 12.326125454743464,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa in soler con horto unito"
   },
   {
@@ -27338,7 +27338,7 @@
     "id": "poi_3906",
     "lat": 45.431903718544035,
     "lng": 12.326824670685324,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa con horticello unito"
   },
   {
@@ -27457,7 +27457,7 @@
     "id": "poi_3923",
     "lat": 45.4314541990216,
     "lng": 12.327793436680345,
-    "type": "CASA",
+    "type": "FORNO",
     "label": "Casa in soler e Forno"
   },
   {
@@ -27499,7 +27499,7 @@
     "id": "poi_3929",
     "lat": 45.43025602146811,
     "lng": 12.32740007201976,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa con orto unito"
   },
   {
@@ -27541,7 +27541,7 @@
     "id": "poi_3935",
     "lat": 45.43221935744623,
     "lng": 12.326142865031787,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa a pepian con horto"
   },
   {
@@ -27611,7 +27611,7 @@
     "id": "poi_3945",
     "lat": 45.431683110324244,
     "lng": 12.325100911084776,
-    "type": "CASA",
+    "type": "FORNO",
     "label": "Casa e Forno"
   },
   {
@@ -27639,14 +27639,14 @@
     "id": "poi_3949",
     "lat": 45.431218123532204,
     "lng": 12.324714559438783,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa in soler con horticello"
   },
   {
     "id": "poi_3950",
     "lat": 45.43169103657407,
     "lng": 12.324552703332248,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa con horto"
   },
   {
@@ -27667,14 +27667,14 @@
     "id": "poi_3953",
     "lat": 45.430810295860425,
     "lng": 12.32463873061139,
-    "type": "MEDICINE",
+    "type": "MEDICINE,SPECIER",
     "label": "Casa e bottega di spezier da medicine"
   },
   {
     "id": "poi_3954",
     "lat": 45.43082591102005,
     "lng": 12.325484848340494,
-    "type": "CASA",
+    "type": "ORTO",
     "label": "Casa a pepian con horto"
   },
   {
@@ -27814,7 +27814,7 @@
     "id": "poi_3974",
     "lat": 45.430562319285286,
     "lng": 12.330580320057408,
-    "type": "SPECIER",
+    "type": "SPECIER,CONFETTI",
     "label": "Casa e Botegha da specier de confetti"
   },
   {
@@ -27940,7 +27940,7 @@
     "id": "poi_3992",
     "lat": 45.43047817122237,
     "lng": 12.330811930634676,
-    "type": "CASA",
+    "type": "FORNO",
     "label": "Casa e forno"
   },
   {
@@ -27989,7 +27989,7 @@
     "id": "poi_3999",
     "lat": 45.43450560322671,
     "lng": 12.336941447241879,
-    "type": "CASA",
+    "type": "OSPIZIO",
     "label": "casa con altro luogo tenuto per ospizio"
   },
   {
@@ -28031,7 +28031,7 @@
     "id": "poi_4005",
     "lat": 45.43461889081672,
     "lng": 12.337758761362569,
-    "type": "CALDERER",
+    "type": "CALDERER,FABRO",
     "label": "bottega da fabro e porzione di bottega da calderer"
   },
   {
@@ -28101,14 +28101,14 @@
     "id": "poi_4015",
     "lat": 45.43577214258746,
     "lng": 12.339327491970309,
-    "type": "CASA",
+    "type": "FORNO",
     "label": "Casa, e Forno"
   },
   {
     "id": "poi_4016",
     "lat": 45.43576290634159,
     "lng": 12.33934038870268,
-    "type": "CASA",
+    "type": "FORNO",
     "label": "Casa, e Forno"
   },
   {
@@ -28150,14 +28150,14 @@
     "id": "poi_4022",
     "lat": 45.436373162019535,
     "lng": 12.339684875988919,
-    "type": "CASA",
+    "type": "FORNO",
     "label": "Casa, Forno e Casetta"
   },
   {
     "id": "poi_4023",
     "lat": 45.43638351369628,
     "lng": 12.339687920092965,
-    "type": "CASA",
+    "type": "FORNO",
     "label": "Casa, Forno e Casetta"
   }
 ]

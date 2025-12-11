@@ -103,12 +103,24 @@ def main():
 
     # Helper to derive type/label
     def normalize_type(row) -> str:
+        # Prioritize PP_Bottega_STD if available (specialized shop type)
         primary = str(row.get("PP_Bottega_STD") or "").strip()
+        if primary:
+            return primary.upper()
+        
+        # Fall back to PP_Function_MID, preferring tokens in KEEP_TOKENS
         fallback = str(row.get("PP_Function_MID") or "").strip()
-        base = primary or fallback
-        if not base:
+        if not fallback:
             return "UNKNOWN"
-        return base.split(",")[0].strip().upper() or "UNKNOWN"
+        
+        # Split by comma and prefer tokens that are in KEEP_TOKENS
+        tokens = [t.strip().upper() for t in fallback.split(",") if t.strip()]
+        for token in tokens:
+            if token in KEEP_TOKENS:
+                return token
+        
+        # If no tokens are in KEEP_TOKENS, return the first one
+        return tokens[0] if tokens else "UNKNOWN"
 
     def build_label(row) -> str:
         if pd.notna(row.get("function")) and str(row["function"]).strip():
