@@ -28,7 +28,6 @@ KEEP_TOKENS = {
     "GIARDINO",
     "CORTE",
     "ORTO",
-    "TRAGHETTO",
     "FONDACO",
     "BANCO",
     "POSTA",
