@@ -59,3 +59,23 @@ export interface ThoughtResponse {
   thought: string;
   agent_name: string;
 }
+
+export interface DetourOption {
+  id: string;
+  type: string;
+  label: string;
+}
+
+export interface DetourDecisionRequest {
+  agent_name: string;
+  personality: string;
+  time_of_day: string;
+  main_goal: string;
+  available_minutes_before_next_obligation: number;
+  options: DetourOption[];
+}
+
+export interface DetourDecisionResponse {
+  choice_id: string;
+  thought?: string;
+}
