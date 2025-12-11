@@ -1,4 +1,5 @@
 import { LatLngLiteral } from "leaflet";
+import type { Poi } from "@/types/poi";
 
 // --- Types ---
 export type NetworkNode = {
@@ -247,4 +248,151 @@ export function findPath(
   if (!nodePath) return null;
 
   return pathToCoordinates(network, nodePath);
+}
+
+// --- POI utilities ---
+
+const WALKING_SPEED_M_PER_S = 1.4; // average walking speed
+
+function getReachableNodeDistances(
+  network: StreetNetwork,
+  startNodeId: string,
+  maxDistanceMinutes: number
+): Map<string, number> {
+  if (!network.nodes.has(startNodeId)) return new Map();
+
+  const maxDistanceMeters = maxDistanceMinutes * 60 * WALKING_SPEED_M_PER_S;
+
+  const distances = new Map<string, number>();
+  distances.set(startNodeId, 0);
+
+  const visited = new Set<string>();
+
+  // Simple dijkstra with array priority queue (graph size is modest)
+  const queue: { id: string; dist: number }[] = [{ id: startNodeId, dist: 0 }];
+
+  while (queue.length > 0) {
+    // extract min
+    queue.sort((a, b) => a.dist - b.dist);
+    const current = queue.shift()!;
+    if (visited.has(current.id)) continue;
+    visited.add(current.id);
+
+    const neighbors = network.adjacency.get(current.id) || [];
+    const currentNode = network.nodes.get(current.id);
+    if (!currentNode) continue;
+
+    for (const nbId of neighbors) {
+      const neighborNode = network.nodes.get(nbId);
+      if (!neighborNode) continue;
+
+      const edgeMeters = haversineDistance(
+        currentNode.lat,
+        currentNode.lng,
+        neighborNode.lat,
+        neighborNode.lng
+      );
+      const newDist = current.dist + edgeMeters;
+
+      if (newDist > maxDistanceMeters) continue;
+
+      const prev = distances.get(nbId);
+      if (prev === undefined || newDist < prev) {
+        distances.set(nbId, newDist);
+        queue.push({ id: nbId, dist: newDist });
+      }
+    }
+  }
+
+  return distances;
+}
+
+export function getNearbyPoisWithDistance(
+  network: StreetNetwork,
+  pois: Poi[],
+  currentNodeId: string,
+  maxDistanceMinutes: number
+): { poi: Poi; reachableMinutes: number; offsetMeters: number }[] {
+  const reachable = getReachableNodeDistances(
+    network,
+    currentNodeId,
+    maxDistanceMinutes
+  );
+  if (reachable.size === 0) return [];
+
+  const nearestCache = new Map<string, { nodeId: string; offsetMeters: number }>();
+
+  const filtered = pois
+    .map((poi) => {
+      const cached = nearestCache.get(poi.id);
+      let nearest = cached;
+      if (!nearest) {
+        const found = findNearestNode(network, poi.lat, poi.lng);
+        if (!found) return null;
+        const offset = haversineDistance(poi.lat, poi.lng, found.lat, found.lng);
+        nearest = { nodeId: found.id, offsetMeters: offset };
+        nearestCache.set(poi.id, nearest);
+      }
+      if (!nearest) return null;
+      const reachableDist = reachable.get(nearest.nodeId);
+      if (reachableDist === undefined) return null;
+      return {
+        poi,
+        reachableMinutes: reachableDist / (WALKING_SPEED_M_PER_S * 60),
+        offsetMeters: nearest.offsetMeters,
+      };
+    })
+    .filter(
+      (item): item is { poi: Poi; reachableMinutes: number; offsetMeters: number } => !!item
+    );
+
+  const sorted = filtered.sort((a, b) => a.reachableMinutes - b.reachableMinutes);
+  return sorted.slice(0, 4);
+}
+
+
+export function shortestPathDistanceMeters(
+  network: StreetNetwork,
+  startNodeId: string,
+  goalNodeId: string
+): number | null {
+  if (startNodeId === goalNodeId) return 0;
+  if (!network.nodes.has(startNodeId) || !network.nodes.has(goalNodeId)) return null;
+
+  const distances = new Map<string, number>();
+  const visited = new Set<string>();
+  const queue: { id: string; dist: number }[] = [{ id: startNodeId, dist: 0 }];
+  distances.set(startNodeId, 0);
+
+  while (queue.length > 0) {
+    queue.sort((a, b) => a.dist - b.dist);
+    const current = queue.shift()!;
+    if (visited.has(current.id)) continue;
+    visited.add(current.id);
+
+    if (current.id === goalNodeId) return current.dist;
+
+    const neighbors = network.adjacency.get(current.id) || [];
+    const currentNode = network.nodes.get(current.id);
+    if (!currentNode) continue;
+
+    for (const nbId of neighbors) {
+      const neighborNode = network.nodes.get(nbId);
+      if (!neighborNode) continue;
+      const edgeMeters = haversineDistance(
+        currentNode.lat,
+        currentNode.lng,
+        neighborNode.lat,
+        neighborNode.lng
+      );
+      const newDist = current.dist + edgeMeters;
+      const prev = distances.get(nbId);
+      if (prev === undefined || newDist < prev) {
+        distances.set(nbId, newDist);
+        queue.push({ id: nbId, dist: newDist });
+      }
+    }
+  }
+
+  return null;
 }

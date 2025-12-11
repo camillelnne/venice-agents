@@ -5,6 +5,7 @@ import "leaflet/dist/leaflet.css";
 import { useTime } from "@/lib/TimeContext";
 import { useNetwork } from "@/lib/NetworkContext";
 import { useAgent } from "@/hooks/useAgent";
+import { usePois } from "@/hooks/usePois";
 import { VENICE_BOUNDS_COORDS, VENICE_CENTER, MAP_CONFIG } from "@/lib/constants";
 import TimeDisplay from "@/components/TimeDisplay";
 import NetworkRenderer from "@/components/NetworkRenderer";
@@ -29,9 +30,10 @@ const VENICE_BOUNDS = L.latLngBounds(
 export default function VeniceMap() {
   const { currentTime, isRunning, timeSpeed } = useTime();
   const { network } = useNetwork();
+  const { pois } = usePois();
   
   // Use the new agent hook
-  const { agent } = useAgent(network, currentTime, isRunning, timeSpeed);
+  const { agent } = useAgent(network, currentTime, isRunning, timeSpeed, pois);
 
   return (
     <MapContainer

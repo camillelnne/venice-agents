@@ -7,6 +7,8 @@ import type { Persona, RoutineBlock, RoutineType } from "@/types/persona";
 import type { StreetNetwork } from "./network";
 import { findNearestNode, findPathBFS, pathToCoordinates } from "./network";
 
+export type AgentMode = "ROUTINE" | "DETOURING" | "AT_DETOUR";
+
 export interface AgentState {
   persona: Persona;
   currentNodeId: string;
@@ -18,6 +20,11 @@ export interface AgentState {
   currentRoutineType: RoutineType;
   targetNodeId: string;
   spontaneousActivity?: string; // Description of spontaneous override action
+  mode: AgentMode;
+  detourTargetNodeId: string | null;
+  spontaneousEndTime: number | null; // sim minutes
+  lastDetourEndTime: number | null; // sim minutes
+  detoursTakenToday: number;
 }
 
 /**
@@ -144,6 +151,11 @@ export function initializeAgent(
     pathProgress: 0,
     currentRoutineType,
     targetNodeId,
+    mode: "ROUTINE",
+    detourTargetNodeId: null,
+    spontaneousEndTime: null,
+    lastDetourEndTime: null,
+    detoursTakenToday: 0,
   };
 }
 
@@ -231,7 +243,6 @@ export function moveAgentAlongPath(
   // `timeSpeed` is expressed as simulated minutes per real second (e.g. 5 = 5 simulated minutes / real second)
   // Convert that to simulated seconds per real second: timeSpeed * 60.
   // Move per real millisecond = walkingSpeed_m_per_s * (timeSpeed * 60) / 1000
-  // Apply an optional visual multiplier for faster visuals.
   const REAL_WALKING_SPEED_M_PER_S = 1.4; // m/s
   const simulatedSecondsPerRealSecond = timeSpeed * 60; // e.g. 5 min/s -> 300 simulated seconds per real second
   const WALKING_SPEED_M_PER_MS =
