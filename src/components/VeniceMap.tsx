@@ -90,6 +90,12 @@ export default function VeniceMap() {
       maxZoom={MAP_CONFIG.MAX_ZOOM}
     >
       <TileLayer
+        url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}@2x.png"
+        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        maxZoom={19}
+        minZoom={MAP_CONFIG.MIN_ZOOM}
+      />
+      <TileLayer
         url="https://geo-timemachine.epfl.ch/geoserver/www/tilesets/venice/sommarioni/{z}/{x}/{y}.png"
         attribution='&copy; <a href="https://timeatlas.eu/">Time Atlas@EPFL</a>'
         maxZoom={MAP_CONFIG.MAX_ZOOM}
