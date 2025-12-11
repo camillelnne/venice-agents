@@ -25,6 +25,7 @@ export interface AgentState {
   spontaneousEndTime: number | null; // sim minutes
   lastDetourEndTime: number | null; // sim minutes
   detoursTakenToday: number;
+  detourThought?: string; // Thought from detour decision to display
 }
 
 /**
@@ -201,6 +202,7 @@ export function updateAgentRoutine(
           pathNodeIds: nodePath || [],
           pathProgress: 0,
           spontaneousActivity: undefined, // Clear spontaneous activity when returning to routine
+          detourThought: undefined, // Clear detour thought when returning to routine
         },
         pathChanged: true,
       };
@@ -211,6 +213,7 @@ export function updateAgentRoutine(
           ...state,
           currentRoutineType: newRoutineType,
           spontaneousActivity: undefined, // Clear spontaneous activity
+          detourThought: undefined, // Clear detour thought
         },
         pathChanged: false,
       };

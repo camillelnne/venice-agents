@@ -20,9 +20,13 @@ export default function AgentRenderer({ agent }: AgentRendererProps) {
   const pathRef = useRef<L.Polyline | null>(null);
   const lastPathLengthRef = useRef<number>(0);
   const hasInitializedRef = useRef(false);
-  const { generateThought, isGenerating } = useThoughts();
-  const [currentThought, setCurrentThought] = useState<string>("");
+  const { generateThought } = useThoughts();
+  const [generatedThought, setGeneratedThought] = useState<string>("");
   const { currentTime } = useTime();
+  const lastActivityRef = useRef<string>("");
+
+  // Derive the current thought: prioritize detour thought, fall back to generated thought
+  const currentThought = agent?.detourThought || generatedThought;
 
   // Function to update popup content
   const updatePopup = useCallback(() => {
@@ -49,9 +53,16 @@ export default function AgentRenderer({ agent }: AgentRendererProps) {
     }
   }, [agent, currentThought]);
 
-  // Generate thought when activity changes
+  // Generate thought when activity changes (but only if no detour thought)
   useEffect(() => {
     if (!agent) return;
+    
+    // Skip if activity hasn't changed
+    if (agent.currentActivity === lastActivityRef.current) return;
+    lastActivityRef.current = agent.currentActivity;
+    
+    // Skip thought generation if we have a detour thought
+    if (agent.detourThought) return;
 
     const generateNewThought = async () => {
       const currentLocation = agent.position;
@@ -63,12 +74,12 @@ export default function AgentRenderer({ agent }: AgentRendererProps) {
       );
       
       if (thought) {
-        setCurrentThought(thought.thought);
+        setGeneratedThought(thought.thought);
       }
     };
 
     generateNewThought();
-  }, [agent?.currentActivity, agent?.name]);
+  }, [agent?.currentActivity, agent?.detourThought, agent, currentTime, generateThought]);
 
   // Update popup when thought changes
   useEffect(() => {

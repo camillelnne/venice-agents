@@ -320,6 +320,7 @@ export function getNearbyPoisWithDistance(
   );
   if (reachable.size === 0) return [];
 
+  const MIN_DISTANCE_METERS = 200; // Minimum distance to show visible movement
   const nearestCache = new Map<string, { nodeId: string; offsetMeters: number }>();
 
   const filtered = pois
@@ -336,6 +337,11 @@ export function getNearbyPoisWithDistance(
       if (!nearest) return null;
       const reachableDist = reachable.get(nearest.nodeId);
       if (reachableDist === undefined) return null;
+      
+      // Filter out POIs that are too close
+      const totalDistance = reachableDist + nearest.offsetMeters;
+      if (totalDistance < MIN_DISTANCE_METERS) return null;
+      
       return {
         poi,
         reachableMinutes: reachableDist / (WALKING_SPEED_M_PER_S * 60),
