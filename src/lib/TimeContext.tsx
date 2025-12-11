@@ -15,9 +15,9 @@ type TimeContextType = {
 const TimeContext = createContext<TimeContextType | undefined>(undefined);
 
 export function TimeProvider({ children }: { children: ReactNode }) {
-  // Start at 8:00 AM in 1808 Venice
+  // Start at 8:00 AM in 1740 Venice
   const [currentTime, setCurrentTime] = useState(() => {
-    const date = new Date(1808, 0, 15, TIME_CONFIG.START_HOUR, TIME_CONFIG.START_MINUTE, 0);
+    const date = new Date(1740, 0, 15, TIME_CONFIG.START_HOUR, TIME_CONFIG.START_MINUTE, 0);
     return date;
   });
   
