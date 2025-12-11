@@ -1,5 +1,4 @@
 [
-
   {
     "name": "Agostin Lazari",
     "shopType": "(Person) Forger",
@@ -81,6 +80,67 @@
       },
       {
         "startTime": "21:30",
+        "endTime": "22:00",
+        "type": "HOME"
+      }
+    ]
+  },
+  {
+    "name": "Agostin Cigaggia",
+    "shopType": "(Person) Cheese",
+    "shopCategory": "FOOD_DRINK",
+    "home": {
+      "lat": 45.44378882279249,
+      "lng": 12.325677522959008
+    },
+    "shop": {
+      "lat": 45.44378882279249,
+      "lng": 12.325677522959008
+    },
+    "personality": "A meticulous formagier in his forties, Agostin keeps strict accounts and prides himself on honest weights and well-brined rinds, serving gondoliers and nearby taverns alike. Pious and sociable, he minds his household above the shop yet enjoys an evening ombra and the latest avvisi at the neighborhood bacaro.",
+    "dailyRoutine": [
+      {
+        "startTime": "05:00",
+        "endTime": "05:30",
+        "type": "HOME"
+      },
+      {
+        "startTime": "05:30",
+        "endTime": "12:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "12:00",
+        "endTime": "13:00",
+        "type": "HOME"
+      },
+      {
+        "startTime": "13:00",
+        "endTime": "13:30",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "13:30",
+        "endTime": "18:30",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "18:30",
+        "endTime": "19:00",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "19:00",
+        "endTime": "20:00",
+        "type": "HOME"
+      },
+      {
+        "startTime": "20:00",
+        "endTime": "21:00",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "21:00",
         "endTime": "22:00",
         "type": "HOME"
       }
