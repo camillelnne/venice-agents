@@ -30,7 +30,7 @@ export default function AgentRenderer({ agents }: AgentRendererProps) {
   const map = useMap();
   const markersRef = useRef<Map<string, L.CircleMarker>>(new Map());
   const pathsRef = useRef<Map<string, L.Polyline>>(new Map());
-  const tooltipsRef = useRef<Map<string, L.Tooltip>>(new Map()); // NEW: Store tooltip references
+  const tooltipsRef = useRef<Map<string, L.Tooltip>>(new Map()); // Store tooltip references
   const lastPathLengthsRef = useRef<Map<string, number>>(new Map());
   const hasInitializedRef = useRef(false);
   const { generateThought, isGenerating } = useThoughts();
@@ -176,7 +176,6 @@ export default function AgentRenderer({ agents }: AgentRendererProps) {
         
         markersRef.current.set(agent.id, marker);
 
-        // Center map on first agent on first render
         if (!hasInitializedRef.current && index === 0) {
           //map.setView(agent.position, 17);
           hasInitializedRef.current = true;

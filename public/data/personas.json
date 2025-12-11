@@ -8,10 +8,10 @@
       "lng": 12.325677522959008
     },
     "shop": {
-      "lat": 45.44478882279249,
+      "lat": 45.44378882279249,
       "lng": 12.325677522959008
     },
-    "personality": "Methodical and plain-spoken, he prides himself on honest weights and careful curing of cheeses from the terraferma. Devout yet sociable near San Moisè, he keeps a thrifty house and cultivates steady ties with cooks and tavern keepers.",
+    "personality": "Steady and fair-minded, Agostin prides himself on honest weights and well-aged wheels, keeping close ties with terraferma barge men and the cooks of nearby inns. Pious yet sociable, he maintains a tidy shop and a careful ledger.",
     "dailyRoutine": [
       {
         "startTime": "05:00",
@@ -20,23 +20,23 @@
       },
       {
         "startTime": "05:30",
-        "endTime": "09:00",
+        "endTime": "10:30",
         "type": "SHOP"
       },
       {
-        "startTime": "09:00",
-        "endTime": "09:30",
-        "type": "FREE_TIME"
-      },
-      {
-        "startTime": "09:30",
-        "endTime": "12:30",
-        "type": "SHOP"
-      },
-      {
-        "startTime": "12:30",
-        "endTime": "13:30",
+        "startTime": "10:30",
+        "endTime": "11:00",
         "type": "HOME"
+      },
+      {
+        "startTime": "11:00",
+        "endTime": "13:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "13:00",
+        "endTime": "13:30",
+        "type": "FREE_TIME"
       },
       {
         "startTime": "13:30",
@@ -46,20 +46,20 @@
       {
         "startTime": "16:30",
         "endTime": "17:00",
-        "type": "FREE_TIME"
+        "type": "HOME"
       },
       {
         "startTime": "17:00",
-        "endTime": "20:00",
+        "endTime": "19:30",
         "type": "SHOP"
       },
       {
-        "startTime": "20:00",
-        "endTime": "21:00",
+        "startTime": "19:30",
+        "endTime": "20:00",
         "type": "FREE_TIME"
       },
       {
-        "startTime": "21:00",
+        "startTime": "20:00",
         "endTime": "22:00",
         "type": "HOME"
       }
@@ -74,60 +74,55 @@
       "lng": 12.345065230193345
     },
     "shop": {
-      "lat": 45.439727441449785,
+      "lat": 45.438727441449785,
       "lng": 12.345065230193345
     },
-    "personality": "Early-rising and methodical, he keeps his loaves honest to the guild’s weights and minds a steady oven and fair dealing. Pious and warm to neighbors, he watches flour prices closely and quietly spares crusts for the hungry.",
+    "personality": "Steady, frugal, and pious, Agostin keeps his oven hot before dawn and his accounts tidy under the watch of the guild. Genial with neighbors yet exacting about weight and price, he minds the city’s grain officers and the quality of every loaf.",
     "dailyRoutine": [
       {
         "startTime": "05:00",
-        "endTime": "08:30",
-        "type": "SHOP"
-      },
-      {
-        "startTime": "08:30",
         "endTime": "09:00",
-        "type": "FREE_TIME"
+        "type": "SHOP"
       },
       {
         "startTime": "09:00",
-        "endTime": "11:00",
-        "type": "SHOP"
-      },
-      {
-        "startTime": "11:00",
-        "endTime": "12:00",
+        "endTime": "09:30",
         "type": "HOME"
       },
       {
-        "startTime": "12:00",
-        "endTime": "13:00",
-        "type": "FREE_TIME"
-      },
-      {
-        "startTime": "13:00",
-        "endTime": "15:00",
+        "startTime": "09:30",
+        "endTime": "12:30",
         "type": "SHOP"
       },
       {
-        "startTime": "15:00",
-        "endTime": "16:00",
+        "startTime": "12:30",
+        "endTime": "13:30",
+        "type": "HOME"
+      },
+      {
+        "startTime": "13:30",
+        "endTime": "14:00",
         "type": "FREE_TIME"
       },
       {
+        "startTime": "14:00",
+        "endTime": "16:00",
+        "type": "SHOP"
+      },
+      {
         "startTime": "16:00",
+        "endTime": "16:30",
+        "type": "HOME"
+      },
+      {
+        "startTime": "16:30",
         "endTime": "19:00",
         "type": "SHOP"
       },
       {
         "startTime": "19:00",
-        "endTime": "19:30",
-        "type": "HOME"
-      },
-      {
-        "startTime": "19:30",
         "endTime": "20:00",
-        "type": "SHOP"
+        "type": "HOME"
       },
       {
         "startTime": "20:00",
@@ -150,10 +145,10 @@
       "lng": 12.33371623096242
     },
     "shop": {
-      "lat": 45.439597037085536,
+      "lat": 45.438597037085536,
       "lng": 12.33371623096242
     },
-    "personality": "Steady-handed and conscientious, Agostin is a guild-trained craftsman known for dependable iron fittings for gondolas, doors, and tools. Pious and frugal, he guards his reputation through fair measure and quiet diligence, teaching apprentices by example.",
+    "personality": "Steady-handed and thrifty, Agostin prides himself on clean welds and honest work for gondoliers, boatyards, and neighbors. Pious and obliging yet firm in his accounts, he bargains hard for good charcoal and keeps his tools in exemplary order.",
     "dailyRoutine": [
       {
         "startTime": "05:00",
@@ -162,26 +157,148 @@
       },
       {
         "startTime": "05:30",
-        "endTime": "08:00",
+        "endTime": "09:30",
         "type": "SHOP"
       },
       {
-        "startTime": "08:00",
-        "endTime": "08:30",
-        "type": "HOME"
-      },
-      {
-        "startTime": "08:30",
-        "endTime": "10:30",
-        "type": "SHOP"
-      },
-      {
-        "startTime": "10:30",
-        "endTime": "11:00",
+        "startTime": "09:30",
+        "endTime": "10:00",
         "type": "FREE_TIME"
       },
       {
-        "startTime": "11:00",
+        "startTime": "10:00",
+        "endTime": "12:30",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "12:30",
+        "endTime": "13:30",
+        "type": "HOME"
+      },
+      {
+        "startTime": "13:30",
+        "endTime": "17:30",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "17:30",
+        "endTime": "18:30",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "18:30",
+        "endTime": "20:00",
+        "type": "HOME"
+      },
+      {
+        "startTime": "20:00",
+        "endTime": "21:00",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "21:00",
+        "endTime": "22:00",
+        "type": "HOME"
+      }
+    ]
+  },
+  {
+    "name": "Agostin Meneghetti",
+    "shopType": "Jeweler",
+    "shopCategory": "LUXURY_ITEMS",
+    "home": {
+      "lat": 45.44172674732461,
+      "lng": 12.332603441638216
+    },
+    "shop": {
+      "lat": 45.44125025746686,
+      "lng": 12.334487650422629
+    },
+    "personality": "Meticulous and discreet, he weighs gold and gems with a cautious eye and keeps exact accounts to guard his reputation. Devout yet sociable, he cultivates patrician and foreign clients through measured courtesy and steady guild ties.",
+    "dailyRoutine": [
+      {
+        "startTime": "05:00",
+        "endTime": "06:30",
+        "type": "HOME"
+      },
+      {
+        "startTime": "06:30",
+        "endTime": "07:30",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "07:30",
+        "endTime": "08:00",
+        "type": "TRAVEL_TO_SHOP"
+      },
+      {
+        "startTime": "08:00",
+        "endTime": "12:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "12:00",
+        "endTime": "12:30",
+        "type": "TRAVEL_HOME"
+      },
+      {
+        "startTime": "12:30",
+        "endTime": "13:30",
+        "type": "HOME"
+      },
+      {
+        "startTime": "13:30",
+        "endTime": "14:00",
+        "type": "TRAVEL_TO_SHOP"
+      },
+      {
+        "startTime": "14:00",
+        "endTime": "18:30",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "18:30",
+        "endTime": "19:00",
+        "type": "TRAVEL_HOME"
+      },
+      {
+        "startTime": "19:00",
+        "endTime": "20:00",
+        "type": "HOME"
+      },
+      {
+        "startTime": "20:00",
+        "endTime": "21:00",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "21:00",
+        "endTime": "22:00",
+        "type": "HOME"
+      }
+    ]
+  },
+  {
+    "name": "Agostin Redolfi",
+    "shopType": "Pastry seller",
+    "shopCategory": "FOOD_DRINK",
+    "home": {
+      "lat": 45.43950464424702,
+      "lng": 12.33269834194524
+    },
+    "shop": {
+      "lat": 45.43950464424702,
+      "lng": 12.33269834194524
+    },
+    "personality": "Diligent and convivial, he rises before dawn to tend his ovens and greets each patron by name. Frugal with costly sugar yet generous with small favors, he prizes honest weights and the respect of neighbors and guild.",
+    "dailyRoutine": [
+      {
+        "startTime": "05:00",
+        "endTime": "06:00",
+        "type": "HOME"
+      },
+      {
+        "startTime": "06:00",
         "endTime": "12:00",
         "type": "SHOP"
       },
@@ -192,163 +309,11 @@
       },
       {
         "startTime": "13:00",
-        "endTime": "15:00",
+        "endTime": "16:30",
         "type": "SHOP"
       },
       {
-        "startTime": "15:00",
-        "endTime": "15:30",
-        "type": "FREE_TIME"
-      },
-      {
-        "startTime": "15:30",
-        "endTime": "17:30",
-        "type": "SHOP"
-      },
-      {
-        "startTime": "17:30",
-        "endTime": "18:00",
-        "type": "FREE_TIME"
-      },
-      {
-        "startTime": "18:00",
-        "endTime": "19:30",
-        "type": "SHOP"
-      },
-      {
-        "startTime": "19:30",
-        "endTime": "20:30",
-        "type": "HOME"
-      },
-      {
-        "startTime": "20:30",
-        "endTime": "21:30",
-        "type": "FREE_TIME"
-      },
-      {
-        "startTime": "21:30",
-        "endTime": "22:00",
-        "type": "HOME"
-      }
-    ]
-  },
-  {
-    "name": "Agostin Meneghetti",
-    "shopType": "Goldsmith",
-    "shopCategory": "LUXURY_ITEMS",
-    "home": {
-      "lat": 45.44172674732461,
-      "lng": 12.332603441638216
-    },
-    "shop": {
-      "lat": 45.44125025746686,
-      "lng": 12.334487650422629
-    },
-    "personality": "Meticulous and soft-spoken, he prizes exact weights, clean workmanship, and the good opinion of his parish and guild. Courteous with clients yet firm on price and purity, he guards his reputation more carefully than his stock.",
-    "dailyRoutine": [
-      {
-        "startTime": "05:00",
-        "endTime": "05:30",
-        "type": "HOME"
-      },
-      {
-        "startTime": "05:30",
-        "endTime": "06:00",
-        "type": "TRAVEL_TO_SHOP"
-      },
-      {
-        "startTime": "06:00",
-        "endTime": "12:00",
-        "type": "SHOP"
-      },
-      {
-        "startTime": "12:00",
-        "endTime": "12:30",
-        "type": "FREE_TIME"
-      },
-      {
-        "startTime": "12:30",
-        "endTime": "15:30",
-        "type": "SHOP"
-      },
-      {
-        "startTime": "15:30",
-        "endTime": "16:00",
-        "type": "FREE_TIME"
-      },
-      {
-        "startTime": "16:00",
-        "endTime": "19:00",
-        "type": "SHOP"
-      },
-      {
-        "startTime": "19:00",
-        "endTime": "19:30",
-        "type": "TRAVEL_HOME"
-      },
-      {
-        "startTime": "19:30",
-        "endTime": "20:30",
-        "type": "HOME"
-      },
-      {
-        "startTime": "20:30",
-        "endTime": "21:30",
-        "type": "FREE_TIME"
-      },
-      {
-        "startTime": "21:30",
-        "endTime": "22:00",
-        "type": "HOME"
-      }
-    ]
-  },
-  {
-    "name": "Agostin Redolfi",
-    "shopType": "Scaleter",
-    "shopCategory": "FOOD_DRINK",
-    "home": {
-      "lat": 45.43950464424702,
-      "lng": 12.33269834194524
-    },
-    "shop": {
-      "lat": 45.43950464424702,
-      "lng": 12.33269834194524
-    },
-    "personality": "Cheerful and exacting, Agostin prides himself on light fritole and honest weights, greeting neighbors by name as they pass. Pious and thrifty, he keeps to guild customs and minds the fire as carefully as his accounts.",
-    "dailyRoutine": [
-      {
-        "startTime": "05:00",
-        "endTime": "05:30",
-        "type": "HOME"
-      },
-      {
-        "startTime": "05:30",
-        "endTime": "10:30",
-        "type": "SHOP"
-      },
-      {
-        "startTime": "10:30",
-        "endTime": "11:00",
-        "type": "FREE_TIME"
-      },
-      {
-        "startTime": "11:00",
-        "endTime": "12:30",
-        "type": "SHOP"
-      },
-      {
-        "startTime": "12:30",
-        "endTime": "14:00",
-        "type": "HOME"
-      },
-      {
-        "startTime": "14:00",
-        "endTime": "17:00",
-        "type": "SHOP"
-      },
-      {
-        "startTime": "17:00",
+        "startTime": "16:30",
         "endTime": "17:30",
         "type": "FREE_TIME"
       },
@@ -364,11 +329,6 @@
       },
       {
         "startTime": "20:00",
-        "endTime": "20:30",
-        "type": "SHOP"
-      },
-      {
-        "startTime": "20:30",
         "endTime": "21:00",
         "type": "FREE_TIME"
       },
