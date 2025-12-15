@@ -18,9 +18,6 @@ const AGENT_COLORS = [
   "#4444ff", // blue
   "#ffaa44", // orange
   "#ff44ff", // magenta
-  "#44ffff", // cyan
-  "#ffff44", // yellow
-  "#aa44ff", // purple
 ];
 
 /**

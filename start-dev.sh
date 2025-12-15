@@ -13,7 +13,7 @@ if [ ! -f .env ]; then
 fi
 
 # Prompt for number of agents
-read -p "How many agents would you like to simulate? (default: 3): " num_agents
+read -p "How many agents would you like to simulate? (default: 3, max: 5): " num_agents
 num_agents=${num_agents:-3}
 
 # Validate input
@@ -21,6 +21,13 @@ if ! [[ "$num_agents" =~ ^[0-9]+$ ]] || [ "$num_agents" -lt 1 ]; then
     echo "⚠️  Invalid number. Using default: 3"
     num_agents=3
 fi
+
+# Apply maximum limit
+if [ "$num_agents" -gt 5 ]; then
+    echo "⚠️  Too many agents. Maximum is 5. Using 5."
+    num_agents=5
+fi
+
 
 echo "📊 Starting simulation with $num_agents agent(s)..."
 export NEXT_PUBLIC_NUM_AGENTS=$num_agents

@@ -50,7 +50,14 @@ export default function VeniceMap() {
           throw new Error(`Failed to load personas: ${response.status}`);
         }
         const data = await response.json();
-        setPersonas(Array.isArray(data) ? data : []);
+        //setPersonas(Array.isArray(data) ? data : []);
+
+        // Shuffle the personas array randomly
+        const shuffled = Array.isArray(data) 
+          ? data.sort(() => Math.random() - 0.5)
+          : [];
+        
+        setPersonas(shuffled);
       } catch (err) {
         console.error("Error loading personas:", err);
         setPersonas([]);

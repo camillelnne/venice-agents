@@ -225,6 +225,10 @@ def main():
     # with input_path.open("r", encoding="utf-8") as f:
     #     rows = list(csv.DictReader(f))
     df = pd.read_parquet(input_path)
+
+    # shuffle the df to sample randomly
+    df = df.sample(frac=1, random_state=42).reset_index(drop=True)
+    
     rows = df.fillna("").to_dict(orient="records")
 
     if args.limit:
