@@ -9,3 +9,4 @@ pyarrow
 pandas
 openai>=1.3.0
 folium
+google-generativeai>=0.3.0

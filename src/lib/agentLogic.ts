@@ -25,7 +25,7 @@ export interface AgentState {
   spontaneousEndTime: number | null; // sim minutes
   lastDetourEndTime: number | null; // sim minutes
   detoursTakenToday: number;
-  detourThought?: string; // Thought from detour decision to display
+  detourThought?: string; // Thought from detour decision to display initially
 }
 
 /**
@@ -216,36 +216,6 @@ export function updateAgentRoutine(
           detourThought: undefined, // Clear detour thought
         },
         pathChanged: false,
-      };
-    }
-  }
-
-  // If routine hasn't changed but agent just finished a spontaneous activity
-  // and is not at their expected location for the current routine, navigate back
-  if (!state.spontaneousActivity && state.currentPath.length === 0) {
-    const expectedTarget = getTargetNodeForRoutine(
-      state.currentRoutineType,
-      state.homeNodeId,
-      state.shopNodeId,
-      state.currentNodeId
-    );
-    
-    // If agent should be somewhere else (not at current location)
-    if (expectedTarget !== state.currentNodeId) {
-      const nodePath = findPathBFS(network, state.currentNodeId, expectedTarget);
-      const smoothPath = nodePath ? pathToCoordinates(network, nodePath) : [];
-      
-      console.log(`🔄 Agent returning to ${state.currentRoutineType} location after detour`);
-      
-      return {
-        state: {
-          ...state,
-          targetNodeId: expectedTarget,
-          currentPath: smoothPath,
-          pathNodeIds: nodePath || [],
-          pathProgress: 0,
-        },
-        pathChanged: true,
       };
     }
   }

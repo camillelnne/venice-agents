@@ -5,7 +5,7 @@
 import { useState, useCallback } from 'react';
 import { ApiService } from '@/lib/api';
 import type { ThoughtRequest, ThoughtResponse, VeniceCoordinates } from '@/types/agent';
-import { AgentDisplay } from './useAgent';
+import { AgentDisplay } from '@/hooks/useAgents';
 
 export function useThoughts() {
   const [isGenerating, setIsGenerating] = useState(false);

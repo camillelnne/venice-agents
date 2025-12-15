@@ -338,9 +338,9 @@ export function getNearbyPoisWithDistance(
       const reachableDist = reachable.get(nearest.nodeId);
       if (reachableDist === undefined) return null;
       
-      // Filter out POIs that are too close
-      const totalDistance = reachableDist + nearest.offsetMeters;
-      if (totalDistance < MIN_DISTANCE_METERS) return null;
+      // // Filter out POIs that are too close
+      // const totalDistance = reachableDist + nearest.offsetMeters;
+      // if (totalDistance < MIN_DISTANCE_METERS) return null;
       
       return {
         poi,

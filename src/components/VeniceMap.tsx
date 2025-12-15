@@ -6,6 +6,7 @@ import { useMemo, useState, useEffect } from "react";
 import { useTime } from "@/lib/TimeContext";
 import { useNetwork } from "@/lib/NetworkContext";
 import { useAgents } from "@/hooks/useAgents";
+import { usePois } from "@/hooks/usePois";
 import { VENICE_BOUNDS_COORDS, VENICE_CENTER, MAP_CONFIG } from "@/lib/constants";
 import TimeDisplay from "@/components/TimeDisplay";
 import NetworkRenderer from "@/components/NetworkRenderer";
@@ -32,6 +33,7 @@ const VENICE_BOUNDS = L.latLngBounds(
 export default function VeniceMap() {
   const { currentTime, isRunning, timeSpeed } = useTime();
   const { network } = useNetwork();
+  const { pois } = usePois();
   const [personas, setPersonas] = useState<Persona[]>([]);
   
   // Read number of agents from environment variable
@@ -78,7 +80,7 @@ export default function VeniceMap() {
   }, [personas, numAgents]);
 
   // Use the multi-agent hook
-  const { agents } = useAgents(agentInfos, network, currentTime, isRunning, timeSpeed);
+  const { agents } = useAgents(agentInfos, network, currentTime, isRunning, timeSpeed, pois);
 
   return (
     <MapContainer

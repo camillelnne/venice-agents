@@ -4,8 +4,8 @@ import { useMap } from "react-leaflet";
 import L from "leaflet";
 import type { AgentDisplay } from "@/hooks/useAgents";
 import { AGENT_CONFIG } from "@/lib/constants";
-import { useThoughts } from "@/hooks/useThought";
 import { useTime } from "@/lib/TimeContext";
+import { useThoughts } from "@/hooks/useThought";
 
 interface AgentRendererProps {
   agents: AgentDisplay[];
@@ -18,6 +18,9 @@ const AGENT_COLORS = [
   "#4444ff", // blue
   "#ffaa44", // orange
   "#ff44ff", // magenta
+  "#44ffff", // cyan
+  "#ffff44", // yellow
+  "#aa44ff", // purple
 ];
 
 /**
