@@ -252,9 +252,13 @@ export function useAgents(
       const nearby = getNearbyPoisWithDistance(network, pois, agentState.currentNodeId, 15);
       if (nearby.length === 0) return;
 
-      // Build diverse options
-      const pickByTypes = (types: string[]) =>
-        nearby.find((entry) => types.includes(entry.poi.type.toUpperCase()));
+      // Build diverse options with randomization
+      const pickByTypes = (types: string[]) => {
+        const matches = nearby.filter((entry) => types.includes(entry.poi.type.toUpperCase()));
+        if (matches.length === 0) return null;
+        // Pick a random one from matches
+        return matches[Math.floor(Math.random() * matches.length)];
+      };
 
       const candidates: { poi: Poi; reachableMinutes: number }[] = [];
 
@@ -266,7 +270,8 @@ export function useAgents(
       if (courtyard) candidates.push(courtyard);
 
       if (candidates.length === 0 && nearby.length > 0) {
-        candidates.push(nearby[0]);
+        // Pick a random nearby POI as fallback
+        candidates.push(nearby[Math.floor(Math.random() * nearby.length)]);
       }
 
       const uniqueCandidates = Array.from(
