@@ -262,11 +262,12 @@ export function useAgents(
 
       const candidates: { poi: Poi; reachableMinutes: number }[] = [];
 
-      const tavern = pickByTypes(["TAVERN", "OSTERIA", "INN", "BAR", "CAFE"]);
+      // Italian/Venetian POI types from the actual dataset
+      const tavern = pickByTypes(["OSTERIA", "LOCANDA", "ALBERGO", "MALVASIA", "CAFFÈ"]);
       if (tavern) candidates.push(tavern);
-      const church = pickByTypes(["CHURCH", "CHAPEL", "TEMPLE"]);
+      const church = pickByTypes(["CHIESA", "SCUOLA", "OSPIZIO"]);
       if (church) candidates.push(church);
-      const courtyard = pickByTypes(["COURTYARD", "SQUARE", "GARDEN", "PARK", "PIAZZA"]);
+      const courtyard = pickByTypes(["CORTE", "GIARDINO", "ORTO"]);
       if (courtyard) candidates.push(courtyard);
 
       if (candidates.length === 0 && nearby.length > 0) {
