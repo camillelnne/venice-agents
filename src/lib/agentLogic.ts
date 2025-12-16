@@ -22,10 +22,13 @@ export interface AgentState {
   spontaneousActivity?: string; // Description of spontaneous override action
   mode: AgentMode;
   detourTargetNodeId: string | null;
-  spontaneousEndTime: number | null; // sim minutes
+  spontaneousEndTime: number | null; // sim minutes - when dwell should end
+  detourDwellDuration: number | null; // sim minutes - how long to dwell at detour
   lastDetourEndTime: number | null; // sim minutes
   detoursTakenToday: number;
   detourThought?: string; // Thought from detour decision to display initially
+  detourPoiType?: string; // The type of POI at detour location
+  detourPoiLabel?: string; // The label/name of the POI at detour location
 }
 
 /**
@@ -155,6 +158,7 @@ export function initializeAgent(
     mode: "ROUTINE",
     detourTargetNodeId: null,
     spontaneousEndTime: null,
+    detourDwellDuration: null,
     lastDetourEndTime: null,
     detoursTakenToday: 0,
   };
@@ -203,6 +207,9 @@ export function updateAgentRoutine(
           pathProgress: 0,
           spontaneousActivity: undefined, // Clear spontaneous activity when returning to routine
           detourThought: undefined, // Clear detour thought when returning to routine
+          detourPoiType: undefined, // Clear POI type
+          detourPoiLabel: undefined, // Clear POI label
+          detourDwellDuration: null, // Clear dwell duration
         },
         pathChanged: true,
       };
@@ -214,6 +221,9 @@ export function updateAgentRoutine(
           currentRoutineType: newRoutineType,
           spontaneousActivity: undefined, // Clear spontaneous activity
           detourThought: undefined, // Clear detour thought
+          detourPoiType: undefined, // Clear POI type
+          detourPoiLabel: undefined, // Clear POI label
+          detourDwellDuration: null, // Clear dwell duration
         },
         pathChanged: false,
       };

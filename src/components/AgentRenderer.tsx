@@ -6,6 +6,7 @@ import type { AgentDisplay } from "@/hooks/useAgents";
 import { AGENT_CONFIG } from "@/lib/constants";
 import { useTime } from "@/lib/TimeContext";
 import { useThoughts } from "@/hooks/useThought";
+import { translatePoiType } from "@/lib/poiTypeTranslations";
 
 interface AgentRendererProps {
   agents: AgentDisplay[];
@@ -56,14 +57,49 @@ export default function AgentRenderer({ agents }: AgentRendererProps) {
     return generatedThoughts.get(agent.id) || "";
   }, [generatedThoughts]);
 
+  // Function to format activity display text
+  const formatActivityDisplay = useCallback((agent: AgentDisplay): string => {
+    // If at detour location and we have POI information, show the POI type
+    if (agent.currentActivity === "At detour location" && agent.detourPoiType) {
+      const englishType = translatePoiType(agent.detourPoiType);
+      // If it's a landmark, show the name
+      if (agent.detourPoiType === "LANDMARK" && agent.detourPoiLabel) {
+        return `Visiting ${agent.detourPoiLabel}`;
+      }
+      // Otherwise show the type
+      return `At ${englishType}`;
+    }
+    
+    // If visiting/traveling to a POI, enhance the display
+    if (agent.currentActivity.startsWith("Visiting ") && agent.detourPoiType) {
+      const englishType = translatePoiType(agent.detourPoiType);
+      if (agent.detourPoiType === "LANDMARK" && agent.detourPoiLabel) {
+        return `Visiting ${agent.detourPoiLabel}`;
+      }
+      return `Visiting ${englishType}`;
+    }
+    
+    if (agent.currentActivity.startsWith("Traveling to ") && agent.detourPoiType) {
+      const englishType = translatePoiType(agent.detourPoiType);
+      if (agent.detourPoiType === "LANDMARK" && agent.detourPoiLabel) {
+        return `Traveling to ${agent.detourPoiLabel}`;
+      }
+      return `Traveling to ${englishType}`;
+    }
+    
+    // Default: return activity as is
+    return agent.currentActivity;
+  }, []);
+
   // Function to update tooltip content for a specific agent
   const updateTooltip = useCallback((agentId: string, agent: AgentDisplay) => {
     const thought = getCurrentThought(agent);
+    const activityDisplay = formatActivityDisplay(agent);
     const tooltipContent = `
       <div style="min-width: 200px;">
         <strong>${agent.name}</strong><br/>
         <em>${agent.shopType}</em><br/>
-        <strong>Activity:</strong> ${agent.currentActivity}<br/>
+        <strong>Activity:</strong> ${activityDisplay}<br/>
         ${thought ? `
           <hr style="margin: 8px 0;">
           <div style="font-style: italic; color: #666; font-size: 0.9em;">
@@ -81,7 +117,7 @@ export default function AgentRenderer({ agents }: AgentRendererProps) {
     if (tooltip) {
       tooltip.setContent(tooltipContent);
     }
-  }, [getCurrentThought]);
+  }, [getCurrentThought, formatActivityDisplay]);
 
   // Generate thoughts for agents when their activity changes (but only if no detour thought)
   useEffect(() => {
@@ -168,6 +204,7 @@ export default function AgentRenderer({ agents }: AgentRendererProps) {
         }).addTo(map);
         
         const thought = getCurrentThought(agent);
+        const activityDisplay = formatActivityDisplay(agent);
         
         // Create and store tooltip
         const tooltip = L.tooltip({
@@ -179,7 +216,7 @@ export default function AgentRenderer({ agents }: AgentRendererProps) {
           <div style="min-width: 200px;">
             <strong>${agent.name}</strong><br/>
             <em>${agent.shopType}</em><br/>
-            <strong>Activity:</strong> ${agent.currentActivity}<br/>
+            <strong>Activity:</strong> ${activityDisplay}<br/>
             ${thought ? `
               <hr style="margin: 8px 0;">
               <div style="font-style: italic; color: #666; font-size: 0.9em;">
@@ -249,7 +286,7 @@ export default function AgentRenderer({ agents }: AgentRendererProps) {
         lastPathLengthsRef.current.set(agent.id, 0);
       }
     });
-  }, [agents, map, getCurrentThought]);
+  }, [agents, map, getCurrentThought, formatActivityDisplay]);
 
   // Cleanup on unmount
   useEffect(() => {

@@ -35,6 +35,8 @@ export interface AgentDisplay {
   currentActivity: string;
   personality: string;
   detourThought?: string;
+  detourPoiType?: string; // The type of POI at detour location
+  detourPoiLabel?: string; // The label/name of the POI at detour location
 }
 
 export interface AgentInfo {
@@ -487,9 +489,12 @@ export function useAgents(
               currentPath: smoothPath,
               pathNodeIds,
               pathProgress: 0,
-              spontaneousEndTime: simMinutes + dwellMinutes,
+              spontaneousEndTime: null, // Will be set when agent arrives at POI
+              detourDwellDuration: dwellMinutes, // Store the intended dwell time
               spontaneousActivity: poi.label,
               detourThought: resp.thought || undefined,
+              detourPoiType: poi.type,
+              detourPoiLabel: poi.label,
             });
 
             console.log(`✈️  ${agentState.persona.name} taking detour to ${poi.label}`);
@@ -535,13 +540,18 @@ export function useAgents(
             movedState.currentPath.length > 0 &&
             movedState.pathProgress >= movedState.currentPath.length - 1
           ) {
-            console.log(`${movedState.persona.name} reached detour target, entering dwell at ${movedState.spontaneousActivity || '(unknown)'}`);
+            // Use the stored dwell duration to set end time from arrival
+            const arrivalTime = simMinutes;
+            const dwellMinutes = movedState.detourDwellDuration || 15; // Default to 15 min if not set
+            
+            console.log(`${movedState.persona.name} reached detour target at ${movedState.spontaneousActivity || '(unknown)'}, dwelling for ${Math.floor(dwellMinutes)} minutes`);
             movedState = {
               ...movedState,
               mode: "AT_DETOUR",
               currentPath: [],
               pathNodeIds: [],
               pathProgress: 0,
+              spontaneousEndTime: arrivalTime + dwellMinutes, // Set end time from arrival, not departure
             };
           }
 
@@ -707,6 +717,8 @@ export function useAgents(
         currentActivity: activity,
         personality: state.persona.personality,
         detourThought: state.detourThought,
+        detourPoiType: state.detourPoiType,
+        detourPoiLabel: state.detourPoiLabel,
       });
     });
 
