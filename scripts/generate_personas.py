@@ -25,7 +25,7 @@ from pyproj import Transformer
 import pandas as pd
 
 
-MODEL = "gpt-5"
+MODEL = "gpt-4o"
 JSON_FORMAT = {"type": "json_object"}
 
 # Create coordinate transformer: UTM Zone 33N (EPSG:32633) to WGS84 (EPSG:4326)
@@ -93,8 +93,16 @@ def load_existing(path: Path) -> Dict[str, AgentPersona]:
     """Load existing personas.json, keyed by name."""
     if not path.exists():
         return {}
-    with path.open("r", encoding="utf-8") as f:
-        arr = json.load(f)
+    try:
+        with path.open("r", encoding="utf-8") as f:
+            content = f.read().strip()
+            if not content:
+                return {}
+            arr = json.loads(content)
+    except (json.JSONDecodeError, ValueError) as e:
+        print(f"[WARN] Could not parse existing personas file: {e}. Starting fresh.")
+        return {}
+    
     result: Dict[str, AgentPersona] = {}
     for obj in arr:
         persona = AgentPersona(
@@ -145,6 +153,27 @@ def generate_persona(client: OpenAI, row: Dict[str, str]) -> Optional[AgentPerso
     # Take shop type in English by default
     shop_type = shop_type_en or shop_type_it
 
+    # Force diversity with explicit personality archetypes
+    import random
+    personality_archetypes = [
+        "Deeply pious and devout - attends mass daily, close with clergy, sees business as service to God.",
+        "Shrewd and calculating - always thinking about profit, expands business aggressively, not particularly religious.",
+        "Traditional and conservative - follows old guild ways exactly, suspicious of change and newcomers.",
+        "Jovial and social - knows everyone, loves gossip, spends evenings at taverns, business is secondary.",
+        "Reserved and introverted - keeps to himself, focused only on family, avoids social gatherings.",
+        "Struggling but proud - barely making ends meet, maintains dignity through honest dealing.",
+        "Wealthy and generous - prosperous business, supports the poor, funds church festivals.",
+        "Skeptical and practical - dismisses superstition, focused on efficiency, respects only results.",
+        "Young and ambitious - recently established, eager to innovate and prove worth to guild elders.",
+        "Aging and nostalgic - past his prime, remembers better days, resistant to new ways.",
+        "Artistic craftsman - cares more about quality and beauty than profit, philosophical about work.",
+        "Anxious worrier - constantly stressed about competition and debts, obsessively checks inventory.",
+        "Carefree and lazy - does minimum work, prefers leisure and wine, somehow stays afloat.",
+        "Status-seeking - aspires to nobility, joins prestigious confraternities, looks down on common trades.",
+        "Mainland-connected - strong ties to terraferma suppliers, feels more at home outside Venice.",
+    ]
+    archetype = random.choice(personality_archetypes)
+    
     user_prompt = f"""
     Person: {person}
     Shop type (Italian): {shop_type_it}
@@ -153,7 +182,9 @@ def generate_persona(client: OpenAI, row: Dict[str, str]) -> Optional[AgentPerso
     House coordinates: [{house_lat}, {house_lng}]
     Shop coordinates: [{shop_lat}, {shop_lng}]
 
-    Generate a historically plausible profession + personality + daily routine.
+    PERSONALITY ARCHETYPE (follow this exactly): {archetype}
+    
+    Generate a historically plausible profession + personality + daily routine matching this archetype.
     """
 
     # attempt to generate persona up to 3 times
@@ -162,6 +193,7 @@ def generate_persona(client: OpenAI, row: Dict[str, str]) -> Optional[AgentPerso
             completion = client.chat.completions.create(
                 model=MODEL,
                 response_format=JSON_FORMAT,
+                temperature=0.9,  # Higher temperature for more diverse personalities
                 messages=[
                     {"role": "system", "content": SYSTEM_PROMPT},
                     {"role": "user", "content": user_prompt},
@@ -227,7 +259,7 @@ def main():
     df = pd.read_parquet(input_path)
 
     # shuffle the df to sample randomly
-    df = df.sample(frac=1, random_state=42).reset_index(drop=True)
+    df = df.sample(frac=1, random_state=None).reset_index(drop=True)
     
     rows = df.fillna("").to_dict(orient="records")
 

@@ -1,17 +1,729 @@
 [
   {
-    "name": "Agostin Cigaggia",
-    "shopType": "Cheesemonger",
-    "shopCategory": "FOOD_DRINK",
+    "name": "Giovanni Battista Crivellari",
+    "shopType": "Window Maker",
+    "shopCategory": "BUILDING",
     "home": {
-      "lat": 45.44378882279249,
-      "lng": 12.325677522959008
+      "lat": 45.44090964204595,
+      "lng": 12.335254771499036
     },
     "shop": {
-      "lat": 45.44378882279249,
-      "lng": 12.325677522959008
+      "lat": 45.44090964204595,
+      "lng": 12.335254771499036
     },
-    "personality": "Steady and fair-minded, Agostin prides himself on honest weights and well-aged wheels, keeping close ties with terraferma barge men and the cooks of nearby inns. Pious yet sociable, he maintains a tidy shop and a careful ledger.",
+    "personality": "Giovanni is young and ambitious, eager to implement new techniques in window making and prove his abilities to the influential guild elders.",
+    "dailyRoutine": [
+      {
+        "startTime": "05:00",
+        "endTime": "06:00",
+        "type": "HOME"
+      },
+      {
+        "startTime": "06:00",
+        "endTime": "18:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "18:00",
+        "endTime": "19:00",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "19:00",
+        "endTime": "20:00",
+        "type": "HOME"
+      },
+      {
+        "startTime": "20:00",
+        "endTime": "22:00",
+        "type": "FREE_TIME"
+      }
+    ]
+  },
+  {
+    "name": "Francesco Buccio",
+    "shopType": "Water Vendor",
+    "shopCategory": "FOOD_DRINK",
+    "home": {
+      "lat": 45.42868752419837,
+      "lng": 12.329791469330921
+    },
+    "shop": {
+      "lat": 45.42868752419837,
+      "lng": 12.329791469330921
+    },
+    "personality": "Francesco is eager to bring new ideas to his trade, keen to demonstrate his dedication and creativity to the established guild members.",
+    "dailyRoutine": [
+      {
+        "startTime": "05:00",
+        "endTime": "06:00",
+        "type": "HOME"
+      },
+      {
+        "startTime": "06:00",
+        "endTime": "06:30",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "06:30",
+        "endTime": "07:00",
+        "type": "HOME"
+      },
+      {
+        "startTime": "07:00",
+        "endTime": "12:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "12:00",
+        "endTime": "13:00",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "13:00",
+        "endTime": "17:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "17:00",
+        "endTime": "18:00",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "18:00",
+        "endTime": "21:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "21:00",
+        "endTime": "21:30",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "21:30",
+        "endTime": "22:00",
+        "type": "HOME"
+      }
+    ]
+  },
+  {
+    "name": "Gaetano Verocai",
+    "shopType": "Mattress Maker",
+    "shopCategory": "HOUSEHOLD_ITEMS",
+    "home": {
+      "lat": 45.44281965022514,
+      "lng": 12.331909164038546
+    },
+    "shop": {
+      "lat": 45.44291288513289,
+      "lng": 12.331959185828365
+    },
+    "personality": "Gaetano is a proud artisan, struggling to make ends meet but insists on honest dealings to maintain his dignity.",
+    "dailyRoutine": [
+      {
+        "startTime": "05:00",
+        "endTime": "06:00",
+        "type": "HOME"
+      },
+      {
+        "startTime": "06:00",
+        "endTime": "06:15",
+        "type": "TRAVEL_TO_SHOP"
+      },
+      {
+        "startTime": "06:15",
+        "endTime": "12:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "12:00",
+        "endTime": "13:00",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "13:00",
+        "endTime": "18:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "18:00",
+        "endTime": "18:15",
+        "type": "TRAVEL_HOME"
+      },
+      {
+        "startTime": "18:15",
+        "endTime": "19:00",
+        "type": "HOME"
+      },
+      {
+        "startTime": "19:00",
+        "endTime": "20:00",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "20:00",
+        "endTime": "22:00",
+        "type": "HOME"
+      }
+    ]
+  },
+  {
+    "name": "Andrea Molinari",
+    "shopType": "Woodworker",
+    "shopCategory": "WOOD_CRAFT",
+    "home": {
+      "lat": 45.44387475300987,
+      "lng": 12.323704323114008
+    },
+    "shop": {
+      "lat": 45.444059910537796,
+      "lng": 12.324402756483286
+    },
+    "personality": "Andrea is a passionate woodworker who finds immense joy in crafting beautiful and intricate designs, valuing the artistry over monetary gain. He often reflects on the philosophy of craftsmanship, believing that his work connects him to both his ancestors and future generations.",
+    "dailyRoutine": [
+      {
+        "startTime": "05:30",
+        "endTime": "06:00",
+        "type": "HOME"
+      },
+      {
+        "startTime": "06:00",
+        "endTime": "06:30",
+        "type": "TRAVEL_TO_SHOP"
+      },
+      {
+        "startTime": "06:30",
+        "endTime": "12:30",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "12:30",
+        "endTime": "13:30",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "13:30",
+        "endTime": "18:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "18:00",
+        "endTime": "18:30",
+        "type": "TRAVEL_HOME"
+      },
+      {
+        "startTime": "18:30",
+        "endTime": "19:30",
+        "type": "HOME"
+      },
+      {
+        "startTime": "19:30",
+        "endTime": "20:00",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "20:00",
+        "endTime": "22:00",
+        "type": "HOME"
+      }
+    ]
+  },
+  {
+    "name": "Iseppo MInio",
+    "shopType": "Tailor",
+    "shopCategory": "COMMERCE_CLOTHING",
+    "home": {
+      "lat": 45.44706700099823,
+      "lng": 12.328577470094972
+    },
+    "shop": {
+      "lat": 45.44556828882073,
+      "lng": 12.328542850929653
+    },
+    "personality": "Iseppo Minio is a reserved and introverted tailor, dedicated to his craft and family, seldom seen at social gatherings.",
+    "dailyRoutine": [
+      {
+        "startTime": "05:00",
+        "endTime": "06:00",
+        "type": "HOME"
+      },
+      {
+        "startTime": "06:00",
+        "endTime": "06:30",
+        "type": "TRAVEL_TO_SHOP"
+      },
+      {
+        "startTime": "06:30",
+        "endTime": "12:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "12:00",
+        "endTime": "13:00",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "13:00",
+        "endTime": "18:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "18:00",
+        "endTime": "18:30",
+        "type": "TRAVEL_HOME"
+      },
+      {
+        "startTime": "18:30",
+        "endTime": "19:00",
+        "type": "HOME"
+      },
+      {
+        "startTime": "19:00",
+        "endTime": "20:00",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "20:00",
+        "endTime": "22:00",
+        "type": "HOME"
+      }
+    ]
+  },
+  {
+    "name": "Illustrissimo Signor Francesco quondam Iseppo BIanchi",
+    "shopType": "Wood Merchant",
+    "shopCategory": "WOOD_SALE",
+    "home": {
+      "lat": 45.436734105787046,
+      "lng": 12.32169254566036
+    },
+    "shop": {
+      "lat": 45.436734105787046,
+      "lng": 12.32169254566036
+    },
+    "personality": "Francesco is an ambitious wood merchant who dreams of rising in status, often engaging with influential figures and participating in prestigious confraternities.",
+    "dailyRoutine": [
+      {
+        "startTime": "05:00",
+        "endTime": "06:00",
+        "type": "HOME"
+      },
+      {
+        "startTime": "06:00",
+        "endTime": "06:30",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "06:30",
+        "endTime": "07:30",
+        "type": "HOME"
+      },
+      {
+        "startTime": "07:30",
+        "endTime": "18:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "18:00",
+        "endTime": "19:00",
+        "type": "TRAVEL_HOME"
+      },
+      {
+        "startTime": "19:00",
+        "endTime": "20:00",
+        "type": "HOME"
+      },
+      {
+        "startTime": "20:00",
+        "endTime": "21:30",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "21:30",
+        "endTime": "22:00",
+        "type": "HOME"
+      }
+    ]
+  },
+  {
+    "name": "Gasparo de Gaspari",
+    "shopType": "Pastry Maker",
+    "shopCategory": "FOOD_DRINK",
+    "home": {
+      "lat": 45.43917570219689,
+      "lng": 12.341095936301747
+    },
+    "shop": {
+      "lat": 45.43917570219689,
+      "lng": 12.341095936301747
+    },
+    "personality": "Gasparo is a nostalgic soul, often reminiscing about the bustling days of his youth when his shop was the talk of the town. He remains resistant to modern innovations in pastry making, preferring to stick to traditional recipes passed down through generations.",
+    "dailyRoutine": [
+      {
+        "startTime": "05:00",
+        "endTime": "06:00",
+        "type": "HOME"
+      },
+      {
+        "startTime": "06:00",
+        "endTime": "10:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "10:00",
+        "endTime": "10:30",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "10:30",
+        "endTime": "14:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "14:00",
+        "endTime": "14:30",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "14:30",
+        "endTime": "18:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "18:00",
+        "endTime": "18:30",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "18:30",
+        "endTime": "21:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "21:00",
+        "endTime": "22:00",
+        "type": "HOME"
+      }
+    ]
+  },
+  {
+    "name": "Nicolò Panciera",
+    "shopType": "Dyer",
+    "shopCategory": "FABRIC_CRAFT",
+    "home": {
+      "lat": 45.43944556911704,
+      "lng": 12.327871293935129
+    },
+    "shop": {
+      "lat": 45.43944556911704,
+      "lng": 12.327871293935129
+    },
+    "personality": "Nicolò is aging and nostalgic, often reminiscing about the vibrant past of his trade while resisting modern innovations.",
+    "dailyRoutine": [
+      {
+        "startTime": "05:30",
+        "endTime": "06:30",
+        "type": "HOME"
+      },
+      {
+        "startTime": "06:30",
+        "endTime": "12:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "12:00",
+        "endTime": "13:00",
+        "type": "HOME"
+      },
+      {
+        "startTime": "13:00",
+        "endTime": "18:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "18:00",
+        "endTime": "19:00",
+        "type": "HOME"
+      },
+      {
+        "startTime": "19:00",
+        "endTime": "20:00",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "20:00",
+        "endTime": "21:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "21:00",
+        "endTime": "22:00",
+        "type": "HOME"
+      }
+    ]
+  },
+  {
+    "name": "Antonio Costantini",
+    "shopType": "Fruit Vendor",
+    "shopCategory": "FOOD_DRINK",
+    "home": {
+      "lat": 45.43648030357511,
+      "lng": 12.326074805511784
+    },
+    "shop": {
+      "lat": 45.43648030357511,
+      "lng": 12.326074805511784
+    },
+    "personality": "Antonio is a traditional and conservative fruit vendor who adheres strictly to the time-honored practices of his guild, and regards change and newcomers with suspicion.",
+    "dailyRoutine": [
+      {
+        "startTime": "05:00",
+        "endTime": "06:30",
+        "type": "HOME"
+      },
+      {
+        "startTime": "06:30",
+        "endTime": "12:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "12:00",
+        "endTime": "13:00",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "13:00",
+        "endTime": "17:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "17:00",
+        "endTime": "17:30",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "17:30",
+        "endTime": "20:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "20:00",
+        "endTime": "20:30",
+        "type": "TRAVEL_HOME"
+      },
+      {
+        "startTime": "20:30",
+        "endTime": "22:00",
+        "type": "HOME"
+      }
+    ]
+  },
+  {
+    "name": "Mattio Mucitelli",
+    "shopType": "Vegetable Seller",
+    "shopCategory": "FOOD_DRINK",
+    "home": {
+      "lat": 45.439214468341376,
+      "lng": 12.335146798648658
+    },
+    "shop": {
+      "lat": 45.439214468341376,
+      "lng": 12.335146798648658
+    },
+    "personality": "Mattio is an artistic craftsman who takes great pleasure in the presentation and quality of his vegetables, often reflecting philosophically on the connection between nature and sustenance.",
+    "dailyRoutine": [
+      {
+        "startTime": "05:00",
+        "endTime": "06:00",
+        "type": "HOME"
+      },
+      {
+        "startTime": "06:00",
+        "endTime": "06:30",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "06:30",
+        "endTime": "07:00",
+        "type": "HOME"
+      },
+      {
+        "startTime": "07:00",
+        "endTime": "17:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "17:00",
+        "endTime": "18:00",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "18:00",
+        "endTime": "18:30",
+        "type": "TRAVEL_HOME"
+      },
+      {
+        "startTime": "18:30",
+        "endTime": "19:30",
+        "type": "HOME"
+      },
+      {
+        "startTime": "19:30",
+        "endTime": "20:30",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "20:30",
+        "endTime": "22:00",
+        "type": "HOME"
+      }
+    ]
+  },
+  {
+    "name": "Francesco Martignoni",
+    "shopType": "Oil Merchant",
+    "shopCategory": "FOOD_RAW",
+    "home": {
+      "lat": 45.43277470140968,
+      "lng": 12.315237051709792
+    },
+    "shop": {
+      "lat": 45.43274193928975,
+      "lng": 12.31524634550299
+    },
+    "personality": "Francesco is a laid-back individual who values leisure time over profit, often indulging in wine and idling about his shop.",
+    "dailyRoutine": [
+      {
+        "startTime": "05:00",
+        "endTime": "07:00",
+        "type": "HOME"
+      },
+      {
+        "startTime": "07:00",
+        "endTime": "07:10",
+        "type": "TRAVEL_TO_SHOP"
+      },
+      {
+        "startTime": "07:10",
+        "endTime": "09:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "09:00",
+        "endTime": "11:00",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "11:00",
+        "endTime": "13:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "13:00",
+        "endTime": "15:00",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "15:00",
+        "endTime": "17:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "17:00",
+        "endTime": "18:00",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "18:00",
+        "endTime": "19:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "19:00",
+        "endTime": "19:10",
+        "type": "TRAVEL_HOME"
+      },
+      {
+        "startTime": "19:10",
+        "endTime": "22:00",
+        "type": "FREE_TIME"
+      }
+    ]
+  },
+  {
+    "name": "Girolamo Degan",
+    "shopType": "Ornament Maker",
+    "shopCategory": "ARTS_CRAFT",
+    "home": {
+      "lat": 45.43755624907703,
+      "lng": 12.331733396422697
+    },
+    "shop": {
+      "lat": 45.43765540904563,
+      "lng": 12.331887620488018
+    },
+    "personality": "Girolamo is jovial and social, knowing everyone in his neighborhood. He loves to engage in gossip, often prioritizing social interactions over his business.",
+    "dailyRoutine": [
+      {
+        "startTime": "05:00",
+        "endTime": "06:30",
+        "type": "HOME"
+      },
+      {
+        "startTime": "06:30",
+        "endTime": "06:45",
+        "type": "TRAVEL_TO_SHOP"
+      },
+      {
+        "startTime": "06:45",
+        "endTime": "12:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "12:00",
+        "endTime": "13:00",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "13:00",
+        "endTime": "17:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "17:00",
+        "endTime": "17:15",
+        "type": "TRAVEL_HOME"
+      },
+      {
+        "startTime": "17:15",
+        "endTime": "18:30",
+        "type": "HOME"
+      },
+      {
+        "startTime": "18:30",
+        "endTime": "21:30",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "21:30",
+        "endTime": "22:00",
+        "type": "HOME"
+      }
+    ]
+  },
+  {
+    "name": "Antonio Marchetti",
+    "shopType": "Vegetable Seller",
+    "shopCategory": "FOOD_DRINK",
+    "home": {
+      "lat": 45.43537792326497,
+      "lng": 12.338098463708238
+    },
+    "shop": {
+      "lat": 45.43558270602746,
+      "lng": 12.335308362494173
+    },
+    "personality": "Antonio is meticulous about the quality of his produce, often spending extra time arranging them artistically. He finds joy in conversations with his customers, discussing not only vegetables but life's poetry.",
     "dailyRoutine": [
       {
         "startTime": "05:00",
@@ -20,36 +732,937 @@
       },
       {
         "startTime": "05:30",
-        "endTime": "10:30",
+        "endTime": "06:00",
+        "type": "TRAVEL_TO_SHOP"
+      },
+      {
+        "startTime": "06:00",
+        "endTime": "12:00",
         "type": "SHOP"
       },
       {
-        "startTime": "10:30",
-        "endTime": "11:00",
-        "type": "HOME"
-      },
-      {
-        "startTime": "11:00",
+        "startTime": "12:00",
         "endTime": "13:00",
         "type": "FREE_TIME"
       },
       {
         "startTime": "13:00",
-        "endTime": "13:30",
-        "type": "FREE_TIME"
-      },
-      {
-        "startTime": "13:30",
-        "endTime": "16:30",
+        "endTime": "18:00",
         "type": "SHOP"
       },
       {
-        "startTime": "16:30",
-        "endTime": "17:00",
+        "startTime": "18:00",
+        "endTime": "18:30",
+        "type": "TRAVEL_HOME"
+      },
+      {
+        "startTime": "18:30",
+        "endTime": "19:30",
         "type": "HOME"
       },
       {
+        "startTime": "19:30",
+        "endTime": "21:00",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "21:00",
+        "endTime": "22:00",
+        "type": "HOME"
+      }
+    ]
+  },
+  {
+    "name": "Antonio Formenti",
+    "shopType": "Shoemaker",
+    "shopCategory": "COMMERCE_CLOTHING",
+    "home": {
+      "lat": 45.430138009493874,
+      "lng": 12.326107658954294
+    },
+    "shop": {
+      "lat": 45.430138009493874,
+      "lng": 12.326107658954294
+    },
+    "personality": "Antonio is a reserved and introverted shoemaker who keeps to himself, focusing solely on his family and work. He avoids social gatherings and prefers the quiet life in his small shop.",
+    "dailyRoutine": [
+      {
+        "startTime": "05:00",
+        "endTime": "06:30",
+        "type": "HOME"
+      },
+      {
+        "startTime": "06:30",
+        "endTime": "12:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "12:00",
+        "endTime": "13:00",
+        "type": "HOME"
+      },
+      {
+        "startTime": "13:00",
+        "endTime": "18:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "18:00",
+        "endTime": "19:00",
+        "type": "HOME"
+      },
+      {
+        "startTime": "19:00",
+        "endTime": "20:00",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "20:00",
+        "endTime": "22:00",
+        "type": "HOME"
+      }
+    ]
+  },
+  {
+    "name": "Francesco Gambaroto",
+    "shopType": "Ropemaker",
+    "shopCategory": "OTHER",
+    "home": {
+      "lat": 45.44339006329539,
+      "lng": 12.331072341626736
+    },
+    "shop": {
+      "lat": 45.44339006329539,
+      "lng": 12.331072341626736
+    },
+    "personality": "Francesco is reserved and introverted, often keeping to himself and focusing primarily on his family. He avoids social gatherings and prefers the solitude and routine of his work.",
+    "dailyRoutine": [
+      {
+        "startTime": "05:00",
+        "endTime": "06:00",
+        "type": "HOME"
+      },
+      {
+        "startTime": "06:00",
+        "endTime": "12:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "12:00",
+        "endTime": "13:00",
+        "type": "HOME"
+      },
+      {
+        "startTime": "13:00",
+        "endTime": "18:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "18:00",
+        "endTime": "19:00",
+        "type": "HOME"
+      },
+      {
+        "startTime": "19:00",
+        "endTime": "20:00",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "20:00",
+        "endTime": "21:00",
+        "type": "HOME"
+      },
+      {
+        "startTime": "21:00",
+        "endTime": "22:00",
+        "type": "SHOP"
+      }
+    ]
+  },
+  {
+    "name": "Giambattista Galvan",
+    "shopType": "Spice Merchant",
+    "shopCategory": "MIXED",
+    "home": {
+      "lat": 45.4389995360174,
+      "lng": 12.341397343866552
+    },
+    "shop": {
+      "lat": 45.4389995360174,
+      "lng": 12.341397343866552
+    },
+    "personality": "Giambattista is deeply pious and sees his business as a service to God. He is close with the local clergy and attends mass daily, believing that his success is a blessing to be shared with the community.",
+    "dailyRoutine": [
+      {
+        "startTime": "05:00",
+        "endTime": "06:00",
+        "type": "HOME"
+      },
+      {
+        "startTime": "06:00",
+        "endTime": "07:30",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "07:30",
+        "endTime": "08:30",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "08:30",
+        "endTime": "09:30",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "09:30",
+        "endTime": "13:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "13:00",
+        "endTime": "14:00",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "14:00",
+        "endTime": "18:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "18:00",
+        "endTime": "19:00",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "19:00",
+        "endTime": "21:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "21:00",
+        "endTime": "22:00",
+        "type": "HOME"
+      }
+    ]
+  },
+  {
+    "name": "Alvise Tagliaferro",
+    "shopType": "Oil Merchant",
+    "shopCategory": "FOOD_RAW",
+    "home": {
+      "lat": 45.43996679468419,
+      "lng": 12.338320325617133
+    },
+    "shop": {
+      "lat": 45.43996679468419,
+      "lng": 12.338320325617133
+    },
+    "personality": "Alvise seeks to elevate his status by associating with the wealthy and influential. He takes pride in his shop and often acts condescendingly towards those in lesser trades.",
+    "dailyRoutine": [
+      {
+        "startTime": "05:00",
+        "endTime": "06:00",
+        "type": "HOME"
+      },
+      {
+        "startTime": "06:00",
+        "endTime": "06:30",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "06:30",
+        "endTime": "12:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "12:00",
+        "endTime": "13:00",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "13:00",
+        "endTime": "18:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "18:00",
+        "endTime": "19:00",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "19:00",
+        "endTime": "22:00",
+        "type": "HOME"
+      }
+    ]
+  },
+  {
+    "name": "Nicolò Fossati",
+    "shopType": "Stationer",
+    "shopCategory": "PAPER_SALE",
+    "home": {
+      "lat": 45.43842365634229,
+      "lng": 12.335483952626221
+    },
+    "shop": {
+      "lat": 45.43842365634229,
+      "lng": 12.335483952626221
+    },
+    "personality": "Nicolò is a sentimental man, often reminiscing about his youth when the paper trade was more lucrative. He prefers the traditional methods and is averse to adopting modern practices.",
+    "dailyRoutine": [
+      {
+        "startTime": "05:30",
+        "endTime": "07:00",
+        "type": "HOME"
+      },
+      {
+        "startTime": "07:00",
+        "endTime": "12:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "12:00",
+        "endTime": "13:00",
+        "type": "HOME"
+      },
+      {
+        "startTime": "13:00",
+        "endTime": "17:00",
+        "type": "SHOP"
+      },
+      {
         "startTime": "17:00",
+        "endTime": "18:00",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "18:00",
+        "endTime": "21:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "21:00",
+        "endTime": "22:00",
+        "type": "HOME"
+      }
+    ]
+  },
+  {
+    "name": "Pietro Bertoli",
+    "shopType": "Silk Weaver",
+    "shopCategory": "FABRIC_CRAFT",
+    "home": {
+      "lat": 45.43734548436319,
+      "lng": 12.346842063430357
+    },
+    "shop": {
+      "lat": 45.43734548436319,
+      "lng": 12.346842063430357
+    },
+    "personality": "Although deeply connected to his craft in Venice, Pietro often reminisces fondly about his visits to the mainland where he sources exquisite silks and feels a sense of belonging.",
+    "dailyRoutine": [
+      {
+        "startTime": "05:00",
+        "endTime": "06:00",
+        "type": "HOME"
+      },
+      {
+        "startTime": "06:00",
+        "endTime": "12:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "12:00",
+        "endTime": "13:00",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "13:00",
+        "endTime": "17:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "17:00",
+        "endTime": "17:30",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "17:30",
+        "endTime": "21:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "21:00",
+        "endTime": "22:00",
+        "type": "HOME"
+      }
+    ]
+  },
+  {
+    "name": "Daniel Moro",
+    "shopType": "Fruit Vendor",
+    "shopCategory": "FOOD_DRINK",
+    "home": {
+      "lat": 45.43944597766396,
+      "lng": 12.332772781142522
+    },
+    "shop": {
+      "lat": 45.43944597766396,
+      "lng": 12.332772781142522
+    },
+    "personality": "Daniel Moro is status-seeking, aspiring to rise above his current station by associating with prestigious confraternities and showing disdain for common trades.",
+    "dailyRoutine": [
+      {
+        "startTime": "05:00",
+        "endTime": "06:00",
+        "type": "HOME"
+      },
+      {
+        "startTime": "06:00",
+        "endTime": "12:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "12:00",
+        "endTime": "13:00",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "13:00",
+        "endTime": "18:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "18:00",
+        "endTime": "19:00",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "19:00",
+        "endTime": "22:00",
+        "type": "HOME"
+      }
+    ]
+  },
+  {
+    "name": "Alessandro Licini",
+    "shopType": "Poultry Seller",
+    "shopCategory": "FOOD_DRINK",
+    "home": {
+      "lat": 45.43582550155954,
+      "lng": 12.336555423988274
+    },
+    "shop": {
+      "lat": 45.43339742177674,
+      "lng": 12.33713418290756
+    },
+    "personality": "Young and ambitious, Alessandro is eager to innovate and prove his worth to the guild elders by introducing new sales tactics and forming strong connections with local suppliers.",
+    "dailyRoutine": [
+      {
+        "startTime": "05:00",
+        "endTime": "06:00",
+        "type": "HOME"
+      },
+      {
+        "startTime": "06:00",
+        "endTime": "06:15",
+        "type": "TRAVEL_TO_SHOP"
+      },
+      {
+        "startTime": "06:15",
+        "endTime": "12:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "12:00",
+        "endTime": "12:30",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "12:30",
+        "endTime": "18:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "18:00",
+        "endTime": "18:15",
+        "type": "TRAVEL_HOME"
+      },
+      {
+        "startTime": "18:15",
+        "endTime": "19:00",
+        "type": "HOME"
+      },
+      {
+        "startTime": "19:00",
+        "endTime": "20:00",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "20:00",
+        "endTime": "21:00",
+        "type": "HOME"
+      },
+      {
+        "startTime": "21:00",
+        "endTime": "22:00",
+        "type": "FREE_TIME"
+      }
+    ]
+  },
+  {
+    "name": "Iseppo Orio",
+    "shopType": "Coppersmith",
+    "shopCategory": "BUILDING",
+    "home": {
+      "lat": 45.44258767505768,
+      "lng": 12.332361726836808
+    },
+    "shop": {
+      "lat": 45.44258767505768,
+      "lng": 12.332361726836808
+    },
+    "personality": "Shrewd and calculating - always thinking about profit, expands business aggressively, not particularly religious.",
+    "dailyRoutine": [
+      {
+        "startTime": "05:00",
+        "endTime": "06:00",
+        "type": "HOME"
+      },
+      {
+        "startTime": "06:00",
+        "endTime": "06:30",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "06:30",
+        "endTime": "12:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "12:00",
+        "endTime": "13:00",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "13:00",
+        "endTime": "18:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "18:00",
+        "endTime": "19:00",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "19:00",
+        "endTime": "21:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "21:00",
+        "endTime": "22:00",
+        "type": "HOME"
+      }
+    ]
+  },
+  {
+    "name": "Marco Tagliaferro",
+    "shopType": "Second-hand fabric seller",
+    "shopCategory": "COMMERCE_CLOTHING",
+    "home": {
+      "lat": 45.43479569980866,
+      "lng": 12.335383711795716
+    },
+    "shop": {
+      "lat": 45.43479569980866,
+      "lng": 12.335383711795716
+    },
+    "personality": "Marco Tagliaferro is a wealthy and generous merchant who is known for his prosperous business in second-hand fabrics. He is dedicated to supporting the poor and contributes generously to church festivals.",
+    "dailyRoutine": [
+      {
+        "startTime": "05:00",
+        "endTime": "06:00",
+        "type": "HOME"
+      },
+      {
+        "startTime": "06:00",
+        "endTime": "06:30",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "06:30",
+        "endTime": "07:00",
+        "type": "HOME"
+      },
+      {
+        "startTime": "07:00",
+        "endTime": "12:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "12:00",
+        "endTime": "13:00",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "13:00",
+        "endTime": "18:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "18:00",
+        "endTime": "19:00",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "19:00",
+        "endTime": "20:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "20:00",
+        "endTime": "21:00",
+        "type": "HOME"
+      },
+      {
+        "startTime": "21:00",
+        "endTime": "22:00",
+        "type": "FREE_TIME"
+      }
+    ]
+  },
+  {
+    "name": "Pietro Franchin",
+    "shopType": "Jeweller",
+    "shopCategory": "LUXURY_ITEMS",
+    "home": {
+      "lat": 45.438862333563016,
+      "lng": 12.334669186647151
+    },
+    "shop": {
+      "lat": 45.438862333563016,
+      "lng": 12.334669186647151
+    },
+    "personality": "Pietro is a status-seeking individual who aspires to mingle with the Venetian nobility by perfecting his craft in jewellery making and attending prestigious confraternities.",
+    "dailyRoutine": [
+      {
+        "startTime": "05:30",
+        "endTime": "06:30",
+        "type": "HOME"
+      },
+      {
+        "startTime": "06:30",
+        "endTime": "07:00",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "07:00",
+        "endTime": "18:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "18:00",
+        "endTime": "18:30",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "18:30",
+        "endTime": "20:00",
+        "type": "HOME"
+      },
+      {
+        "startTime": "20:00",
+        "endTime": "22:00",
+        "type": "FREE_TIME"
+      }
+    ]
+  },
+  {
+    "name": "Pietro Giacomazzi",
+    "shopType": "Barber",
+    "shopCategory": "HEALTH_BEAUTY",
+    "home": {
+      "lat": 45.435329286048635,
+      "lng": 12.33601718568319
+    },
+    "shop": {
+      "lat": 45.43581492609242,
+      "lng": 12.335476386329614
+    },
+    "personality": "Pietro Giacomazzi is shrewd and calculating, always thinking about profit and expanding his business aggressively. He is not particularly religious, focusing instead on the practicalities of life.",
+    "dailyRoutine": [
+      {
+        "startTime": "05:00",
+        "endTime": "06:00",
+        "type": "HOME"
+      },
+      {
+        "startTime": "06:00",
+        "endTime": "06:10",
+        "type": "TRAVEL_TO_SHOP"
+      },
+      {
+        "startTime": "06:10",
+        "endTime": "12:30",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "12:30",
+        "endTime": "13:00",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "13:00",
+        "endTime": "17:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "17:00",
+        "endTime": "17:30",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "17:30",
+        "endTime": "21:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "21:00",
+        "endTime": "21:10",
+        "type": "TRAVEL_HOME"
+      },
+      {
+        "startTime": "21:10",
+        "endTime": "22:00",
+        "type": "HOME"
+      }
+    ]
+  },
+  {
+    "name": "Ferigo Genico Scaletter quondam Lazaro",
+    "shopType": "Pastry Maker",
+    "shopCategory": "FOOD_DRINK",
+    "home": {
+      "lat": 45.43268007278978,
+      "lng": 12.333802908109137
+    },
+    "shop": {
+      "lat": 45.432696028013254,
+      "lng": 12.333805766848025
+    },
+    "personality": "Ferigo is skeptical and practical, dismissing superstition and focusing on efficiency. He respects only tangible results in his craft and dealings.",
+    "dailyRoutine": [
+      {
+        "startTime": "05:00",
+        "endTime": "06:00",
+        "type": "HOME"
+      },
+      {
+        "startTime": "06:00",
+        "endTime": "06:05",
+        "type": "TRAVEL_TO_SHOP"
+      },
+      {
+        "startTime": "06:05",
+        "endTime": "12:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "12:00",
+        "endTime": "13:00",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "13:00",
+        "endTime": "18:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "18:00",
+        "endTime": "18:05",
+        "type": "TRAVEL_HOME"
+      },
+      {
+        "startTime": "18:05",
+        "endTime": "19:00",
+        "type": "HOME"
+      },
+      {
+        "startTime": "19:00",
+        "endTime": "20:00",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "20:00",
+        "endTime": "21:00",
+        "type": "HOME"
+      },
+      {
+        "startTime": "21:00",
+        "endTime": "22:00",
+        "type": "FREE_TIME"
+      }
+    ]
+  },
+  {
+    "name": "Giacomo Succhietti",
+    "shopType": "Snack Vendor",
+    "shopCategory": "FOOD_DRINK",
+    "home": {
+      "lat": 45.43572304139622,
+      "lng": 12.325744546145936
+    },
+    "shop": {
+      "lat": 45.43572304139622,
+      "lng": 12.325744546145936
+    },
+    "personality": "Giacomo is reserved and introverted, focusing solely on his family's well-being rather than engaging in social activities.",
+    "dailyRoutine": [
+      {
+        "startTime": "05:00",
+        "endTime": "06:00",
+        "type": "HOME"
+      },
+      {
+        "startTime": "06:00",
+        "endTime": "12:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "12:00",
+        "endTime": "13:00",
+        "type": "HOME"
+      },
+      {
+        "startTime": "13:00",
+        "endTime": "19:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "19:00",
+        "endTime": "22:00",
+        "type": "HOME"
+      }
+    ]
+  },
+  {
+    "name": "Francesco Maestrini",
+    "shopType": "Fruit Vendor",
+    "shopCategory": "FOOD_DRINK",
+    "home": {
+      "lat": 45.443286266835,
+      "lng": 12.335564074647941
+    },
+    "shop": {
+      "lat": 45.443303916227414,
+      "lng": 12.335595557551171
+    },
+    "personality": "Francesco is skeptical and practical, dismissing superstition with a focus on efficiency and respecting only tangible results.",
+    "dailyRoutine": [
+      {
+        "startTime": "05:30",
+        "endTime": "06:00",
+        "type": "HOME"
+      },
+      {
+        "startTime": "06:00",
+        "endTime": "06:05",
+        "type": "TRAVEL_TO_SHOP"
+      },
+      {
+        "startTime": "06:05",
+        "endTime": "12:30",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "12:30",
+        "endTime": "13:00",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "13:00",
+        "endTime": "18:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "18:00",
+        "endTime": "18:05",
+        "type": "TRAVEL_HOME"
+      },
+      {
+        "startTime": "18:05",
+        "endTime": "19:00",
+        "type": "HOME"
+      },
+      {
+        "startTime": "19:00",
+        "endTime": "20:00",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "20:00",
+        "endTime": "21:00",
+        "type": "HOME"
+      },
+      {
+        "startTime": "21:00",
+        "endTime": "22:00",
+        "type": "FREE_TIME"
+      }
+    ]
+  },
+  {
+    "name": "Bortolo Sanzonio",
+    "shopType": "Pasta Maker",
+    "shopCategory": "FOOD_DRINK",
+    "home": {
+      "lat": 45.433884524542016,
+      "lng": 12.346796767450142
+    },
+    "shop": {
+      "lat": 45.433884524542016,
+      "lng": 12.346796767450142
+    },
+    "personality": "Bortolo Sanzonio takes pride in crafting the finest pasta, even as he struggles to make a profit; his integrity in business is unwavering.",
+    "dailyRoutine": [
+      {
+        "startTime": "05:00",
+        "endTime": "06:30",
+        "type": "HOME"
+      },
+      {
+        "startTime": "06:30",
+        "endTime": "09:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "09:00",
+        "endTime": "09:30",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "09:30",
+        "endTime": "12:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "12:00",
+        "endTime": "12:30",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "12:30",
+        "endTime": "15:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "15:00",
+        "endTime": "16:00",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "16:00",
         "endTime": "19:30",
         "type": "SHOP"
       },
@@ -66,170 +1679,79 @@
     ]
   },
   {
-    "name": "Agostin Fabris",
-    "shopType": "Baker",
-    "shopCategory": "FOOD_DRINK",
+    "name": "Anzolo Redolfi",
+    "shopType": "Jeweller",
+    "shopCategory": "LUXURY_ITEMS",
     "home": {
-      "lat": 45.438727441449785,
-      "lng": 12.345065230193345
+      "lat": 45.43831044645776,
+      "lng": 12.335451854461022
     },
     "shop": {
-      "lat": 45.438727441449785,
-      "lng": 12.345065230193345
+      "lat": 45.43831044645776,
+      "lng": 12.335451854461022
     },
-    "personality": "Steady, frugal, and pious, Agostin keeps his oven hot before dawn and his accounts tidy under the watch of the guild. Genial with neighbors yet exacting about weight and price, he minds the city’s grain officers and the quality of every loaf.",
+    "personality": "Anzolo Redolfi is a traditional and conservative jeweller who meticulously follows the old guild ways, showing a cautious distrust towards change and newcomers.",
     "dailyRoutine": [
       {
-        "startTime": "05:00",
-        "endTime": "09:00",
-        "type": "SHOP"
-      },
-      {
-        "startTime": "09:00",
-        "endTime": "09:30",
+        "startTime": "05:30",
+        "endTime": "07:00",
         "type": "HOME"
       },
       {
-        "startTime": "09:30",
-        "endTime": "12:30",
-        "type": "SHOP"
-      },
-      {
-        "startTime": "12:30",
-        "endTime": "13:30",
-        "type": "HOME"
-      },
-      {
-        "startTime": "13:30",
-        "endTime": "14:00",
-        "type": "FREE_TIME"
-      },
-      {
-        "startTime": "14:00",
-        "endTime": "16:00",
-        "type": "SHOP"
-      },
-      {
-        "startTime": "16:00",
-        "endTime": "16:30",
-        "type": "HOME"
-      },
-      {
-        "startTime": "16:30",
+        "startTime": "07:00",
         "endTime": "19:00",
         "type": "SHOP"
       },
       {
         "startTime": "19:00",
         "endTime": "20:00",
-        "type": "HOME"
+        "type": "FREE_TIME"
       },
       {
         "startTime": "20:00",
         "endTime": "21:00",
-        "type": "FREE_TIME"
+        "type": "HOME"
       },
       {
         "startTime": "21:00",
         "endTime": "22:00",
-        "type": "HOME"
+        "type": "FREE_TIME"
       }
     ]
   },
   {
-    "name": "Agostin Lazari",
-    "shopType": "Blacksmith",
-    "shopCategory": "METAL_CRAFT",
+    "name": "Zuanne del Favro",
+    "shopType": "Crate Maker",
+    "shopCategory": "WOOD_CRAFT",
     "home": {
-      "lat": 45.438597037085536,
-      "lng": 12.33371623096242
+      "lat": 45.43389326305644,
+      "lng": 12.347614785956438
     },
     "shop": {
-      "lat": 45.438597037085536,
-      "lng": 12.33371623096242
+      "lat": 45.43407921183092,
+      "lng": 12.347466905663321
     },
-    "personality": "Steady-handed and thrifty, Agostin prides himself on clean welds and honest work for gondoliers, boatyards, and neighbors. Pious and obliging yet firm in his accounts, he bargains hard for good charcoal and keeps his tools in exemplary order.",
+    "personality": "Zuanne is deeply pious, attending mass daily and maintaining a close relationship with the local clergy, viewing his craftsmanship as a form of service to God.",
     "dailyRoutine": [
       {
         "startTime": "05:00",
-        "endTime": "05:30",
+        "endTime": "06:00",
         "type": "HOME"
       },
       {
-        "startTime": "05:30",
-        "endTime": "09:30",
-        "type": "SHOP"
-      },
-      {
-        "startTime": "09:30",
-        "endTime": "10:00",
-        "type": "FREE_TIME"
-      },
-      {
-        "startTime": "10:00",
-        "endTime": "12:30",
-        "type": "SHOP"
-      },
-      {
-        "startTime": "12:30",
-        "endTime": "13:30",
-        "type": "HOME"
-      },
-      {
-        "startTime": "13:30",
-        "endTime": "17:30",
-        "type": "SHOP"
-      },
-      {
-        "startTime": "17:30",
-        "endTime": "18:30",
-        "type": "FREE_TIME"
-      },
-      {
-        "startTime": "18:30",
-        "endTime": "20:00",
-        "type": "HOME"
-      },
-      {
-        "startTime": "20:00",
-        "endTime": "21:00",
-        "type": "FREE_TIME"
-      },
-      {
-        "startTime": "21:00",
-        "endTime": "22:00",
-        "type": "HOME"
-      }
-    ]
-  },
-  {
-    "name": "Agostin Meneghetti",
-    "shopType": "Jeweler",
-    "shopCategory": "LUXURY_ITEMS",
-    "home": {
-      "lat": 45.44172674732461,
-      "lng": 12.332603441638216
-    },
-    "shop": {
-      "lat": 45.44125025746686,
-      "lng": 12.334487650422629
-    },
-    "personality": "Meticulous and discreet, he weighs gold and gems with a cautious eye and keeps exact accounts to guard his reputation. Devout yet sociable, he cultivates patrician and foreign clients through measured courtesy and steady guild ties.",
-    "dailyRoutine": [
-      {
-        "startTime": "05:00",
+        "startTime": "06:00",
         "endTime": "06:30",
-        "type": "HOME"
+        "type": "TRAVEL_TO_SHOP"
       },
       {
         "startTime": "06:30",
-        "endTime": "07:30",
-        "type": "FREE_TIME"
+        "endTime": "07:00",
+        "type": "SHOP"
       },
       {
-        "startTime": "07:30",
+        "startTime": "07:00",
         "endTime": "08:00",
-        "type": "TRAVEL_TO_SHOP"
+        "type": "FREE_TIME"
       },
       {
         "startTime": "08:00",
@@ -253,16 +1775,595 @@
       },
       {
         "startTime": "14:00",
-        "endTime": "18:30",
+        "endTime": "18:00",
         "type": "SHOP"
       },
       {
-        "startTime": "18:30",
-        "endTime": "19:00",
+        "startTime": "18:00",
+        "endTime": "18:30",
         "type": "TRAVEL_HOME"
       },
       {
+        "startTime": "18:30",
+        "endTime": "19:30",
+        "type": "HOME"
+      },
+      {
+        "startTime": "19:30",
+        "endTime": "20:30",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "20:30",
+        "endTime": "22:00",
+        "type": "HOME"
+      }
+    ]
+  },
+  {
+    "name": "Bastian Pagiaro",
+    "shopType": "Window Maker",
+    "shopCategory": "BUILDING",
+    "home": {
+      "lat": 45.443959059063914,
+      "lng": 12.327787446925727
+    },
+    "shop": {
+      "lat": 45.443936306199745,
+      "lng": 12.32775883732853
+    },
+    "personality": "Bastian Pagiaro is skeptical and practical, dismissing superstition and focusing on efficiency. He respects only results and values hard work.",
+    "dailyRoutine": [
+      {
+        "startTime": "05:00",
+        "endTime": "06:00",
+        "type": "HOME"
+      },
+      {
+        "startTime": "06:00",
+        "endTime": "06:10",
+        "type": "TRAVEL_TO_SHOP"
+      },
+      {
+        "startTime": "06:10",
+        "endTime": "12:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "12:00",
+        "endTime": "12:30",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "12:30",
+        "endTime": "18:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "18:00",
+        "endTime": "18:10",
+        "type": "TRAVEL_HOME"
+      },
+      {
+        "startTime": "18:10",
+        "endTime": "19:00",
+        "type": "HOME"
+      },
+      {
         "startTime": "19:00",
+        "endTime": "20:00",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "20:00",
+        "endTime": "22:00",
+        "type": "HOME"
+      }
+    ]
+  },
+  {
+    "name": "Antonio Pizzioli",
+    "shopType": "Sweet Seller",
+    "shopCategory": "FOOD_DRINK",
+    "home": {
+      "lat": 45.43249189345332,
+      "lng": 12.33480709964918
+    },
+    "shop": {
+      "lat": 45.43301845732568,
+      "lng": 12.33449250869691
+    },
+    "personality": "Antonio is a jovial and social man who knows everyone in his neighborhood. He loves gossip and often spends his evenings at local taverns, considering his business as secondary to his social interactions.",
+    "dailyRoutine": [
+      {
+        "startTime": "05:00",
+        "endTime": "06:30",
+        "type": "HOME"
+      },
+      {
+        "startTime": "06:30",
+        "endTime": "07:00",
+        "type": "TRAVEL_TO_SHOP"
+      },
+      {
+        "startTime": "07:00",
+        "endTime": "12:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "12:00",
+        "endTime": "13:00",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "13:00",
+        "endTime": "16:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "16:00",
+        "endTime": "16:30",
+        "type": "TRAVEL_HOME"
+      },
+      {
+        "startTime": "16:30",
+        "endTime": "18:00",
+        "type": "HOME"
+      },
+      {
+        "startTime": "18:00",
+        "endTime": "19:00",
+        "type": "TRAVEL_TO_SHOP"
+      },
+      {
+        "startTime": "19:00",
+        "endTime": "20:30",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "20:30",
+        "endTime": "21:00",
+        "type": "TRAVEL_HOME"
+      },
+      {
+        "startTime": "21:00",
+        "endTime": "22:00",
+        "type": "FREE_TIME"
+      }
+    ]
+  },
+  {
+    "name": "Zuanne Battista Carminati",
+    "shopType": "Metal pipes",
+    "shopCategory": "METAL_CRAFT",
+    "home": {
+      "lat": 45.43554874386612,
+      "lng": 12.326292640297702
+    },
+    "shop": {
+      "lat": 45.43554874386612,
+      "lng": 12.326292640297702
+    },
+    "personality": "Zuanne is carefree and lazy, often seen enjoying a glass of wine rather than focusing on his metalwork. Despite his lackadaisical approach, he manages to keep his business just above water.",
+    "dailyRoutine": [
+      {
+        "startTime": "05:00",
+        "endTime": "07:00",
+        "type": "HOME"
+      },
+      {
+        "startTime": "07:00",
+        "endTime": "08:00",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "08:00",
+        "endTime": "12:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "12:00",
+        "endTime": "13:00",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "13:00",
+        "endTime": "15:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "15:00",
+        "endTime": "17:00",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "17:00",
+        "endTime": "19:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "19:00",
+        "endTime": "22:00",
+        "type": "FREE_TIME"
+      }
+    ]
+  },
+  {
+    "name": "Andrea Ruggieri",
+    "shopType": "Sausage Maker",
+    "shopCategory": "FOOD_DRINK",
+    "home": {
+      "lat": 45.43678600538434,
+      "lng": 12.328722922430266
+    },
+    "shop": {
+      "lat": 45.43678600538434,
+      "lng": 12.328722922430266
+    },
+    "personality": "Andrea Ruggieri is ambitious and constantly seeks ways to elevate his social standing. He is a member of several elite confraternities and often disdains fellow tradesmen who lack his aspirations.",
+    "dailyRoutine": [
+      {
+        "startTime": "05:00",
+        "endTime": "07:30",
+        "type": "HOME"
+      },
+      {
+        "startTime": "07:30",
+        "endTime": "12:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "12:00",
+        "endTime": "13:00",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "13:00",
+        "endTime": "17:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "17:00",
+        "endTime": "19:00",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "19:00",
+        "endTime": "21:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "21:00",
+        "endTime": "22:00",
+        "type": "HOME"
+      }
+    ]
+  },
+  {
+    "name": "Giulian Semenzato",
+    "shopType": "Fruit Seller",
+    "shopCategory": "FOOD_DRINK",
+    "home": {
+      "lat": 45.43559329078698,
+      "lng": 12.336311641412818
+    },
+    "shop": {
+      "lat": 45.43559329078698,
+      "lng": 12.336311641412818
+    },
+    "personality": "Giulian is a struggling but proud fruit seller who barely makes ends meet yet maintains his dignity through honest dealing.",
+    "dailyRoutine": [
+      {
+        "startTime": "05:00",
+        "endTime": "06:00",
+        "type": "HOME"
+      },
+      {
+        "startTime": "06:00",
+        "endTime": "12:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "12:00",
+        "endTime": "13:00",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "13:00",
+        "endTime": "18:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "18:00",
+        "endTime": "19:00",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "19:00",
+        "endTime": "21:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "21:00",
+        "endTime": "22:00",
+        "type": "HOME"
+      }
+    ]
+  },
+  {
+    "name": "Giulio de Bara",
+    "shopType": "Shoemaker",
+    "shopCategory": "COMMERCE_CLOTHING",
+    "home": {
+      "lat": 45.43649672270923,
+      "lng": 12.325705682626646
+    },
+    "shop": {
+      "lat": 45.435898819183464,
+      "lng": 12.325216365988034
+    },
+    "personality": "Giulio is a hard-working and honest shoemaker, barely making ends meet yet maintaining his dignity through fair and honest dealings.",
+    "dailyRoutine": [
+      {
+        "startTime": "05:30",
+        "endTime": "06:30",
+        "type": "HOME"
+      },
+      {
+        "startTime": "06:30",
+        "endTime": "06:45",
+        "type": "TRAVEL_TO_SHOP"
+      },
+      {
+        "startTime": "06:45",
+        "endTime": "12:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "12:00",
+        "endTime": "12:30",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "12:30",
+        "endTime": "15:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "15:00",
+        "endTime": "15:30",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "15:30",
+        "endTime": "19:30",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "19:30",
+        "endTime": "19:45",
+        "type": "TRAVEL_HOME"
+      },
+      {
+        "startTime": "19:45",
+        "endTime": "21:00",
+        "type": "HOME"
+      },
+      {
+        "startTime": "21:00",
+        "endTime": "21:30",
+        "type": "FREE_TIME"
+      }
+    ]
+  },
+  {
+    "name": "Bortolo Borali",
+    "shopType": "Fruits Seller",
+    "shopCategory": "FOOD_DRINK",
+    "home": {
+      "lat": 45.43249723021822,
+      "lng": 12.325689404665832
+    },
+    "shop": {
+      "lat": 45.43250073656149,
+      "lng": 12.325720844403271
+    },
+    "personality": "Bortolo Borali is deeply pious and devout, attending mass daily and maintaining close ties with the local clergy. He sees his business as a service to God and treats every interaction as a testament to his faith.",
+    "dailyRoutine": [
+      {
+        "startTime": "05:00",
+        "endTime": "06:00",
+        "type": "HOME"
+      },
+      {
+        "startTime": "06:00",
+        "endTime": "06:30",
+        "type": "TRAVEL_TO_SHOP"
+      },
+      {
+        "startTime": "06:30",
+        "endTime": "07:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "07:00",
+        "endTime": "08:00",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "08:00",
+        "endTime": "08:30",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "08:30",
+        "endTime": "09:00",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "09:00",
+        "endTime": "09:30",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "09:30",
+        "endTime": "10:00",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "10:00",
+        "endTime": "15:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "15:00",
+        "endTime": "15:30",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "15:30",
+        "endTime": "17:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "17:00",
+        "endTime": "17:30",
+        "type": "TRAVEL_HOME"
+      },
+      {
+        "startTime": "17:30",
+        "endTime": "18:00",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "18:00",
+        "endTime": "19:00",
+        "type": "HOME"
+      },
+      {
+        "startTime": "19:00",
+        "endTime": "19:30",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "19:30",
+        "endTime": "20:30",
+        "type": "HOME"
+      },
+      {
+        "startTime": "20:30",
+        "endTime": "21:00",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "21:00",
+        "endTime": "22:00",
+        "type": "HOME"
+      }
+    ]
+  },
+  {
+    "name": "Giulio Botti",
+    "shopType": "Jeweller",
+    "shopCategory": "LUXURY_ITEMS",
+    "home": {
+      "lat": 45.43891946585535,
+      "lng": 12.33473636907709
+    },
+    "shop": {
+      "lat": 45.43891946585535,
+      "lng": 12.33473636907709
+    },
+    "personality": "Giulio is a status-seeking individual who takes pride in his luxurious jewellery shop, aspiring to mingle with the nobility. He is a member of prestigious confraternities and often looks down on common trades.",
+    "dailyRoutine": [
+      {
+        "startTime": "05:00",
+        "endTime": "06:00",
+        "type": "HOME"
+      },
+      {
+        "startTime": "06:00",
+        "endTime": "07:00",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "07:00",
+        "endTime": "18:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "18:00",
+        "endTime": "19:00",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "19:00",
+        "endTime": "21:00",
+        "type": "HOME"
+      },
+      {
+        "startTime": "21:00",
+        "endTime": "22:00",
+        "type": "FREE_TIME"
+      }
+    ]
+  },
+  {
+    "name": "Antonio Plateo",
+    "shopType": "Chair Maker",
+    "shopCategory": "HOUSEHOLD_ITEMS",
+    "home": {
+      "lat": 45.44088680944286,
+      "lng": 12.336103548268815
+    },
+    "shop": {
+      "lat": 45.44088680944286,
+      "lng": 12.336103548268815
+    },
+    "personality": "Antonio is deeply pious and devout, attending mass daily and maintaining close relationships with the clergy. He sees his chair-making business as a service to God, ensuring quality in every piece as a testament to his faith.",
+    "dailyRoutine": [
+      {
+        "startTime": "05:00",
+        "endTime": "06:00",
+        "type": "HOME"
+      },
+      {
+        "startTime": "06:00",
+        "endTime": "07:30",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "07:30",
+        "endTime": "08:00",
+        "type": "HOME"
+      },
+      {
+        "startTime": "08:00",
+        "endTime": "08:30",
+        "type": "TRAVEL_TO_SHOP"
+      },
+      {
+        "startTime": "08:30",
+        "endTime": "17:30",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "17:30",
+        "endTime": "17:45",
+        "type": "TRAVEL_HOME"
+      },
+      {
+        "startTime": "17:45",
+        "endTime": "18:15",
+        "type": "HOME"
+      },
+      {
+        "startTime": "18:15",
+        "endTime": "19:15",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "19:15",
         "endTime": "20:00",
         "type": "HOME"
       },
@@ -279,18 +2380,221 @@
     ]
   },
   {
-    "name": "Agostin Redolfi",
-    "shopType": "Pastry seller",
+    "name": "Pietro Filosi",
+    "shopType": "Sweet Wine Merchant",
     "shopCategory": "FOOD_DRINK",
     "home": {
-      "lat": 45.43950464424702,
-      "lng": 12.33269834194524
+      "lat": 45.43840610644638,
+      "lng": 12.334123727933274
     },
     "shop": {
-      "lat": 45.43950464424702,
-      "lng": 12.33269834194524
+      "lat": 45.43840610644638,
+      "lng": 12.334123727933274
     },
-    "personality": "Diligent and convivial, he rises before dawn to tend his ovens and greets each patron by name. Frugal with costly sugar yet generous with small favors, he prizes honest weights and the respect of neighbors and guild.",
+    "personality": "Pietro is young and ambitious, recently established in his trade, eager to innovate and prove his worth to the guild elders by introducing new wine blends.",
+    "dailyRoutine": [
+      {
+        "startTime": "05:00",
+        "endTime": "06:00",
+        "type": "HOME"
+      },
+      {
+        "startTime": "06:00",
+        "endTime": "06:30",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "06:30",
+        "endTime": "18:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "18:00",
+        "endTime": "19:00",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "19:00",
+        "endTime": "20:00",
+        "type": "HOME"
+      },
+      {
+        "startTime": "20:00",
+        "endTime": "21:30",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "21:30",
+        "endTime": "22:00",
+        "type": "HOME"
+      }
+    ]
+  },
+  {
+    "name": "Orsetta Maggia vedova",
+    "shopType": "Sweet Wine Seller",
+    "shopCategory": "FOOD_DRINK",
+    "home": {
+      "lat": 45.44018571638811,
+      "lng": 12.330942283664559
+    },
+    "shop": {
+      "lat": 45.440122560871544,
+      "lng": 12.330883154183677
+    },
+    "personality": "Orsetta is carefree and lazy, enjoying her time with a glass of wine more than running her shop, yet somehow she manages to keep her business going.",
+    "dailyRoutine": [
+      {
+        "startTime": "06:00",
+        "endTime": "07:00",
+        "type": "HOME"
+      },
+      {
+        "startTime": "07:00",
+        "endTime": "07:30",
+        "type": "TRAVEL_TO_SHOP"
+      },
+      {
+        "startTime": "07:30",
+        "endTime": "10:30",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "10:30",
+        "endTime": "11:30",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "11:30",
+        "endTime": "14:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "14:00",
+        "endTime": "15:00",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "15:00",
+        "endTime": "17:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "17:00",
+        "endTime": "18:00",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "18:00",
+        "endTime": "20:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "20:00",
+        "endTime": "20:30",
+        "type": "TRAVEL_HOME"
+      },
+      {
+        "startTime": "20:30",
+        "endTime": "22:00",
+        "type": "HOME"
+      }
+    ]
+  },
+  {
+    "name": "Zuanne Zanchi",
+    "shopType": "Apothecary",
+    "shopCategory": "MIXED",
+    "home": {
+      "lat": 45.43479517189057,
+      "lng": 12.346890071673519
+    },
+    "shop": {
+      "lat": 45.433868735023815,
+      "lng": 12.346967637178277
+    },
+    "personality": "Zuanne Zanchi is deeply pious and devout, attending mass daily and maintaining a close relationship with the clergy. He sees his business dealings as a service to God, providing necessary medicines and spices to the community.",
+    "dailyRoutine": [
+      {
+        "startTime": "05:00",
+        "endTime": "06:00",
+        "type": "HOME"
+      },
+      {
+        "startTime": "06:00",
+        "endTime": "06:30",
+        "type": "TRAVEL_TO_SHOP"
+      },
+      {
+        "startTime": "06:30",
+        "endTime": "07:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "07:00",
+        "endTime": "08:00",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "08:00",
+        "endTime": "09:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "09:00",
+        "endTime": "10:00",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "10:00",
+        "endTime": "13:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "13:00",
+        "endTime": "14:00",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "14:00",
+        "endTime": "17:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "17:00",
+        "endTime": "18:00",
+        "type": "TRAVEL_HOME"
+      },
+      {
+        "startTime": "18:00",
+        "endTime": "19:00",
+        "type": "HOME"
+      },
+      {
+        "startTime": "19:00",
+        "endTime": "20:00",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "20:00",
+        "endTime": "22:00",
+        "type": "HOME"
+      }
+    ]
+  },
+  {
+    "name": "Zuanne Fornaser",
+    "shopType": "Fruit Seller",
+    "shopCategory": "FOOD_DRINK",
+    "home": {
+      "lat": 45.43421988088488,
+      "lng": 12.329254968600653
+    },
+    "shop": {
+      "lat": 45.43423185341723,
+      "lng": 12.329240412299056
+    },
+    "personality": "Zuanne is aging and nostalgic, often reminiscing about his earlier days when his fruit stall was bustling with activity. He is resistant to adopting new methods, preferring the traditional ways he's known all his life.",
     "dailyRoutine": [
       {
         "startTime": "05:00",
@@ -305,25 +2609,260 @@
       {
         "startTime": "12:00",
         "endTime": "13:00",
-        "type": "HOME"
+        "type": "FREE_TIME"
       },
       {
         "startTime": "13:00",
-        "endTime": "16:30",
+        "endTime": "18:00",
         "type": "SHOP"
       },
       {
-        "startTime": "16:30",
+        "startTime": "18:00",
+        "endTime": "19:00",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "19:00",
+        "endTime": "21:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "21:00",
+        "endTime": "22:00",
+        "type": "HOME"
+      }
+    ]
+  },
+  {
+    "name": "Gasparo Gobbis",
+    "shopType": "Tailor",
+    "shopCategory": "COMMERCE_CLOTHING",
+    "home": {
+      "lat": 45.43847619163355,
+      "lng": 12.342859278960749
+    },
+    "shop": {
+      "lat": 45.43844711766386,
+      "lng": 12.342847626988203
+    },
+    "personality": "Young and ambitious, Gasparo is recently established, eager to innovate and prove his worth to the guild elders.",
+    "dailyRoutine": [
+      {
+        "startTime": "05:00",
+        "endTime": "06:00",
+        "type": "HOME"
+      },
+      {
+        "startTime": "06:00",
+        "endTime": "06:30",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "06:30",
+        "endTime": "07:00",
+        "type": "HOME"
+      },
+      {
+        "startTime": "07:00",
+        "endTime": "17:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "17:00",
         "endTime": "17:30",
         "type": "FREE_TIME"
       },
       {
         "startTime": "17:30",
+        "endTime": "21:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "21:00",
+        "endTime": "22:00",
+        "type": "HOME"
+      }
+    ]
+  },
+  {
+    "name": "Giacomo Gozzi",
+    "shopType": "Cold meats vendor",
+    "shopCategory": "FOOD_DRINK",
+    "home": {
+      "lat": 45.43336260116559,
+      "lng": 12.337155655634369
+    },
+    "shop": {
+      "lat": 45.43336260116559,
+      "lng": 12.337155655634369
+    },
+    "personality": "Giacomo Gozzi is a jovial and social man, known for his friendly demeanor and love of gossip. He enjoys spending his evenings at local taverns, treating business as a secondary affair to socializing.",
+    "dailyRoutine": [
+      {
+        "startTime": "05:00",
+        "endTime": "06:00",
+        "type": "HOME"
+      },
+      {
+        "startTime": "06:00",
+        "endTime": "12:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "12:00",
+        "endTime": "13:00",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "13:00",
+        "endTime": "17:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "17:00",
+        "endTime": "22:00",
+        "type": "FREE_TIME"
+      }
+    ]
+  },
+  {
+    "name": "Piero Pellegrini",
+    "shopType": "Water Seller",
+    "shopCategory": "FOOD_DRINK",
+    "home": {
+      "lat": 45.437401263495666,
+      "lng": 12.338622406424532
+    },
+    "shop": {
+      "lat": 45.437401263495666,
+      "lng": 12.338622406424532
+    },
+    "personality": "Piero Pellegrini is a wealthy and generous man, known for running a prosperous water selling business. He is well-regarded in the community for his charitable contributions and support of local church festivals.",
+    "dailyRoutine": [
+      {
+        "startTime": "05:00",
+        "endTime": "06:00",
+        "type": "HOME"
+      },
+      {
+        "startTime": "06:00",
+        "endTime": "06:30",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "06:30",
+        "endTime": "12:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "12:00",
+        "endTime": "12:30",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "12:30",
+        "endTime": "18:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "18:00",
+        "endTime": "19:30",
+        "type": "HOME"
+      },
+      {
+        "startTime": "19:30",
+        "endTime": "20:30",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "20:30",
+        "endTime": "22:00",
+        "type": "HOME"
+      }
+    ]
+  },
+  {
+    "name": "Francesco Astori",
+    "shopType": "Cold meats",
+    "shopCategory": "FOOD_DRINK",
+    "home": {
+      "lat": 45.43959289683202,
+      "lng": 12.334805574999026
+    },
+    "shop": {
+      "lat": 45.43959289683202,
+      "lng": 12.334805574999026
+    },
+    "personality": "Francesco Astori is young and ambitious, having recently established his shop. He is eager to innovate and prove his worth to the guild elders.",
+    "dailyRoutine": [
+      {
+        "startTime": "05:00",
+        "endTime": "06:30",
+        "type": "HOME"
+      },
+      {
+        "startTime": "06:30",
         "endTime": "19:00",
         "type": "SHOP"
       },
       {
         "startTime": "19:00",
+        "endTime": "20:00",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "20:00",
+        "endTime": "22:00",
+        "type": "HOME"
+      }
+    ]
+  },
+  {
+    "name": "Pietro Lissignolo",
+    "shopType": "Sausage Maker",
+    "shopCategory": "FOOD_DRINK",
+    "home": {
+      "lat": 45.43606824930783,
+      "lng": 12.335764321224543
+    },
+    "shop": {
+      "lat": 45.43605545808172,
+      "lng": 12.335793634250084
+    },
+    "personality": "Pietro is struggling but proud, barely making ends meet in his sausage shop, yet he maintains dignity through honest dealing.",
+    "dailyRoutine": [
+      {
+        "startTime": "05:00",
+        "endTime": "06:00",
+        "type": "HOME"
+      },
+      {
+        "startTime": "06:00",
+        "endTime": "06:15",
+        "type": "TRAVEL_TO_SHOP"
+      },
+      {
+        "startTime": "06:15",
+        "endTime": "12:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "12:00",
+        "endTime": "13:00",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "13:00",
+        "endTime": "18:30",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "18:30",
+        "endTime": "18:45",
+        "type": "TRAVEL_HOME"
+      },
+      {
+        "startTime": "18:45",
         "endTime": "20:00",
         "type": "HOME"
       },
@@ -334,6 +2873,67 @@
       },
       {
         "startTime": "21:00",
+        "endTime": "22:00",
+        "type": "HOME"
+      }
+    ]
+  },
+  {
+    "name": "Francesco Fornaser",
+    "shopType": "Fruit Seller",
+    "shopCategory": "FOOD_DRINK",
+    "home": {
+      "lat": 45.43381668847113,
+      "lng": 12.328474120950135
+    },
+    "shop": {
+      "lat": 45.43375093345635,
+      "lng": 12.327877851515293
+    },
+    "personality": "Francesco is wealthy and generous, running a prosperous fruit business. He is known for supporting the poor and funding church festivals.",
+    "dailyRoutine": [
+      {
+        "startTime": "05:00",
+        "endTime": "06:00",
+        "type": "HOME"
+      },
+      {
+        "startTime": "06:00",
+        "endTime": "06:30",
+        "type": "TRAVEL_TO_SHOP"
+      },
+      {
+        "startTime": "06:30",
+        "endTime": "12:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "12:00",
+        "endTime": "13:00",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "13:00",
+        "endTime": "18:00",
+        "type": "SHOP"
+      },
+      {
+        "startTime": "18:00",
+        "endTime": "18:30",
+        "type": "TRAVEL_HOME"
+      },
+      {
+        "startTime": "18:30",
+        "endTime": "19:30",
+        "type": "HOME"
+      },
+      {
+        "startTime": "19:30",
+        "endTime": "20:30",
+        "type": "FREE_TIME"
+      },
+      {
+        "startTime": "20:30",
         "endTime": "22:00",
         "type": "HOME"
       }
