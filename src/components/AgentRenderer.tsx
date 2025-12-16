@@ -92,7 +92,10 @@ export default function AgentRenderer({ agents }: AgentRendererProps) {
       lastActivityRef.current.set(agent.id, agent.currentActivity);
       
       // Skip thought generation if we have a detour thought
-      if (agent.detourThought) return;
+      if (agent.detourThought) {
+        console.log(`🚫 Skipping thought generation for ${agent.name} - has detour thought:`, agent.detourThought);
+        return;
+      }
 
       const generateNewThought = async () => {
         const thought = await generateThought(
@@ -102,6 +105,7 @@ export default function AgentRenderer({ agents }: AgentRendererProps) {
         );
         
         if (thought) {
+          console.log(`✨ Generated new thought for ${agent.name} (activity: ${agent.currentActivity}):`, thought.thought);
           setGeneratedThoughts(prev => {
             const next = new Map(prev);
             next.set(agent.id, thought.thought);

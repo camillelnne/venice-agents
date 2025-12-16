@@ -47,11 +47,6 @@ export const VENICE_LANDMARKS: Record<string, NamedLocation> = {
     name: "Dorsoduro",
     coordinates: { lat: 45.4300, lng: 12.3240 },
     description: "An artistic district along the water"
-  },
-  "Tavern": {
-    name: "Tavern",
-    coordinates: { lat: 45.4390, lng: 12.3334 }, 
-    description: "A tavern"
   }
 };
 

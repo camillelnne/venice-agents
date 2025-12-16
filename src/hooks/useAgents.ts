@@ -16,6 +16,7 @@ import {
 import type { Poi } from "@/types/poi";
 import { ApiService } from "@/lib/api";
 import type { DetourOption } from "@/types/agent";
+import { VENICE_LANDMARKS } from "@/lib/landmarks";
 import {
   initializeAgent,
   updateAgentRoutine,
@@ -56,20 +57,24 @@ const formatMinutes = (minutes: number): string => {
 
 const estimateDwellMinutes = (poiType: string, slack: number): number => {
   const upperType = poiType.toUpperCase();
-  let baseMin = 8;
-  let baseMax = 15;
-  if (upperType.includes("TAVERN") || upperType.includes("OSTERIA") || upperType.includes("INN")) {
-    baseMin = 12;
+  let baseMin = 15;
+  let baseMax = 25;
+  if (upperType.includes("TAVERN") || upperType.includes("OSTERIA") || upperType.includes("INN") || upperType.includes("MALVASIA") || upperType.includes("CAFFÈ")) {
+    baseMin = 20;
+    baseMax = 35;
+  } else if (upperType.includes("CHURCH") || upperType.includes("CHIESA") || upperType.includes("SCUOLA")) {
+    baseMin = 10;
     baseMax = 20;
-  } else if (upperType.includes("CHURCH") || upperType.includes("CHAPEL") || upperType.includes("TEMPLE")) {
-    baseMin = 6;
-    baseMax = 12;
-  } else if (upperType.includes("GARDEN") || upperType.includes("PARK") || upperType.includes("COURTYARD")) {
-    baseMin = 8;
-    baseMax = 16;
+  } else if (upperType.includes("GARDEN") || upperType.includes("ORTO") || upperType.includes("GIARDINO") || upperType.includes("CORTE")) {
+    baseMin = 15;
+    baseMax = 30;
+  } else if (upperType.includes("LANDMARK")) {
+    baseMin = 20;
+    baseMax = 40;
   }
   const dwell = baseMin + Math.random() * (baseMax - baseMin);
-  return Math.min(dwell, Math.max(slack - 5, baseMin));
+  // Ensure we have at least baseMin, but cap at 70% of available slack
+  return Math.min(dwell, Math.max(slack * 0.7, baseMin));
 };
 
 export function useAgents(
@@ -201,7 +206,7 @@ export function useAgents(
     if (!network || !isRunning || pois.length === 0 || agentStates.size === 0) return;
 
     const simMinutes = currentTime.getHours() * 60 + currentTime.getMinutes();
-    const CHECK_INTERVAL_MIN = 5;
+    const CHECK_INTERVAL_MIN = 15; // Check for detours every 15 sim minutes (was 5)
 
     agentStates.forEach((agentState, agentId) => {
       // Check if enough time has passed since last check for this agent
@@ -247,33 +252,71 @@ export function useAgents(
 
       if (!nextNonFreeStart) return;
       const slackMinutes = nextNonFreeStart - simMinutes;
-      if (slackMinutes < 20) return;
+      // Require at least 45 minutes of free time to consider a detour
+      // This ensures enough time for travel, dwelling, and return
+      if (slackMinutes < 45) return;
 
       const nearby = getNearbyPoisWithDistance(network, pois, agentState.currentNodeId, 15);
       if (nearby.length === 0) return;
 
+      console.log(`📍 Found ${nearby.length} nearby POIs for ${agentState.persona.name}`);
+      console.log(`   Types available:`, [...new Set(nearby.map(p => p.poi.type))].join(", "));
+
       // Build diverse options with randomization
-      const pickByTypes = (types: string[]) => {
+      const pickByTypes = (types: string[], count: number = 2) => {
         const matches = nearby.filter((entry) => types.includes(entry.poi.type.toUpperCase()));
-        if (matches.length === 0) return null;
-        // Pick a random one from matches
-        return matches[Math.floor(Math.random() * matches.length)];
+        if (matches.length === 0) return [];
+        // Shuffle and pick up to 'count' random ones from matches
+        const shuffled = [...matches].sort(() => Math.random() - 0.5);
+        return shuffled.slice(0, Math.min(count, matches.length));
       };
 
       const candidates: { poi: Poi; reachableMinutes: number }[] = [];
 
       // Italian/Venetian POI types from the actual dataset
-      const tavern = pickByTypes(["OSTERIA", "LOCANDA", "ALBERGO", "MALVASIA", "CAFFÈ"]);
-      if (tavern) candidates.push(tavern);
-      const church = pickByTypes(["CHIESA", "SCUOLA", "OSPIZIO"]);
-      if (church) candidates.push(church);
-      const courtyard = pickByTypes(["CORTE", "GIARDINO", "ORTO"]);
-      if (courtyard) candidates.push(courtyard);
+      // Pick up to 2 from each category to offer more variety
+      const taverns = pickByTypes(["OSTERIA", "LOCANDA", "ALBERGO", "MALVASIA", "CAFFÈ"], 2);
+      candidates.push(...taverns);
+      const churches = pickByTypes(["CHIESA", "SCUOLA", "OSPIZIO"], 2);
+      candidates.push(...churches);
+      const courtyards = pickByTypes(["CORTE", "GIARDINO", "ORTO"], 2);
+      candidates.push(...courtyards);
+
+      // Add landmarks as additional options (convert to virtual POIs)
+      const landmarkEntries = Object.entries(VENICE_LANDMARKS);
+      const shuffledLandmarks = [...landmarkEntries].sort(() => Math.random() - 0.5);
+      const selectedLandmarks = shuffledLandmarks.slice(0, 2); // Pick 2 random landmarks
+      
+      for (const [key, landmark] of selectedLandmarks) {
+        const landmarkNode = findNearestNode(network, landmark.coordinates.lat, landmark.coordinates.lng);
+        if (!landmarkNode) continue;
+        
+        const distanceMeters = shortestPathDistanceMeters(network, agentState.currentNodeId, landmarkNode.id);
+        if (distanceMeters === null) continue;
+        
+        const reachableMinutes = distanceMeters / (1.4 * 60);
+        if (reachableMinutes <= 15) { // Within same range as nearby POIs
+          candidates.push({
+            poi: {
+              id: `landmark_${key}`,
+              lat: landmark.coordinates.lat,
+              lng: landmark.coordinates.lng,
+              type: "LANDMARK",
+              label: landmark.name,
+            },
+            reachableMinutes,
+          });
+        }
+      }
 
       if (candidates.length === 0 && nearby.length > 0) {
-        // Pick a random nearby POI as fallback
-        candidates.push(nearby[Math.floor(Math.random() * nearby.length)]);
+        console.log(`⚠️  No candidates matched preferred types, using fallback from ${nearby.length} nearby POIs`);
+        // Pick up to 3 random nearby POIs as fallback
+        const shuffled = [...nearby].sort(() => Math.random() - 0.5);
+        candidates.push(...shuffled.slice(0, 3));
       }
+
+      console.log(`🎯 Initial candidates selected: ${candidates.length}`, candidates.map(c => `${c.poi.type}: ${c.poi.label}`));
 
       const uniqueCandidates = Array.from(
         new Map(candidates.map((c) => [c.poi.id, c])).values()
@@ -281,30 +324,45 @@ export function useAgents(
 
       if (uniqueCandidates.length === 0) return;
 
-      const dwellMinutes = 10;
       const targetNodeId = agentState.targetNodeId;
 
       const options: DetourOption[] = [];
       let enoughSlack = false;
 
+      console.log(`⏱️  Checking time feasibility (${Math.floor(slackMinutes)} min available):`);
       for (const entry of uniqueCandidates) {
         const nearestToPoi = findNearestNode(network, entry.poi.lat, entry.poi.lng);
-        if (!nearestToPoi) continue;
+        if (!nearestToPoi) {
+          console.log(`   ❌ ${entry.poi.label}: No nearest node found`);
+          continue;
+        }
         const backMeters = shortestPathDistanceMeters(network, nearestToPoi.id, targetNodeId);
-        if (backMeters === null) continue;
+        if (backMeters === null) {
+          console.log(`   ❌ ${entry.poi.label}: No path back to target`);
+          continue;
+        }
         const backMinutes = backMeters / (1.4 * 60);
-        const totalNeeded = entry.reachableMinutes + dwellMinutes + backMinutes;
-        if (totalNeeded <= slackMinutes) {
+        // Use realistic dwell time estimate (not hardcoded 10)
+        const estimatedDwellMinutes = estimateDwellMinutes(entry.poi.type, slackMinutes);
+        const totalNeeded = entry.reachableMinutes + estimatedDwellMinutes + backMinutes;
+        // Add 5 minute buffer for safety
+        if (totalNeeded + 5 <= slackMinutes) {
           enoughSlack = true;
+          console.log(`   ✅ ${entry.poi.label}: ${Math.floor(totalNeeded)} min (${Math.floor(entry.reachableMinutes)} there + ${Math.floor(estimatedDwellMinutes)} dwell + ${Math.floor(backMinutes)} back)`);
           options.push({
             id: entry.poi.id,
             type: entry.poi.type.toUpperCase(),
             label: entry.poi.label,
           });
+        } else {
+          console.log(`   ⏰ ${entry.poi.label}: ${Math.floor(totalNeeded)} min needed > ${Math.floor(slackMinutes)} min available`);
         }
       }
 
-      if (!enoughSlack || options.length === 0) return;
+      if (!enoughSlack || options.length === 0) {
+        console.log(`❌ No feasible detours found (enoughSlack: ${enoughSlack}, options: ${options.length})`);
+        return;
+      }
 
       options.push({ id: "none", type: "NONE", label: "Continue directly to your destination" });
 
@@ -317,6 +375,9 @@ export function useAgents(
         agentState.currentRoutineType === "SHOP"
           ? `Be back at your shop by ${formatMinutes(nextNonFreeStart % (24 * 60))}.`
           : `Be back home by ${formatMinutes(nextNonFreeStart % (24 * 60))}.`;
+
+      console.log(`🎭 POIs proposed to ${agentState.persona.name}:`, options);
+      console.log(`⏰ Available time: ${Math.floor(slackMinutes)} minutes`);
 
       isRequestingDetourRef.current.set(agentId, true);
 
@@ -342,17 +403,47 @@ export function useAgents(
             return;
           }
 
-          const poi = pois.find((p) => p.id === resp.choice_id);
+          // Check if it's a landmark or regular POI
+          let poi = pois.find((p) => p.id === resp.choice_id);
+          
+          // If not found, check if it's a landmark
+          if (!poi && resp.choice_id.startsWith("landmark_")) {
+            const landmarkKey = resp.choice_id.replace("landmark_", "");
+            const landmark = VENICE_LANDMARKS[landmarkKey];
+            if (landmark) {
+              // Reconstruct the POI from landmark data
+              poi = {
+                id: resp.choice_id,
+                lat: landmark.coordinates.lat,
+                lng: landmark.coordinates.lng,
+                type: "LANDMARK",
+                label: landmark.name,
+              };
+            }
+          }
+          
           if (!poi) {
-            console.warn("POI not found for detour choice:", resp.choice_id);
+            console.warn("❌ POI not found for detour choice:", resp.choice_id);
             return;
           }
 
           const targetNode = findNearestNode(network, poi.lat, poi.lng);
-          if (!targetNode) return;
+          if (!targetNode) {
+            console.warn("❌ No target node found for POI:", poi.label);
+            return;
+          }
+
+          // Check if agent is already at the POI
+          if (currentState.currentNodeId === targetNode.id) {
+            console.log(`⚠️  ${agentState.persona.name} is already at ${poi.label}, skipping detour`);
+            return;
+          }
 
           const pathNodeIds = findPathBFS(network, currentState.currentNodeId, targetNode.id);
-          if (!pathNodeIds) return;
+          if (!pathNodeIds) {
+            console.warn("❌ No path found to POI:", poi.label, "from node", currentState.currentNodeId, "to", targetNode.id);
+            return;
+          }
 
           const travelThereMeters = shortestPathDistanceMeters(
             network,
@@ -372,10 +463,14 @@ export function useAgents(
 
           const dwellMinutes = estimateDwellMinutes(poi.type, slackMinutes);
           const totalNeeded = travelThereMinutes + dwellMinutes + backMinutes;
-          if (totalNeeded > slackMinutes - 1) {
-            console.log(`${agentState.persona.name} detour doesn't fit in slack, skipping`);
+          if (totalNeeded > slackMinutes - 5) {
+            console.log(`⏰ ${agentState.persona.name} detour doesn't fit in slack:`, 
+              `${Math.floor(totalNeeded)} min needed > ${Math.floor(slackMinutes - 5)} min available (with 5 min buffer)`);
             return;
           }
+
+          console.log(`⏱️  Detour timing: ${Math.floor(travelThereMinutes)} min there + ${Math.floor(dwellMinutes)} min dwell + ${Math.floor(backMinutes)} min back = ${Math.floor(totalNeeded)} min total (${Math.floor(slackMinutes)} min available)`);
+
 
           const smoothPath = pathToCoordinates(network, pathNodeIds);
 
@@ -397,9 +492,11 @@ export function useAgents(
               detourThought: resp.thought || undefined,
             });
 
-            console.log(`${agentState.persona.name} taking detour to ${poi.label}`);
+            console.log(`✈️  ${agentState.persona.name} taking detour to ${poi.label}`);
+            console.log(`   Path: ${pathNodeIds.length} nodes, ${smoothPath.length} coordinates`);
+            console.log(`   Current position: node ${currentState.currentNodeId}, target: node ${targetNode.id}`);
             if (resp.thought) {
-              console.log(`  Thought: "${resp.thought}"`);
+              console.log(`   Thought: "${resp.thought}"`);
             }
 
             return newStates;
@@ -438,7 +535,7 @@ export function useAgents(
             movedState.currentPath.length > 0 &&
             movedState.pathProgress >= movedState.currentPath.length - 1
           ) {
-            console.log(`${movedState.persona.name} reached detour target, entering dwell`);
+            console.log(`${movedState.persona.name} reached detour target, entering dwell at ${movedState.spontaneousActivity || '(unknown)'}`);
             movedState = {
               ...movedState,
               mode: "AT_DETOUR",
@@ -464,6 +561,9 @@ export function useAgents(
             const smooth = nodePath ? pathToCoordinates(network, nodePath) : [];
 
             console.log(`${movedState.persona.name} detour complete, returning to routine`);
+            if (movedState.detourThought) {
+              console.log(`🧹 Clearing detour thought: "${movedState.detourThought}"`);
+            }
 
             movedState = {
               ...movedState,
@@ -562,27 +662,40 @@ export function useAgents(
 
       // Determine current activity description
       let activity = "";
-      switch (state.currentRoutineType) {
-        case "HOME":
-          activity = "At home";
-          break;
-        case "SHOP":
-          activity = "Working";
-          break;
-        case "TRAVEL_TO_SHOP":
-          activity = "Traveling to shop";
-          break;
-        case "TRAVEL_HOME":
-          activity = "Traveling home";
-          break;
-        case "FREE_TIME":
-          // Check if this is a spontaneous activity
-          if (state.spontaneousActivity) {
-            activity = state.spontaneousActivity;
-          } else {
-            activity = "Free time";
-          }
-          break;
+      
+      // Check mode first - detours override routine activities
+      if (state.mode === "DETOURING") {
+        activity = state.spontaneousActivity ? `Traveling to ${state.spontaneousActivity}` : "Taking a detour";
+      } else if (state.mode === "AT_DETOUR") {
+        activity = state.spontaneousActivity ? `Visiting ${state.spontaneousActivity}` : "At detour location";
+        // Debug: Check if spontaneousActivity is actually set
+        if (!state.spontaneousActivity) {
+          console.warn(`⚠️  Agent ${state.persona.name} is AT_DETOUR but spontaneousActivity is not set:`, state.spontaneousActivity);
+        }
+      } else {
+        // Normal routine-based activities
+        switch (state.currentRoutineType) {
+          case "HOME":
+            activity = "At home";
+            break;
+          case "SHOP":
+            activity = "Working";
+            break;
+          case "TRAVEL_TO_SHOP":
+            activity = "Traveling to shop";
+            break;
+          case "TRAVEL_HOME":
+            activity = "Traveling home";
+            break;
+          case "FREE_TIME":
+            // Check if this is a spontaneous activity
+            if (state.spontaneousActivity) {
+              activity = state.spontaneousActivity;
+            } else {
+              activity = "Free time";
+            }
+            break;
+        }
       }
 
       displays.push({
