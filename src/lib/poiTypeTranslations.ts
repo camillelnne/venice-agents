@@ -18,6 +18,11 @@ export const POI_TYPE_TRANSLATIONS: Record<string, string> = {
   "TABACCO": "Tobacco Shop",
   "OGLIO,MANDOLER": "Oil & Almond Seller",
   "ORTO": "Garden",
+  "GIARDINO": "Garden",
+  "SPECHIER": "Butcher",
+  "BIRRER": "Brewer",
+  "VINIOL": "Wine Merchant",
+  "CAFFETIER": "Coffee Seller",
   
   // Artisans & Craftsmen
   "CALEGHER": "Shoemaker",
@@ -35,12 +40,14 @@ export const POI_TYPE_TRANSLATIONS: Record<string, string> = {
   "MARZER": "Haberdasher",
   "PIRIER": "Pewter Smith",
   "DROGHER": "Druggist",
-  
+  "FENESTRER": "Window Maker",
+
   // Furniture & Household
   "CAREGHETTA": "Chair Maker",
   "CASSELER": "Chest Maker",
   "BOTTER": "Cooper (Barrel Maker)",
   "MASTELLER": "Tub Maker",
+  "STRAMAZER": "Mattress Maker",
   
   // Commerce & Services
   "LIBRER": "Bookseller",
