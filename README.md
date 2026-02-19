@@ -1,6 +1,6 @@
 # Venice Agents
 
-[Wiki](https://fdh.epfl.ch/index.php/Merchants_of_Venice:_Daily_Life_and_Urban_Movement,_ca._1740)
+[![Wiki](https://img.shields.io/badge/Wiki-Read%20More-blue)](https://fdh.epfl.ch/index.php/Merchants_of_Venice:_Daily_Life_and_Urban_Movement,_ca._1740)
 
 An interactive Next.js application that simulates the daily life of Venetian merchants in 1740. The project combines historical archival data (1740 Catastici tax register) with LLM-powered autonomous agents to explore the texture of everyday urban life in 18th-century Venice.
 
